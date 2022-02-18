@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('detail');
             $table->date('periode_mulai');
             $table->date('periode_berakhir');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
