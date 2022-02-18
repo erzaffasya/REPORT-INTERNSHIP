@@ -17,10 +17,10 @@ class Program extends Model
         'status',
     ];
 
-    protected $casts = [ 
-        'periode_mulai' => 'date',
-        'periode_berakhir' => 'date', ];
-
     protected $primaryKey = 'id';
 
+    public function akses_program()
+    {
+        return $this->hasMany(Akses_program::class,'program_id', 'id');
+    }
 }

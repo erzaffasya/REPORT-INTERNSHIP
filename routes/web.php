@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin.index');
 });
+
+Route::get('/tambah', function () {
+    return view('admin.laporan.tambah');
+});
+
+Route::resource('Program', ProgramController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

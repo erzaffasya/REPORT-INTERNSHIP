@@ -14,7 +14,7 @@
         <ul class="navbar-nav">
             {{-- Dashboard --}}
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link {{request()->is('/') ? 'active' : ''}}" href="/">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -44,10 +44,10 @@
                 <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">PAGES</h6>
             </li>
            
-            {{-- Akses Program  --}}
+            {{-- Program  --}}
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link "
-                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#program" class="nav-link {{Route::is('Program.*') ? 'active' : ''}}"
+                    aria-controls="program" role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
@@ -74,22 +74,28 @@
                     </div>
                     <span class="nav-link-text ms-1">Program</span>
                 </a>
-                <div class="collapse " id="applicationsExamples">
+                <div class="collapse {{Route::is('Program*') ? 'show' : ''}}" id="program">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/applications/kanban.html">
+                            <a class="nav-link {{Route::is('Program.create') ? 'active' : ''}}" href="{{route('Program.create')}}">
                                 <span class="sidenav-mini-icon"> K </span>
-                                <span class="sidenav-normal"> Kanban </span>
+                                <span class="sidenav-normal"> Tambah Program </span>
                             </a>
-                        </li>                        
-                    </ul>
+                        </li>      
+                        <li class="nav-item ">
+                            <a class="nav-link {{Route::is('Program.index') ? 'active' : ''}}" href="{{route('Program.index')}}">
+                                <span class="sidenav-mini-icon"> K </span>
+                                <span class="sidenav-normal"> Lihat Program </span>
+                            </a>
+                        </li>                      
+                    </ul>                   
                 </div>
             </li>
 
             {{-- Program --}}
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link "
-                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#akses_program" class="nav-link "
+                    aria-controls="akses_program" role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
@@ -116,7 +122,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Akses Program</span>
                 </a>
-                <div class="collapse " id="applicationsExamples">
+                <div class="collapse " id="akses_program">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
                             <a class="nav-link " href="../../pages/applications/kanban.html">
@@ -129,8 +135,8 @@
             </li>
 
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link "
-                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#user" class="nav-link "
+                    aria-controls="user" role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
@@ -157,7 +163,7 @@
                     </div>
                     <span class="nav-link-text ms-1">User</span>
                 </a>
-                <div class="collapse " id="applicationsExamples">
+                <div class="collapse " id="user">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item ">
                             <a class="nav-link " href="../../pages/applications/kanban.html">

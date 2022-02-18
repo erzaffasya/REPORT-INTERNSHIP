@@ -3,12 +3,21 @@
 <script src="{{asset('tadmin/assets/js/core/bootstrap.min.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
+<script src="{{asset('tadmin/assets/js/plugins/datatables.js')}}"></script>
+<script src="{{asset('tadmin/assets/js/plugins/choices.min.js')}}"></script>
+<script src="{{asset('tadmin/assets/js/plugins/dropzone.min.js')}}"></script>
+<script src="{{asset('tadmin/assets/js/plugins/quill.min.js')}}"></script>
+<script src="{{asset('tadmin/assets/js/plugins/multistep-form.js')}}"></script>
+<script src="{{asset('tadmin/assets/js/plugins/flatpickr.min.js')}}"></script>
+
 <!-- Kanban scripts -->
 <script src="{{asset('tadmin/assets/js/plugins/dragula/dragula.min.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/jkanban/jkanban.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/chartjs.min.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/threejs.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/orbit-controls.js')}}"></script>
+
+
 
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
