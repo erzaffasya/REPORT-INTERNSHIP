@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('akses_program', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('role');
-            $table->rememberToken();
+            $table->foreignId("user_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreignId("program_id")->constrained("program")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('akses_program');
     }
 };
