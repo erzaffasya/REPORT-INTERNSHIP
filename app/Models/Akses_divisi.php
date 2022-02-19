@@ -5,24 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Laporan extends Model
+class Akses_divisi extends Model
 {
     use HasFactory;
-    protected $table = 'laporan';
+    protected $table = 'akses_divisi';
     protected $fillable = [
-        'senin',
-        'selasa',
-        'rabu',
-        'kamis',
-        'jumat',
-        'isVerif',
         'user_id',
         'divisi_id',
     ];
 
     protected $casts = [ 
-        'user_id' => 'integer',
-        'divisi_id' => 'integer' ];
+        'user_id' => 'integer', 
+        'divisi_id' => 'integer',];
 
     protected $primaryKey = 'id';
 
@@ -36,4 +30,6 @@ class Laporan extends Model
     {
         return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
     }
+
+   
 }

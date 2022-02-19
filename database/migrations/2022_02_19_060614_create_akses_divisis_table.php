@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program', function (Blueprint $table) {
+        Schema::create('akses_divisi', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('detail');
-            $table->date('periode_mulai');
-            $table->date('periode_berakhir');
-            $table->boolean('status')->nullable();
+            $table->foreignId("user_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreignId("divisi_id")->constrained("divisi")->onDelete("cascade")->onUpdate("cascade");    
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program');
+        Schema::dropIfExists('akses_divisi');
     }
 };

@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program', function (Blueprint $table) {
+        Schema::create('divisi', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('nama_divisi');
             $table->string('detail');
-            $table->date('periode_mulai');
-            $table->date('periode_berakhir');
             $table->boolean('status')->nullable();
+            $table->foreignId("program_id")->constrained("program")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program');
+        Schema::dropIfExists('divisi');
     }
 };

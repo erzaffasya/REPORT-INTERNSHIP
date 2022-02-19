@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akses_divisi;
+use App\Models\Akses_program;
+use App\Models\Divisi;
+use App\Models\Laporan;
 use App\Models\Program;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -55,8 +59,41 @@ class ProgramController extends Controller
     }
     public function show($id)
     {
+        $Akses_program = Akses_program::where('program_id',$id)->get();
+        $Divisi = Divisi::where('program_id',$id)->get();
+        // dd($Divisi);
+        // dd($Akses_program);
+       
         $Program = Program::where('id', $id)->first();
-        return view('admin.Program.show', compact('Program'))
+        $periode = Carbon::parse($Program->periode_mulai)->diffInDays(Carbon::parse($Program->periode_berakhir),false) + 1;
+        // $program = Program::all();
+        // $data = NULL;
+        // foreach ($program as $item) {
+        //     // $formatted_dt1 = Carbon::parse($item->periode_mulai);
+        //     // $formatted_dt2 = Carbon::parse($item->periode_berakhir);
+        //     // $date_diff = $formatted_dt1->diffInDays($formatted_dt2);
+        //     $date_diff = Carbon::parse($item->periode_mulai)->diffInDays(Carbon::parse($item->periode_berakhir),false) + 1;
+        //     // dd($date_diff);
+        //     // echo $date_diff;
+        //     if ($date_diff >= "6") {
+        //         //butuh id
+        //         // $asd = Divisi::where('program_id',$item->id)->get();
+        //         // dd($asd);
+        //         $divisi = Divisi::select('akses_divisi.user_id','akses_divisi.divisi_id','divisi.program_id')->join('akses_divisi','akses_divisi.divisi_id','divisi.id')->where('divisi.program_id',$item->id)->get();
+        //     //    dd($divisi);
+        //         foreach($divisi as $divisis){
+        //             Laporan::create([
+        //                 'isVerif' => False,
+        //                 'user_id' => $divisis->user_id,
+        //                 'divisi_id' => $divisis->divisi_id,
+        //             ]);
+        //             // echo $divisis->user_id;
+        //         }
+        //     }
+        // }
+        // echo $data;
+        // dd($divisis->divisi_id);
+        return view('admin.Program.show', compact('Program','Akses_program','Divisi','periode'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -75,30 +112,22 @@ class ProgramController extends Controller
             'detail' => 'required',
             // 'gambar1' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
             'periode_mulai' => 'required',
-            'kategori_id' => 'required',
             'periode_berakhir' => 'required',
-            'status' => 'required',
+            // 'status' => 'required',
         ]);
 
         $Program = Program::findOrFail($id);
 
-        // if ($request->has("gambar1")) {
-
-        //     Storage::delete("public/Program/$Program->gambar");
-
-        //     $date = date("his");
-        //     $extension = $request->file('gambar1')->extension();
-        //     $file_name = "Program_$date.$extension";
-        //     $path = $request->file('gambar1')->storeAs('public/Program', $file_name);
-            
-        //     $Program->gambar = $file_name;
-        // }
+        if($request->status == NULL){
+            $status = false;
+        }else{
+            $status = true;
+        }
 
         $Program->judul = $request->judul;
         $Program->detail = $request->detail;
         $Program->periode_mulai = $request->periode_mulai;
-        $Program->kategori_id = $request->kategori_id;
-        $Program->status = $request->status;
+        $Program->status = $status;
         $Program->periode_berakhir = $request->periode_berakhir;
         $Program->save();
 
@@ -113,5 +142,14 @@ class ProgramController extends Controller
         $Program->delete();
         return redirect()->route('Program.index')
             ->with('delete', 'Program Berhasil Dihapus');
+    }
+
+    public function tambahjadwal()
+    {
+            Program::create([
+                'judul' => '1',
+                'detail' => '1',
+            ]);
+            return True;
     }
 }

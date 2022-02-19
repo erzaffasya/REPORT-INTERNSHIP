@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -23,6 +24,25 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role' => 'admin',
+        ]);
+        DB::table('users')->insert([
+            'name' => 'erza',
+            'email' => 'erza@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role' => 'magang',
+        ]);
+        DB::table('users')->insert([
+            'name' => 'fasya',
+            'email' => 'fasya@gmail.com',
+            'password' => bcrypt('123123123'),
+            'role' => 'magang',
+        ]);
     }
 
     /**
@@ -34,4 +54,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+
+    
 };

@@ -19,8 +19,13 @@ class Program extends Model
 
     protected $primaryKey = 'id';
 
+    // public function akses_program()
+    // {
+    //     return $this->hasMany(Akses_program::class,'program_id', 'id');
+    // }
+
     public function akses_program()
     {
-        return $this->hasMany(Akses_program::class,'program_id', 'id');
+        return $this->belongsToMany(User::class,'akses_program','program_id','user_id');
     }
 }

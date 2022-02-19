@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,12 +19,12 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
-Route::get('/tambah', function () {
-    return view('admin.laporan.tambah');
-});
+Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
+Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen'); 
+Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDosen'])->name('deleteDataDosen');
 
 Route::resource('Program', ProgramController::class);
-
+Route::resource('Divisi', DivisiController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

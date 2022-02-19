@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('laporan', function (Blueprint $table) {
             $table->id();
-            $table->string('senin');
-            $table->string('selasa');
-            $table->string('rabu');
-            $table->string('kamis');
-            $table->string('jumat');
-            $table->string('mingguan');
-            $table->boolean('isVerif');
+            $table->string('senin')->nullable();
+            $table->string('selasa')->nullable();
+            $table->string('rabu')->nullable();
+            $table->string('kamis')->nullable();
+            $table->string('jumat')->nullable();
+            $table->string('mingguan')->nullable();
+            $table->boolean('isVerif')->nullable();
             $table->foreignId("user_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
-            $table->foreignId("program_id")->constrained("program")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreignId("divisi_id")->constrained("divisi")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }
