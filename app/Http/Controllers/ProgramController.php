@@ -7,6 +7,7 @@ use App\Models\Akses_program;
 use App\Models\Divisi;
 use App\Models\Laporan;
 use App\Models\Program;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -63,7 +64,7 @@ class ProgramController extends Controller
         $Divisi = Divisi::where('program_id',$id)->get();
         // dd($Divisi);
         // dd($Akses_program);
-       
+        $user = User::all();
         $Program = Program::where('id', $id)->first();
         $periode = Carbon::parse($Program->periode_mulai)->diffInDays(Carbon::parse($Program->periode_berakhir),false) + 1;
         // $program = Program::all();
@@ -93,7 +94,7 @@ class ProgramController extends Controller
         // }
         // echo $data;
         // dd($divisis->divisi_id);
-        return view('admin.Program.show', compact('Program','Akses_program','Divisi','periode'))
+        return view('admin.Program.show', compact('Program','Akses_program','Divisi','periode', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AksesProgramController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDose
 
 Route::resource('Program', ProgramController::class);
 Route::resource('Divisi', DivisiController::class);
+Route::resource('aksesProgram', AksesProgramController::class);
+Route::resource('aksesDivisi', AksesDivisiController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

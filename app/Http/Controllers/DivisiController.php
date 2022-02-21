@@ -6,6 +6,7 @@ use App\Models\Akses_divisi;
 use App\Models\Divisi;
 use App\Models\Laporan;
 use Carbon\Carbon;
+use App\Models\Akses_program;
 use Illuminate\Http\Request;
 
 class DivisiController extends Controller
@@ -50,13 +51,15 @@ class DivisiController extends Controller
     }
     public function show($id, $program)
     {
+        $akses_program = Akses_program::where('program_id', 'id')->get();
+        // $program = Program::where('divisi_id', 'id')->first();
         $Akses_divisi = Akses_divisi::where('divisi_id',$id)->get();
         $Divisi = Divisi::where('program_id',$id)->first();
         $Laporan = Laporan::where('divisi_id',$id)->get();
         // dd($Divisi);
         // dd($Laporan->where('isVerif', '!=', 1));
-        $Divisi = Divisi::where('id', $id)->first();
-        return view('admin.Divisi.show', compact('Divisi','Laporan','Akses_divisi'))
+        $Divisiselect = Divisi::where('id', $id)->first();
+        return view('admin.Divisi.show', compact('Divisi','Divisiselect','Laporan','Akses_divisi', 'akses_program'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

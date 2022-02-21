@@ -22,12 +22,17 @@ class Divisi extends Model
     // {
     //     return $this->hasMany(Akses_divisi::class,'divisi_id', 'id');
     // }
-    public function divisi()
+    public function program()
     {
-        return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
+        return $this->belongsTo(Divisi::class, 'program_id', 'id');
     }
     public function akses_divisi()
     {
         return $this->belongsToMany(User::class,'akses_divisi','divisi_id','user_id');
+    }
+
+    public function akses_program()
+    {
+        return $this->belongsTo(User::class,'akses_program','program_id','user_id');
     }
 }

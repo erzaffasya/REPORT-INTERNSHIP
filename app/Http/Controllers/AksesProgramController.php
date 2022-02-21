@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akses_program;
+use App\Models\User;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,8 +12,9 @@ class AksesProgramController extends Controller
 {
     public function index()
     {
-        $akses_program = Akses_program::all();
-        return view('admin.akses_program.index', compact('akses_program'))
+        $akses_program = Akses_program::where('user_id', 'id')->get();
+        $program = Program::where('divisi_id', 'id')->first();
+        return view('admin.akses_program.index', compact('akses_program', 'program'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -24,26 +27,20 @@ class AksesProgramController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'harga' => 'required',
-            'detail' => 'required',
-            'stok' => 'required',
-            'gambar1' => 'required', 
+            'user_id' => 'required',
+            'program_id' => 'required',
         ]);
 
-        $date = date("his");
-        $extension = $request->file('gambar1')->extension();
-        $file_name = "akses_program_$date.$extension";
-        $path = $request->file('gambar1')->storeAs('public/akses_program', $file_name);
+        // $date = date("his");
+        // $extension = $request->file('gambar1')->extension();
+        // $file_name = "akses_program_$date.$extension";
+        // $path = $request->file('gambar1')->storeAs('public/akses_program', $file_name);
 
         Akses_program::create([
-            'nama' => $request->nama,
-            'detail' => $request->detail,
-            'gambar' => $file_name,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
+            'program_id' => $request->program_id,
+            'user_id' => $request->user_id,
         ]);
-        return redirect()->route('akses_program.index')
+        return redirect()->back()
             ->with('success', 'akses_program Berhasil Ditambahkan');
     }
     public function show($id)
