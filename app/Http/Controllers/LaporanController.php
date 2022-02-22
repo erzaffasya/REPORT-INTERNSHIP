@@ -10,8 +10,9 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        $laporan = Laporan::where('user_id', 2)->get();
-        return view ('view', compact('laporan'));
+        $laporan = Laporan::where('user_id', 2)->where('divisi_id', 1)->orderBy('id', 'DESC')->get();
+        // dd($laporan[1]->isVerif);
+        return view ('index', compact('laporan'));
     }
 
     public function create()
