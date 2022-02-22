@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Laporan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
     public function index()
     {
-        $produk = Produk::all();
-        return view('admin.produk.index', compact('produk'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $laporan = Laporan::where('user_id', 2)->get();
+        return view ('view', compact('laporan'));
     }
 
     public function create()
@@ -44,11 +45,10 @@ class LaporanController extends Controller
         return redirect()->route('produk.index')
             ->with('success', 'Produk Berhasil Ditambahkan');
     }
-    public function show($id)
+    public function show()
     {
-        $produk = Produk::where('id', $id)->first();
-        return view('admin.produk.show', compact('produk'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $laporan = Laporan::where('user_id', 2)->where('divisi_id', 1)->first();
+        return view ('view', compact('laporan'));
     }
 
 
@@ -59,40 +59,21 @@ class LaporanController extends Controller
         return view('admin.produk.edit',compact('produk'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'detail' => 'required',
-            'gambar1' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
-            'harga' => 'required',
-            'kategori_id' => 'required',
-            'stok' => 'required',
+        // $laporan = Laporan::findorFail($id);
+        $user = Auth::user();
+
+        Laporan::where('user_id', 2)->where('divisi_id', 1)->update([
+            'senin' => $request->senin,
+            'selasa' => $request->selasa,
+            'rabu' => $request->rabu,
+            'kamis' => $request->kamis,
+            'jumat' => $request->jumat
         ]);
 
-        $Produk = Produk::findOrFail($id);
-
-        if ($request->has("gambar1")) {
-
-            Storage::delete("public/Produk/$Produk->gambar");
-
-            $date = date("his");
-            $extension = $request->file('gambar1')->extension();
-            $file_name = "Produk_$date.$extension";
-            $path = $request->file('gambar1')->storeAs('public/Produk', $file_name);
-            
-            $Produk->gambar = $file_name;
-        }
-
-        $Produk->nama = $request->nama;
-        $Produk->detail = $request->detail;
-        $Produk->harga = $request->harga;
-        $Produk->kategori_id = $request->kategori_id;
-        $Produk->stok = $request->stok;
-        $Produk->save();
-
-        return redirect()->route('produk.index')
-        ->with('edit', 'Produk Berhasil Diedit');
+        return redirect()->route('indexLaporan')
+        ->with('edit', 'Laporan Berhasil Dibuat');
     }
 
     public function destroy($id)

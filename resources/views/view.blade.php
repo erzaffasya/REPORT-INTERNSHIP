@@ -98,219 +98,283 @@
             </div>
           </div>
           <!-- Card Laporan Harian -->
-          <div class="card mt-4" id="delete">
-            <div class="card-header">
-              <h5>Selasa, 22 Feb 2022</h5>
-              <p class="text-sm mb-0">Lengkapi laporan harian untuk mengisi laporan mingguan</p>
-            </div>
-            <div class="card-body d-sm-flex pt-0">
-              <div class="d-flex align-items-center mb-sm-0 mb-4">
-                <div>
-                  <i class="ni ni-ruler-pencil text-danger"></i>
-                </div>
-                <div class="ms-2">
-                  <span class="text-dark font-weight-bold d-block text-sm">Belum dibuat</span>
-                  <span class="text-xs d-block">Minggu ke-1</span>
-                </div>
-              </div>
-              <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
-              {{-- <button class="btn bg-gradient-primary mb-0 ms-2" type="button" name="button">Lengkapi Laporan</button> --}}
-              <!-- Button trigger modal -->
-              <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#LaporanModal">
-                Buat Laporan
-              </button>
-            </div>
-          </div>
-          <!-- Card Laporan Harian -->
-          <div class="card mt-4" id="delete">
+          <div class="card mt-4">
             <div class="card-header">
               <h5>Senin, 21 Feb 2022</h5>
             </div>
-            <div class="card-body d-sm-flex pt-0">
-              <div class="d-flex align-items-center mb-sm-0 mb-4">
-                <div>
-                  <i class="ni ni-like-2 text-success"></i>
-                </div>
-                <div class="ms-2">
-                  <span class="text-dark font-weight-bold d-block text-sm">Disetujui Mentor</span>
-                  <span class="text-xs d-block">Minggu ke-1</span>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                  <div class="ms-2 mx-4">
+                    <p align = "justify">
+                      {{ $laporan->senin }}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
-              <button class="btn bg-gradient-primary mb-0 ms-2" type="button" name="button">Lengkapi Laporan</button>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                  Buat Laporan
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card Laporan Harian -->
+          <div class="card mt-4">
+            <div class="card-header">
+              <h5>Selasa, 21 Feb 2022</h5>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                  <div class="ms-2 mx-4">
+                    <p align = "justify">
+                      {{ $laporan->senin }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#selasaModal">
+                  Buat Laporan
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card Laporan Harian -->
+          <div class="card mt-4">
+            <div class="card-header">
+              <h5>Rabu, 21 Feb 2022</h5>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                  <div class="ms-2 mx-4">
+                    <p align = "justify">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#rabuModal">
+                  Buat Laporan
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card Laporan Harian -->
+          <div class="card mt-4">
+            <div class="card-header">
+              <h5>Kamis, 21 Feb 2022</h5>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                  <div class="ms-2 mx-4">
+                    <p align = "justify">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#kamisModal">
+                  Buat Laporan
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Card Laporan Harian -->
+          <div class="card mt-4">
+            <div class="card-header">
+              <h5>Jumat, 21 Feb 2022</h5>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                  <div class="ms-2 mx-4">
+                    <p align = "justify">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#jumatModal">
+                  Buat Laporan
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-      <!-- Modal -->
-      <div class="modal fade" id="LaporanModal" tabindex="-1" role="dialog" aria-labelledby="LaporanModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="LaporanModalLabel">Laporan Harian</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                  <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn bg-gradient-primary">Simpan</button>
-                </div>
-              </form>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="seninModal" tabindex="-1" role="dialog" aria-labelledby="seninModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="seninModalLabel">Senin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+              <div class="mb-3">
+                <textarea class="form-control" aria-label="With textarea" name="senin" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-gradient-primary">Simpan</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="selasaModal" tabindex="-1" role="dialog" aria-labelledby="selasaModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="selasaModalLabel">Selasa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="mb-3">
+                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="rabuModal" tabindex="-1" role="dialog" aria-labelledby="rabuModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rabuModalLabel">Rabu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="mb-3">
+                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="kamisModal" tabindex="-1" role="dialog" aria-labelledby="kamisModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="kamisModalLabel">Kamis</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="mb-3">
+                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="kamisModal" tabindex="-1" role="dialog" aria-labelledby="kamisModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="kamisModalLabel">Jumat</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="mb-3">
+                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="jumatModal" tabindex="-1" role="dialog" aria-labelledby="jumatModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="jumatModalLabel">Selasa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="mb-3">
+                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
-
-
-  
-  <!--   Core JS Files   -->
-  <script src="{{asset('tadmin/assets/js/core/popper.min.js')}}"></script>
-  <script src="{{asset('tadmin/assets/js/core/bootstrap.min.js')}}"></script>
-  <script src="{{asset('tadmin/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-  <script src="{{asset('tadmin/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
-  <script src="{{asset('tadmin/assets/js/plugins/choices.min.js')}}"></script>
-  <!-- Kanban scripts -->
-  <script src="{{asset('tadmin/assets/js/plugins/dragula/dragula.min.js')}}"></script>
-  <script src="{{asset('tadmin/assets/js/plugins/jkanban/jkanban.js')}}"></script>
-  <script>
-    if (document.getElementById('choices-gender')) {
-      var gender = document.getElementById('choices-gender');
-      const example = new Choices(gender);
-    }
-  
-    if (document.getElementById('choices-language')) {
-      var language = document.getElementById('choices-language');
-      const example = new Choices(language);
-    }
-  
-    if (document.getElementById('choices-skills')) {
-      var skills = document.getElementById('choices-skills');
-      const example = new Choices(skills, {
-        delimiter: ',',
-        editItems: true,
-        maxItemCount: 5,
-        removeItemButton: true,
-        addItems: true
-      });
-    }
-  
-    if (document.getElementById('choices-year')) {
-      var year = document.getElementById('choices-year');
-      setTimeout(function() {
-        const example = new Choices(year);
-      }, 1);
-  
-      for (y = 1900; y <= 2020; y++) {
-        var optn = document.createElement("OPTION");
-        optn.text = y;
-        optn.value = y;
-  
-        if (y == 2020) {
-          optn.selected = true;
-        }
-  
-        year.options.add(optn);
-      }
-    }
-  
-    if (document.getElementById('choices-day')) {
-      var day = document.getElementById('choices-day');
-      setTimeout(function() {
-        const example = new Choices(day);
-      }, 1);
-  
-  
-      for (y = 1; y <= 31; y++) {
-        var optn = document.createElement("OPTION");
-        optn.text = y;
-        optn.value = y;
-  
-        if (y == 1) {
-          optn.selected = true;
-        }
-  
-        day.options.add(optn);
-      }
-  
-    }
-  
-    if (document.getElementById('choices-month')) {
-      var month = document.getElementById('choices-month');
-      setTimeout(function() {
-        const example = new Choices(month);
-      }, 1);
-  
-      var d = new Date();
-      var monthArray = new Array();
-      monthArray[0] = "January";
-      monthArray[1] = "February";
-      monthArray[2] = "March";
-      monthArray[3] = "April";
-      monthArray[4] = "May";
-      monthArray[5] = "June";
-      monthArray[6] = "July";
-      monthArray[7] = "August";
-      monthArray[8] = "September";
-      monthArray[9] = "October";
-      monthArray[10] = "November";
-      monthArray[11] = "December";
-      for (m = 0; m <= 11; m++) {
-        var optn = document.createElement("OPTION");
-        optn.text = monthArray[m];
-        // server side month start from one
-        optn.value = (m + 1);
-        // if june selected
-        if (m == 1) {
-          optn.selected = true;
-        }
-        month.options.add(optn);
-      }
-    }
-  
-    function visible() {
-      var elem = document.getElementById('profileVisibility');
-      if (elem) {
-        if (elem.innerHTML == "Switch to visible") {
-          elem.innerHTML = "Switch to invisible"
-        } else {
-          elem.innerHTML = "Switch to visible"
-        }
-      }
-    }
-  
-    var openFile = function(event) {
-      var input = event.target;
-  
-      // Instantiate FileReader
-      var reader = new FileReader();
-      reader.onload = function() {
-        imageFile = reader.result;
-  
-        document.getElementById("imageChange").innerHTML = '<img width="200" src="' + imageFile + '" class="rounded-circle w-100 shadow" />';
-      };
-      reader.readAsDataURL(input.files[0]);
-    };
-  </script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{asset('tadmin/assets/js/soft-ui-dashboard.min.js?v=1.0.7')}}"></script>
 </x-app-layout>

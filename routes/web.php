@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,10 @@ Route::get('/', function () {
 Route::get('/mahasiswa', function () {
     return view('index');
 });
-Route::get('/laporan', function () {
-    return view('view');
-});
+
+Route::get('laporan', [LaporanController::class, 'index'])->name('indexLaporan');
+Route::get('view-laporan', [LaporanController::class, 'show'])->name('showLaporan');
+Route::put('/updateLaporan', [LaporanController::class, 'update'])->name('updateLaporan');
 
 Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
 Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen'); 
