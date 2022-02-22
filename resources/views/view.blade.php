@@ -169,37 +169,20 @@
                     Alec Thompson
                   </h5>
                   <p class="mb-0 font-weight-bold text-sm">
-                    App & Web Development
+                    CEO / Co-Founder
                   </p>
                 </div>
               </div>
               <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
+                <label class="form-check-label mb-0">
+                  <small id="profileVisibility">
+                    Switch to invisible
+                  </small>
+                </label>
                 <div class="form-check form-switch ms-2">
-                  {{-- <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23" checked onchange="visible()"> --}}
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23" checked onchange="visible()">
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- Card Laporan Harian -->
-          <div class="card mt-4" id="delete">
-            <div class="card-header">
-              <h5>22 - 25 Feb 2022</h5>
-              <p class="text-sm mb-0">Lengkapi laporan harian untuk mengisi laporan mingguan</p>
-            </div>
-            <div class="card-body d-sm-flex pt-0">
-              <div class="d-flex align-items-center mb-sm-0 mb-4">
-                <div>
-                  <div class="form-check form-switch mb-0">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault0">
-                  </div>
-                </div>
-                <div class="ms-2">
-                  <span class="text-dark font-weight-bold d-block text-sm">Belum dibuat</span>
-                  <span class="text-xs d-block">Isi laporan!!</span>
-                </div>
-              </div>
-              <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
-              <button class="btn bg-gradient-primary mb-0 ms-2" type="button" name="button">Lengkapi Laporan</button>
             </div>
           </div>
           <!-- Card Change Password -->
