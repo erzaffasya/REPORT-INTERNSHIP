@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
   <main class="main-content max-height-vh-100 h-100">
     <div class="container-fluid my-3 py-3">
       <div class="row mb-5">
@@ -423,4 +423,4 @@
       </div>
     </div>
   </main>
-</x-guest-layout>
+</x-app-layout>

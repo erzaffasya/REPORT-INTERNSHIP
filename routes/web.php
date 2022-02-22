@@ -22,16 +22,13 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
-Route::get('/mahasiswa', function () {
-    return view('index');
-});
 
 Route::get('laporan', [LaporanController::class, 'index'])->name('indexLaporan');
 Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
 Route::put('/updateLaporan', [LaporanController::class, 'update'])->name('updateLaporan');
 
 Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
-Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen'); 
+Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen');
 Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDosen'])->name('deleteDataDosen');
 
 Route::resource('Program', ProgramController::class);
@@ -56,11 +53,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    
 });
 
 Route::group(['middleware' => 'auth'], function () {
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
