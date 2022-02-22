@@ -18,30 +18,29 @@ class AksesProgramController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    public function create()
+    public function create($id)
     {
         // $kategori = Kategori::all();
-        return view('admin.akses_program.tambah');
+        $user = User::all();
+        $program = Program::where('id', $id)->first();
+        return view('admin.akses_program.tambah', compact('user', 'program'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required',
-            'program_id' => 'required',
-        ]);
-
-        // $date = date("his");
-        // $extension = $request->file('gambar1')->extension();
-        // $file_name = "akses_program_$date.$extension";
-        // $path = $request->file('gambar1')->storeAs('public/akses_program', $file_name);
-
         Akses_program::create([
             'program_id' => $request->program_id,
             'user_id' => $request->user_id,
         ]);
         return redirect()->back()
             ->with('success', 'akses_program Berhasil Ditambahkan');
+        // return response()->json(['success'=>"Data berhasil ditambahkan.", 'tr'=>'tr_'.$id]);
+    }
+    public function tambahSemuaAksesProgram(Request $request)
+    {
+        $ids = $request->ids;
+        Akses_program::whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"data berhasil ditambahkan."]);
     }
     public function show($id)
     {

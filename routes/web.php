@@ -26,7 +26,13 @@ Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDose
 
 Route::resource('Program', ProgramController::class);
 Route::resource('Divisi', DivisiController::class);
-Route::resource('aksesProgram', AksesProgramController::class);
+Route::controller(AksesProgramController::class)->group(function () {
+    Route::get('aksesProgram', 'index');
+    Route::get('tambahAksesProgram/{id}', 'create');
+    Route::post('storeAksesProgram', 'store');
+    Route::put('aksesProgram/{id}', 'update');
+    Route::delete('aksesProgram/{id}', 'delete');
+});
 Route::resource('aksesDivisi', AksesDivisiController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');

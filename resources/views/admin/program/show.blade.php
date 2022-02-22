@@ -331,9 +331,10 @@
                             </div>
                             <div class="ms-auto my-auto mt-lg-0 mt-4">
                                 <div class="ms-auto my-auto">
-                                        <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#tambahAnggota">
+                                        {{-- <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#tambahAnggota">
                                             +&nbsp; Anggota 
-                                        </button>
+                                        </button> --}}
+                                        <a href="{{url('tambahAksesProgram', $Program->id)}}" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                     <button type="button" class="btn btn-outline-primary btn-sm mb-0"
                                         data-bs-toggle="modal" data-bs-target="#import">
                                         Import
@@ -443,7 +444,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form action="{{route('aksesProgram.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('aksesProgram.store')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="mb-3">
                     <label for="exampleFormControlSelect1">Nama Anggota</label>
