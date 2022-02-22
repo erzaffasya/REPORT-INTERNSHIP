@@ -1,7 +1,17 @@
 <x-app-layout>
 <div class="container">
+    <div class="col-md-12 mb-lg-0 mb-4">
+        <div class="card mt-4">
+          <div class="card-header pb-0 p-3">
+            <div class="row">
+              <div class="col-6 d-flex align-items-center">
+                <h6 class="mb-0">Akses Program</h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-body  px-0 pt-0 pb-2">
     {{-- <button style="margin-bottom: 10px" class="btn btn-primary success_all" data-url="{{ url('tambahSemuaAksesProgram') }}">Tambahkan semua yang dipilih</button> --}}
-    <table class="table table-bordered">
+    <table id="datatable-search" class="table align-items-center mb-0">
         <tr>
             {{-- <th width="50px"><input type="checkbox" id="master"></th> --}}
             <th width="80px">No</th>
@@ -28,8 +38,6 @@
     </table>
 </div> <!-- container / end -->
 
-
-</body>
 {{-- 
 <script type="text/javascript">
 
@@ -173,7 +181,11 @@
         });
     });
 </script> --}}
+<script>    
+const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {
+    searchable: true,
+    fixedHeight: true
+  });
+  </script>
 
-
-</html>
 </x-app-layout>

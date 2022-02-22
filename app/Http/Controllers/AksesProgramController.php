@@ -33,7 +33,7 @@ class AksesProgramController extends Controller
             'user_id' => $request->user_id,
         ]);
         return redirect()->back()
-            ->with('success', 'akses_program Berhasil Ditambahkan');
+            ->with('success', 'Akses Program Berhasil Ditambahkan!');
         // return response()->json(['success'=>"Data berhasil ditambahkan.", 'tr'=>'tr_'.$id]);
     }
     public function tambahSemuaAksesProgram(Request $request)
