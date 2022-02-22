@@ -144,30 +144,30 @@
       </div>
     </div>
       <!-- Modal -->
-  <div class="modal fade" id="LaporanModal" tabindex="-1" role="dialog" aria-labelledby="LaporanModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="LaporanModalLabel">Laporan Harian</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-              <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+      <div class="modal fade" id="LaporanModal" tabindex="-1" role="dialog" aria-labelledby="LaporanModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="LaporanModalLabel">Laporan Harian</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn bg-gradient-primary">Simpan</button>
+            <div class="modal-body">
+              <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                  <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn bg-gradient-primary">Simpan</button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
   </main>
 
 
