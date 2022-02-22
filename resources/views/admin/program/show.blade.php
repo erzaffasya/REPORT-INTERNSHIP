@@ -16,13 +16,13 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Divisi:</label>
-                            <input type="text" class="form-control" name="nama_divisi" id="recipient-name">
-                            <input type="hidden" class="form-control" value="1" name="status" id="recipient-name">
-                            <input type="hidden" class="form-control" value="{{$Program->id}}" name="program_id" id="recipient-name">
+                            <input type="text" class="form-control" name="nama_divisi">
+                            <input type="hidden" class="form-control" value="1" name="status">
+                            <input type="hidden" class="form-control" value="{{$Program->id}}" name="program_id">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Detail:</label>
-                            <textarea class="form-control" name="detail" id="message-text"></textarea>
+                            <textarea class="form-control" name="detail"></textarea>
                         </div>
 
                     </div>
@@ -34,7 +34,43 @@
             </div>
         </div>
     </div>
+    <!-- Modal Edit Divisi -->
+    <div class="modal fade" id="editdivisi" tabindex="-1" role="dialog" aria-labelledby="editdivisiLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form id="divisiUpdate" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editdivisiLabel">Edit Divisi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {{-- <input type="hidden" value="{{$Divisi->id}}"> --}}
+                    <div class="modal-body">
+                        {{-- <input type="hidden" value="{{$Divisi->id}}"> --}}
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nama Divisi:</label>
+                            <input type="text" class="form-control" name="nama_divisi" id="nama_divisi">
+                            <input type="hidden" class="form-control" value="1" name="status" id="status">
+                            <input type="hidden" class="form-control" value="{{$Program->id}}" name="program_id" id="program_id">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Detail:</label>
+                            <textarea class="form-control" name="detail" id="detail"></textarea>
+                        </div>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn bg-gradient-primary btn-update">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
     <div class="container-fluid">
@@ -293,6 +329,11 @@
                                                     href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
                                                     class="btn btn-outline-primary btn-sm mb-0">View
                                                     Project</a>
+                                                    <a type="button"
+                                                    href="{{ route('Divisi.edit', $item->id) }}"
+                                                    class="btn btn-outline-primary btn-sm mb-0">Edit</a>
+                                                    {{-- <button type="button"
+                                                class="btn btn-outline-primary btn-sm mb-0 btn-update" data-bs-toggle="modal" data-bs-target="#editdivisi" data-link="{{ route('Divisi.update', $item->id) }}" data-nama_divisi="{{ $item->nama_divisi }}" data-program_id="{{$item->program_id}}" data-status="{{$item->status}}" data-detail="{{ $item->detail }}">Edit</button> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -331,8 +372,10 @@
                             </div>
                             <div class="ms-auto my-auto mt-lg-0 mt-4">
                                 <div class="ms-auto my-auto">
-                                    <a href="./new-product.html" class="btn bg-gradient-primary btn-sm mb-0"
-                                        target="_blank">+&nbsp; New Product</a>
+                                        {{-- <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#tambahAnggota">
+                                            +&nbsp; Anggota 
+                                        </button> --}}
+                                        <a href="{{url('tambahAksesProgram', $Program->id)}}" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                     <button type="button" class="btn btn-outline-primary btn-sm mb-0"
                                         data-bs-toggle="modal" data-bs-target="#import">
                                         Import
@@ -429,6 +472,45 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+
+        <!-- Discussion Modal -->
+        <div class="modal fade" id="tambahAnggota" tabindex="-1" role="dialog" aria-labelledby="tambahAnggotaTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Anggota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{{url('aksesProgram.store')}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="mb-3">
+                    <label for="exampleFormControlSelect1">Nama Anggota</label>
+                    <select class="form-control" name="user_id" id="exampleFormControlSelect1">
+                      @foreach ($user as $item)
+                      <option value="{{$item->id}}">{{$item->name}}</option>
+                      @endforeach
+                    </select> 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlSelect1">Program</label>
+                    <select class="form-control" name="program_id" id="exampleFormControlSelect1">
+                      <option value="{{$Program->id}}" selected>{{$Program->judul}}</option>
+                    </select> 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn bg-gradient-primary">Tambah</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     @push('scripts')
         <script>
             var ctx2 = document.getElementById("chart-pie").getContext("2d");
@@ -498,6 +580,23 @@
                     },
                 },
             });
+        </script>
+        <script>    $('.btn-update').click(function(event) {
+            var id = $(this).data("link");
+            var nama_divisi = $(this).data("nama_divisi");
+            var detail = $(this).data("detail");
+            var status = $(this).data("status");
+            var program_id = $(this).data("program_id")
+            $('#divisiUpdate').attr('action', id);
+            $('#nama_divisi').val(nama_divisi);
+            $('#detail').val(detail);
+            $('#status').val(status);
+            $('#program_id').val(program_id);
+            console.log($('nama_divisi'));
+            console.log($('detail'));
+            console.log($('status'));
+            console.log($('program_id'));
+          });
         </script>
         <script>
             if (document.getElementById('products-list')) {

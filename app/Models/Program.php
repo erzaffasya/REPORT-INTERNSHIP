@@ -28,4 +28,9 @@ class Program extends Model
     {
         return $this->belongsToMany(User::class,'akses_program','program_id','user_id');
     }
+
+    public function divisi()
+    {
+        return $this->hasMany(Divisi::class,'divisi_id','id');
+    }
 }

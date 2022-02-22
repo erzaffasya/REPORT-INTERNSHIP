@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akses_program;
+use App\Models\User;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,41 +12,35 @@ class AksesProgramController extends Controller
 {
     public function index()
     {
-        $akses_program = Akses_program::all();
-        return view('admin.akses_program.index', compact('akses_program'))
+        $akses_program = Akses_program::where('user_id', 'id')->get();
+        $program = Program::where('divisi_id', 'id')->first();
+        return view('admin.akses_program.index', compact('akses_program', 'program'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    public function create()
+    public function create($id)
     {
         // $kategori = Kategori::all();
-        return view('admin.akses_program.tambah');
+        $user = User::all();
+        $program = Program::where('id', $id)->first();
+        return view('admin.akses_program.tambah', compact('user', 'program'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'harga' => 'required',
-            'detail' => 'required',
-            'stok' => 'required',
-            'gambar1' => 'required', 
-        ]);
-
-        $date = date("his");
-        $extension = $request->file('gambar1')->extension();
-        $file_name = "akses_program_$date.$extension";
-        $path = $request->file('gambar1')->storeAs('public/akses_program', $file_name);
-
         Akses_program::create([
-            'nama' => $request->nama,
-            'detail' => $request->detail,
-            'gambar' => $file_name,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
+            'program_id' => $request->program_id,
+            'user_id' => $request->user_id,
         ]);
-        return redirect()->route('akses_program.index')
-            ->with('success', 'akses_program Berhasil Ditambahkan');
+        return redirect()->back()
+            ->with('success', 'Akses Program Berhasil Ditambahkan!');
+        // return response()->json(['success'=>"Data berhasil ditambahkan.", 'tr'=>'tr_'.$id]);
+    }
+    public function tambahSemuaAksesProgram(Request $request)
+    {
+        $ids = $request->ids;
+        Akses_program::whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"data berhasil ditambahkan."]);
     }
     public function show($id)
     {

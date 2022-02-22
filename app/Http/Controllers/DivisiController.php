@@ -6,6 +6,7 @@ use App\Models\Akses_divisi;
 use App\Models\Divisi;
 use App\Models\Laporan;
 use Carbon\Carbon;
+use App\Models\Akses_program;
 use Illuminate\Http\Request;
 
 class DivisiController extends Controller
@@ -50,13 +51,15 @@ class DivisiController extends Controller
     }
     public function show($id, $program)
     {
+        $akses_program = Akses_program::where('program_id', 'id')->get();
+        // $program = Program::where('divisi_id', 'id')->first();
         $Akses_divisi = Akses_divisi::where('divisi_id',$id)->get();
         $Divisi = Divisi::where('program_id',$id)->first();
         $Laporan = Laporan::where('divisi_id',$id)->get();
         // dd($Divisi);
         // dd($Laporan->where('isVerif', '!=', 1));
-        $Divisi = Divisi::where('id', $id)->first();
-        return view('admin.Divisi.show', compact('Divisi','Laporan','Akses_divisi'))
+        $Divisiselect = Divisi::where('id', $id)->first();
+        return view('admin.Divisi.show', compact('Divisi','Divisiselect','Laporan','Akses_divisi', 'akses_program'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -74,27 +77,28 @@ class DivisiController extends Controller
             'nama_divisi' => 'required',
             'detail' => 'required',
             // 'gambar1' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
-            'periode_mulai' => 'required',
-            'periode_berakhir' => 'required',
+            // 'periode_mulai' => 'required',
+            // 'periode_berakhir' => 'required',
             // 'status' => 'required',
         ]);
 
         $Divisi = Divisi::findOrFail($id);
 
-        if($request->status == NULL){
-            $status = false;
-        }else{
-            $status = true;
-        }
+        // if($request->status == NULL){
+        //     $status = false;
+        // }else{
+        //     $status = true;
+        // }
 
         $Divisi->nama_divisi = $request->nama_divisi;
         $Divisi->detail = $request->detail;
-        $Divisi->periode_mulai = $request->periode_mulai;
-        $Divisi->status = $status;
-        $Divisi->periode_berakhir = $request->periode_berakhir;
+        // $Divisi->periode_mulai = $request->periode_mulai;
+        $Divisi->status = $request->status;
+        $Divisi->program_id = $request->program_id;
+        // $Divisi->periode_berakhir = $request->periode_berakhir;
         $Divisi->save();
 
-        return redirect()->route('Divisi.index')
+        return redirect()->route('Program.index')
         ->with('edit', 'Divisi Berhasil Diedit');
     }
 

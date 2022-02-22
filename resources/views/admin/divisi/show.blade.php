@@ -279,8 +279,10 @@
                                 </div>
                                 <div class="ms-auto my-auto mt-lg-0 mt-4">
                                     <div class="ms-auto my-auto">
-                                        <a href="./new-product.html" class="btn bg-gradient-primary btn-sm mb-0"
-                                            target="_blank">+&nbsp; New Product</a>
+                                        <a href="{{url('tambahAksesDivisi', $Divisi->id)}}" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
+                                        {{-- <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#tambahAnggota">
+                                            +&nbsp; Anggota 
+                                        </button> --}}
                                         {{-- <button type="button" class="btn btn-outline-primary btn-sm mb-0"
                                             data-bs-toggle="modal" data-bs-target="#import">
                                             Import
@@ -378,6 +380,46 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-4">
+
+        <!-- Discussion Modal -->
+        <div class="modal fade" id="tambahAnggota" tabindex="-1" role="dialog" aria-labelledby="tambahAnggotaTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Anggota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{{url('storeAksesDivisi')}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="mb-3">
+                    <label for="exampleFormControlSelect1">Nama Anggota</label>
+                    <select class="form-control" name="user_id" id="exampleFormControlSelect1">
+                      @foreach ($akses_program as $item)
+                      <option value="{{$item->id}}">{{$item->name}}</option>
+                      @endforeach
+                    </select> 
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlSelect1">Divisi</label>
+                    <select class="form-control" name="divisi_id" id="exampleFormControlSelect1">
+                      <option value="{{$Divisi->id}}" selected disabled>{{$Divisi->judul}}</option>
+                    </select> 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn bg-gradient-primary">Tambah</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     @push('scripts')
         <script>
