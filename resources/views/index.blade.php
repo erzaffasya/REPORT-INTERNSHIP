@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
   <main class="main-content max-height-vh-100 h-100">
     <div class="container-fluid my-3 py-3">
       <div class="row mb-5">
@@ -98,46 +98,41 @@
             </div>
           </div>
           <!-- Card Laporan Harian -->
-          <div class="card mt-4" id="delete">
-            <div class="card-header">
-              <h5>22 - 25 Feb 2022</h5>
-              <p class="text-sm mb-0">Lengkapi laporan harian untuk mengisi laporan mingguan</p>
-            </div>
-            <div class="card-body d-sm-flex pt-0">
-              <div class="d-flex align-items-center mb-sm-0 mb-4">
-                <div>
-                  <i class="ni ni-ruler-pencil text-danger"></i>
-                </div>
-                <div class="ms-2">
-                  <span class="text-dark font-weight-bold d-block text-sm">Belum dibuat</span>
-                  <span class="text-xs d-block">Minggu ke-1</span>
-                </div>
+          @foreach ($laporan as $item)
+            <div class="card mt-4" id="delete">
+              <div class="card-header">
+                <h5>22 - 25 Feb 2022</h5>
+                <p class="text-sm mb-0">Lengkapi laporan harian untuk mengisi laporan mingguan</p>
               </div>
-              <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
-              <a href="{{ url('laporan') }}" class="btn bg-gradient-primary mb-0 ms-2">Lengkapi Laporan</a>
-            </div>
-          </div>
-          <!-- Card Laporan Harian -->
-          <div class="card mt-4" id="delete">
-            <div class="card-header">
-              <h5>22 - 25 Feb 2022</h5>
-            </div>
-            <div class="card-body d-sm-flex pt-0">
-              <div class="d-flex align-items-center mb-sm-0 mb-4">
-                <div>
-                  <i class="ni ni-like-2 text-success"></i>
-                </div>
-                <div class="ms-2">
-                  <span class="text-dark font-weight-bold d-block text-sm">Disetujui Mentor</span>
-                  <span class="text-xs d-block">Minggu ke-1</span>
-                </div>
+              <div class="card-body d-sm-flex pt-0">
+                @if ($item->isVerif == true)
+                  <div class="d-flex align-items-center mb-sm-0 mb-4">
+                    <div>
+                      <i class="ni ni-like-2 text-success"></i>
+                    </div>
+                    <div class="ms-2">
+                      <span class="text-dark font-weight-bold d-block text-sm">Disetujui Mentor</span>
+                      <span class="text-xs d-block">Minggu ke-1</span>
+                    </div>
+                  </div>
+                @else
+                  <div class="d-flex align-items-center mb-sm-0 mb-4">
+                    <div>
+                      <i class="ni ni-ruler-pencil text-danger"></i>
+                    </div>
+                    <div class="ms-2">
+                      <span class="text-dark font-weight-bold d-block text-sm">Belum dibuat</span>
+                      <span class="text-xs d-block">Minggu ke- {{ $item->mingguan }}</span>
+                    </div>
+                  </div>
+                @endif
+                <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
+                <a href="{{ route('showLaporan', $item->id) }}" class="btn bg-gradient-primary mb-0 ms-2">Lengkapi Laporan</a>
               </div>
-              <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
-              <button class="btn bg-gradient-primary mb-0 ms-2" type="button" name="button">Lengkapi Laporan</button>
             </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </div>
   </main>
-</x-app-layout>
+</x-guest-layout>

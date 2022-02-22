@@ -27,7 +27,7 @@ Route::get('/mahasiswa', function () {
 });
 
 Route::get('laporan', [LaporanController::class, 'index'])->name('indexLaporan');
-Route::get('view-laporan', [LaporanController::class, 'show'])->name('showLaporan');
+Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
 Route::put('/updateLaporan', [LaporanController::class, 'update'])->name('updateLaporan');
 
 Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
