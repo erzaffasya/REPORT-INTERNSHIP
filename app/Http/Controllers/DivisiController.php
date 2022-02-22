@@ -77,27 +77,28 @@ class DivisiController extends Controller
             'nama_divisi' => 'required',
             'detail' => 'required',
             // 'gambar1' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
-            'periode_mulai' => 'required',
-            'periode_berakhir' => 'required',
+            // 'periode_mulai' => 'required',
+            // 'periode_berakhir' => 'required',
             // 'status' => 'required',
         ]);
 
         $Divisi = Divisi::findOrFail($id);
 
-        if($request->status == NULL){
-            $status = false;
-        }else{
-            $status = true;
-        }
+        // if($request->status == NULL){
+        //     $status = false;
+        // }else{
+        //     $status = true;
+        // }
 
         $Divisi->nama_divisi = $request->nama_divisi;
         $Divisi->detail = $request->detail;
-        $Divisi->periode_mulai = $request->periode_mulai;
-        $Divisi->status = $status;
-        $Divisi->periode_berakhir = $request->periode_berakhir;
+        // $Divisi->periode_mulai = $request->periode_mulai;
+        $Divisi->status = $request->status;
+        $Divisi->program_id = $request->program_id;
+        // $Divisi->periode_berakhir = $request->periode_berakhir;
         $Divisi->save();
 
-        return redirect()->route('Divisi.index')
+        return redirect()->route('Program.index')
         ->with('edit', 'Divisi Berhasil Diedit');
     }
 
