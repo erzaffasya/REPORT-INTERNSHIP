@@ -46,9 +46,10 @@ class LaporanController extends Controller
         return redirect()->route('produk.index')
             ->with('success', 'Produk Berhasil Ditambahkan');
     }
-    public function show()
+    public function show($id)
     {
-        $laporan = Laporan::where('user_id', 2)->where('divisi_id', 1)->first();
+        // $minggu = Laporan::findorFail($minggu);
+        $laporan = Laporan::where('id', $id)->where('user_id', 2)->where('divisi_id', 1)->first();
         return view ('view', compact('laporan'));
     }
 

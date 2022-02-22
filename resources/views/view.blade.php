@@ -94,6 +94,35 @@
           <!-- Card Laporan Harian -->
           <div class="card mt-4">
             <div class="card-header">
+              <h5>Laporan Mingguan</h5>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                  <div class="ms-2 mx-4">
+                    <p align = "justify">
+                      {{ $laporan->mingguan }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card-body d-sm-flex pt-0">
+                <!-- Button trigger modal -->
+                @if ($laporan->mingguan == NULL)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                    Buat Laporan
+                  </button>
+                @else
+                    
+                @endif
+              </div>
+            </div>
+          </div>
+          <!-- Card Laporan Harian -->
+          <div class="card mt-4">
+            <div class="card-header">
               <h5>Senin, 21 Feb 2022</h5>
             </div>
             <div class="row">
@@ -109,10 +138,17 @@
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
+                @if ($laporan->senin == NULL)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                    Buat Laporan
+                  </button>
+                @else
+                    
+                @endif
                 <!-- Button trigger modal -->
-                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                {{-- <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
                   Buat Laporan
-                </button>
+                </button> --}}
               </div>
             </div>
           </div>
@@ -135,9 +171,13 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#selasaModal">
-                  Buat Laporan
-                </button>
+                @if ($laporan->selasa == NULL)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                    Buat Laporan
+                  </button>
+                @else
+                    
+                @endif
               </div>
             </div>
           </div>
@@ -160,9 +200,13 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#rabuModal">
-                  Buat Laporan
-                </button>
+                @if ($laporan->rabu == NULL)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                    Buat Laporan
+                  </button>
+                @else
+                    
+                @endif
               </div>
             </div>
           </div>
@@ -185,9 +229,13 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#kamisModal">
-                  Buat Laporan
-                </button>
+                @if ($laporan->kamis == NULL)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                    Buat Laporan
+                  </button>
+                @else
+                    
+                @endif
               </div>
             </div>
           </div>
@@ -210,9 +258,13 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#jumatModal">
-                  Buat Laporan
-                </button>
+                @if ($laporan->jumat == NULL)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                    Buat Laporan
+                  </button>
+                @else
+                    
+                @endif
               </div>
             </div>
           </div>

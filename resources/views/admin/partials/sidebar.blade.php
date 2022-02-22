@@ -213,21 +213,9 @@
                             <div class="collapse " id="profileExample">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link " href="../../pages/pages/profile/overview.html">
+                                        <a class="nav-link " href="{{ route('indexLaporan') }}">
                                             <span class="sidenav-mini-icon text-xs"> P </span>
-                                            <span class="sidenav-normal"> Profile Overview </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="../../pages/pages/profile/teams.html">
-                                            <span class="sidenav-mini-icon text-xs"> T </span>
-                                            <span class="sidenav-normal"> Teams </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="../../pages/pages/profile/projects.html">
-                                            <span class="sidenav-mini-icon text-xs"> A </span>
-                                            <span class="sidenav-normal"> All Projects </span>
+                                            <span class="sidenav-normal"> Laporan Magang </span>
                                         </a>
                                     </li>
                                 </ul>

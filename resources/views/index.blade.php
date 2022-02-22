@@ -127,7 +127,7 @@
                   </div>
                 @endif
                 <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
-                <a href="{{ route('showLaporan') }}" class="btn bg-gradient-primary mb-0 ms-2">Lengkapi Laporan</a>
+                <a href="{{ route('showLaporan', $item->id) }}" class="btn bg-gradient-primary mb-0 ms-2">Lengkapi Laporan</a>
               </div>
             </div>
           @endforeach
