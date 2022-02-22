@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AksesProgramController;
+use App\Http\Controllers\AksesDivisiController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +34,14 @@ Route::controller(AksesProgramController::class)->group(function () {
     Route::put('aksesProgram/{id}', 'update');
     Route::delete('aksesProgram/{id}', 'delete');
 });
-Route::resource('aksesDivisi', AksesDivisiController::class);
+Route::controller(AksesDivisiController::class)->group(function () {
+    Route::get('aksesDivisi', 'index');
+    Route::get('tambahAksesDivisi/{id}', 'create');
+    Route::post('storeAksesDivisi', 'store');
+    Route::put('updateAksesDivisi/{id}', 'update');
+    Route::delete('destroyAksesDivisi/{id}', 'delete');
+});
+// Route::resource('aksesDivisi', AksesDivisiController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
