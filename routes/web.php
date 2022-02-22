@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/mahasiswa', function () {
     return view('index');
 });
+Route::get('/laporan', function () {
+    return view('view');
+});
 
 Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
 Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen'); 
