@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Divisi;
 use App\Models\Laporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
-    public function index()
+    public function index($divisi)
     {
-        $laporan = Laporan::where('user_id', 2)->where('divisi_id', 1)->orderBy('id', 'DESC')->get();
-        // dd($laporan[1]->isVerif);
-        return view ('index', compact('laporan'));
+        $laporan = Laporan::where('user_id', Auth::user()->id)->where('divisi_id', $divisi)->orderBy('id', 'DESC')->get();
+        $divisi = Divisi::find($divisi);
+        return view ('magang.laporan.index', compact('laporan','divisi'));
     }
 
     public function create()
@@ -49,8 +50,8 @@ class LaporanController extends Controller
     public function show($id)
     {
         // $minggu = Laporan::findorFail($minggu);
-        $laporan = Laporan::where('id', $id)->where('user_id', 2)->where('divisi_id', 1)->first();
-        return view ('view', compact('laporan'));
+        $laporan = Laporan::find($id);
+        return view ('magang.laporan.view', compact('laporan'));
     }
 
 
@@ -63,35 +64,30 @@ class LaporanController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $laporan = Laporan::findorFail($id);
-        // $user = Auth::user();
+        $Laporan = Laporan::findOrFail(Auth::user()->id);
 
-        // Laporan::where('id',$id)->update([
-        //     'senin' => $request->senin,
-        //     'selasa' => $request->selasa,
-        //     'rabu' => $request->rabu,
-        //     'kamis' => $request->kamis,
-        //     'jumat' => $request->jumat,
-        //     'mingguan' => $request->mingguan,
-        //     'komentar' => $request->komentar,
-        //     'isVerif' => $request->isVerif
-        // ]);
-        // if ( $request->isMethod( 'post' ) ) {
-        //     $laporan = $request->all();
+        if($request->senin != NULL){
+            $Laporan->senin = $request->senin;
+        }
+        if($request->selasa != NULL){
+            $Laporan->selasa = $request->selasa;
+        }
+        if($request->rabu != NULL){
+            $Laporan->rabu = $request->rabu;
+        }
+        if($request->kamis != NULL){
+            $Laporan->kamis = $request->kamis;
+        }
+        if($request->jumat != NULL){
+            $Laporan->jumat = $request->jumat;
+        }
+        if($request->mingguan != NULL){
+            $Laporan->mingguan = $request->mingguan;
+        }
+        $Laporan->save();
 
-        $laporan = Laporan::findOrfail($id);
-        $laporan->senin = $request->senin;
-        $laporan->selasa = $request->selasa;
-        $laporan->rabu = $request->rabu;
-        $laporan->kamis = $request->kamis;
-        $laporan->jumat = $request->jumat;
-        $laporan->mingguan = $request->mingguan;
-        $laporan->komentar = $request->komentar;
-        $laporan->isVerif = 1;
-        $laporan->save();
         return redirect()->back()
-        ->with('edit', 'Laporan Berhasil Diverifikasi');
-        
+        ->with('edit', 'Laporan Berhasil Dibuat');
     }
 
     public function destroy($id)

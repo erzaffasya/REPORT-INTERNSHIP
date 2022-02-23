@@ -42,4 +42,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function akses_divisi()
+    {
+        // return $this->belongsToMany(Divisi::class,'akses_divisi','divisi_id','user_id');
+        return $this->hasMany(Akses_divisi::class,'user_id');
+    }
+    public function akses_program()
+    {
+        // return $this->belongsToMany(Program::class,'akses_program','program_id','user_id');
+        return $this->hasMany(Akses_program::class,'user_id');
+    }
 }
