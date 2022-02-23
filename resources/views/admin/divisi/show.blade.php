@@ -158,7 +158,7 @@
                                                 <input class="form-check-input" type="checkbox" value=""
                                                     id="flexCheckDefault1" checked>
                                             </div>
-                                            <h6 class="mb-0 text-dark font-weight-bold text-sm">Management discussion
+                                            <h6 class="mb-0 text-dark font-weight-bold text-sm">{{$item->user->name}} - {{$item->divisi->nama_divisi}}
                                             </h6>
                                             <div class="dropstart float-lg-end ms-auto pe-0">
                                                 <a href="javascript:;" class="cursor-pointer" id="dropdownTable3"
@@ -178,8 +178,8 @@
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center ms-4 mt-3 ps-1">
                                             <div>
-                                                <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
-                                                <span class="text-xs font-weight-bolder">24 March 2019</span>
+                                                <p class="text-xs mb-0 text-secondary font-weight-bold">Tanggal</p>
+                                                <span class="text-xs font-weight-bolder">{{$item->created_at}}</span>
                                             </div>
                                             <div class="ms-auto">
                                                 <p class="text-xs mb-0 text-secondary font-weight-bold">Project</p>

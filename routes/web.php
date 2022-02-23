@@ -3,6 +3,7 @@
 use App\Http\Controllers\AksesProgramController;
 use App\Http\Controllers\AksesDivisiController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,13 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
+
+Route::get('laporan', [LaporanController::class, 'index'])->name('indexLaporan');
+Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
+Route::put('/updateLaporan', [LaporanController::class, 'update'])->name('updateLaporan');
+
 Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
-Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen'); 
+Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen');
 Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDosen'])->name('deleteDataDosen');
 
 Route::resource('Program', ProgramController::class);
@@ -46,4 +52,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'role:admin'])->group(function () {
+});
+
+Route::group(['middleware' => 'auth'], function () {
+});
+
+require __DIR__ . '/auth.php';
