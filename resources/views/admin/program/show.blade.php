@@ -351,7 +351,7 @@
                                         <div class="card-body d-flex flex-column justify-content-center text-center">
                                             <a href="" data-bs-toggle="modal" data-bs-target="#tambahdivisi">
                                                 <i class="fa fa-plus text-secondary mb-3"></i>
-                                                <h5 class=" text-secondary"> New project </h5>
+                                                <h5 class=" text-secondary"> Tambah Divisi </h5>
                                             </a>
                                         </div>
                                     </div>

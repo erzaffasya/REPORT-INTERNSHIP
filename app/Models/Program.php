@@ -33,4 +33,8 @@ class Program extends Model
     {
         return $this->hasMany(Divisi::class,'divisi_id','id');
     }
+    public function anggota()
+    {
+        return $this->hasMany(Akses_program::class,'program_id','id');
+    }
 }

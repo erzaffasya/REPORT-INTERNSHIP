@@ -64,12 +64,12 @@
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
                                             <div class="col-6">
-                                                <label class="form-label">Start Date</label>
+                                                <label class="form-label">Periode Mulai</label>
                                                 <input value="{{$Program->periode_mulai}}" class="form-control datetimepicker" name="periode_mulai" type="date"
                                                    data-input>
                                             </div>
                                             <div class="col-6">
-                                                <label class="form-label">Start Date</label>
+                                                <label class="form-label">Periode Berakhir</label>
                                                 <input value="{{$Program->periode_berakhir}}" class="form-control datetimepicker" name="periode_berakhir" type="date"
                                                      data-input>
                                             </div>

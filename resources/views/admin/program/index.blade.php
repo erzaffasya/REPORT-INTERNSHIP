@@ -42,11 +42,11 @@
                                 <hr class="horizontal dark">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h6 class="text-sm mb-0">5</h6>
-                                        <p class="text-secondary text-sm font-weight-bold mb-0">Participants</p>
+                                        <h6 class="text-sm mb-0">{{$item->anggota->count()}}</h6>
+                                        <p class="text-secondary text-sm font-weight-bold mb-0">Anggota</p>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <h6 class="text-sm mb-0">{{$item->periode_berakhir}}</h6>
+                                        <h6 class="text-sm mb-0">{{ \Carbon\Carbon::parse($item->periode_berakhir)->format('d M Y') }}</h6>
                                         <p class="text-secondary text-sm font-weight-bold mb-0">Periode Berakhir</p>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                         <div class="card-body d-flex flex-column justify-content-center text-center">
                             <a href="{{route('Program.create')}}">
                                 <i class="fa fa-plus text-secondary mb-3"></i>
-                                <h5 class=" text-secondary"> New project </h5>
+                                <h5 class=" text-secondary"> Tambah Program </h5>
                             </a>
                         </div>
                     </div>

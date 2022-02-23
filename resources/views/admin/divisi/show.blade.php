@@ -198,7 +198,7 @@
                                                 <div>
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Tanggal</p>
                                                     <span
-                                                        class="text-xs font-weight-bolder">{{ $item->created_at }}</span>
+                                                        class="text-xs font-weight-bolder">{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</span>
                                                 </div>
                                                 <div class="ms-auto">
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Status</p>
