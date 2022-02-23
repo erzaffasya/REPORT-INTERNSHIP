@@ -63,22 +63,6 @@ class LaporanController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $laporan = Laporan::findorFail($id);
-        // $user = Auth::user();
-
-        // Laporan::where('id',$id)->update([
-        //     'senin' => $request->senin,
-        //     'selasa' => $request->selasa,
-        //     'rabu' => $request->rabu,
-        //     'kamis' => $request->kamis,
-        //     'jumat' => $request->jumat,
-        //     'mingguan' => $request->mingguan,
-        //     'komentar' => $request->komentar,
-        //     'isVerif' => $request->isVerif
-        // ]);
-        // if ( $request->isMethod( 'post' ) ) {
-        //     $laporan = $request->all();
-
         $laporan = Laporan::findOrfail($id);
         $laporan->senin = $request->senin;
         $laporan->selasa = $request->selasa;
