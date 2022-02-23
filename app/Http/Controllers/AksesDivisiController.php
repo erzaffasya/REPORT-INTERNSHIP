@@ -34,4 +34,11 @@ class AksesDivisiController extends Controller
         return redirect()->back()
             ->with('success', 'Akses Divisi Berhasil Ditambahkan');
     }
+
+    public function delete($id)
+    {
+        Akses_divisi::where('id', $id)->delete();
+        return redirect()->back()
+        ->with('success', 'Data berhasil dihapus');
+    }
 }

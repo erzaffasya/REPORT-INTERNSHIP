@@ -438,15 +438,15 @@
                                                 <span class="badge badge-danger badge-sm">Out of Stock</span>
                                             </td> --}}
                                             <td class="text-sm">
-                                                <a href="javascript:;" data-bs-toggle="tooltip"
+                                                {{-- <a href="javascript:;" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Preview product">
                                                     <i class="fas fa-eye text-secondary"></i>
                                                 </a>
                                                 <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Edit product">
                                                     <i class="fas fa-user-edit text-secondary"></i>
-                                                </a>
-                                                <a href="javascript:;" data-bs-toggle="tooltip"
+                                                </a> --}}
+                                                <a href="{{url('destroyAksesProgram', $item->id)}}" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Delete product">
                                                     <i class="fas fa-trash text-secondary"></i>
                                                 </a>

@@ -93,14 +93,13 @@ class AksesProgramController extends Controller
         ->with('edit', 'akses_program Berhasil Diedit');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        $akses_program = Akses_program::findOrFail($id);
-        Storage::delete("public/akses_program/$akses_program->gambar");
-        $akses_program->delete();
-        return redirect()->route('akses_program.index')
-            ->with('delete', 'akses_program Berhasil Dihapus');
+        Akses_program::where('id', $id)->delete();
+        return redirect()->back()
+        ->with('success', 'Data berhasil dihapus');
     }
+
 
     public function grid()
     {

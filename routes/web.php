@@ -32,14 +32,14 @@ Route::controller(AksesProgramController::class)->group(function () {
     Route::get('tambahAksesProgram/{id}', 'create');
     Route::post('storeAksesProgram', 'store');
     Route::put('aksesProgram/{id}', 'update');
-    Route::delete('aksesProgram/{id}', 'delete');
+    Route::get('destroyAksesProgram/{id}', 'delete');
 });
 Route::controller(AksesDivisiController::class)->group(function () {
     Route::get('aksesDivisi', 'index');
     Route::get('tambahAksesDivisi/{id}', 'create');
     Route::post('storeAksesDivisi', 'store');
     Route::put('updateAksesDivisi/{id}', 'update');
-    Route::delete('destroyAksesDivisi/{id}', 'delete');
+    Route::get('destroyAksesDivisi/{id}', 'delete');
 });
 // Route::resource('aksesDivisi', AksesDivisiController::class);
 Route::get('/dashboard', function () {
