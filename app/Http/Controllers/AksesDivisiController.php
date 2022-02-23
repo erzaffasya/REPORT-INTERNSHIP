@@ -12,7 +12,6 @@ class AksesDivisiController extends Controller
     public function create($id)
     {
         // $akses_program = User::where(, $id)->doesnthave('akses_divisi')->get();
-        // $akses_program = Akses_program::all();
         $user = User::doesnthave('akses_divisi')->get();
         // $akses_program  = Akses_program::where('program_id', $id)->get();
         $divisi = Divisi::where('id', $id)->first();
