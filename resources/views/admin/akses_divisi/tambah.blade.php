@@ -18,15 +18,15 @@
                 <th>Nama Mahasiswa</th>
                 <th width="100px">Action</th>
             </tr>
-            @if($akses_program->count())
-                @foreach($akses_program as $key => $i)
+            @if($user->count())
+                @foreach($user as $i)
                     <tr id="tr_{{$i->id}}">
                         {{-- <td><input type="checkbox" class="sub_chk" data-id="{{$i->id}}"></td> --}}
-                        <td>{{ ++$key }}</td>
-                        <td>{{ $i->user->name }}</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $i->name }}</td>
                         <form action="{{url('storeAksesDivisi')}}" method="POST">
                         @csrf
-                        <input type="hidden" name="user_id" value="{{$i->user->id}}">
+                        <input type="hidden" name="user_id" value="{{$i->id}}">
                         <input type="hidden" name="divisi_id" value="{{$divisi->id}}">
                         <td>
                             <button type="submit" class="btn btn-success btn-sm" >Tambah</button>
