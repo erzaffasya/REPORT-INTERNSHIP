@@ -14,7 +14,7 @@
     
               <thead>
                 <tr>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="80px">No</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="100px">No</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"width="100px">Aksi</th>
                 </tr>
