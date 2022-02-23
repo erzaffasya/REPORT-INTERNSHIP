@@ -57,12 +57,12 @@ class LaporanController extends Controller
 
     public function edit($id)
     {
-        $produk = Produk::find($id);
+        $laporan = Laporan::find($id);
         // $kategori = Kategori::all();
-        return view('admin.produk.edit',compact('produk'));
+        return view('admin.produk.edit',compact('laporan'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $Laporan = Laporan::findOrFail(Auth::user()->id);
 

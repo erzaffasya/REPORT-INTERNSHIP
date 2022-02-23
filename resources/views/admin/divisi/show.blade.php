@@ -425,6 +425,73 @@
         </div>
     </div>
 
+    <!-- Edit Modal -->
+    @foreach($Laporan as $i)
+    <div class="modal fade" id="laporanModal-{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="laporanModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Verifikasi Laporan</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="{{url('updateLaporan', $i->id)}}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                    <label for="senin" class="col-form-label">Senin</label>
+                    <textarea name="senin" id="senin" class="form-control" rows="4" cols="50" readonly>
+                        {{$i->senin}}
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="selasa" class="col-form-label">Selasa</label>
+                    <textarea name="selasa" id="selasa" class="form-control" rows="4" cols="50" readonly>
+                        {{$i->selasa}}
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="rabu" class="col-form-label">Rabu</label>
+                    <textarea name="rabu" id="rabu" class="form-control" rows="4" cols="50" readonly>
+                        {{$i->rabu}}
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="kamis" class="col-form-label">Kamis</label>
+                    <textarea name="kamis" id="kamis" class="form-control" rows="4" cols="50" readonly>
+                        {{$i->kamis}}
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="jumat" class="col-form-label">Jumat</label>
+                    <textarea name="jumat" id="jumat" class="form-control" rows="4" cols="50" readonly>
+                        {{$i->jumat}}
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="mingguan" class="col-form-label">Mingguan</label>
+                    <textarea name="mingguan" id="senin" class="form-control" rows="4" cols="200" readonly>
+                        {{$i->mingguan}}
+                    </textarea>
+                  </div>
+                <div class="form-group">
+                  <label for="komentar" class="col-form-label">Komentar</label>
+                  <textarea name="komentar" id="komentar" class="form-control" rows="4" cols="100">
+                  </textarea>
+                </div>
+                <input type="hidden" name="isVerif">
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn bg-gradient-primary">Verifikasi</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
     @push('scripts')
         <script>
             if (document.getElementById('products-list')) {
@@ -451,6 +518,31 @@
                     });
                 });
             };
+        </script>
+        <script>
+    $('.btn-update').click(function(event) {
+      var id = $(this).data("link");
+      var senin = $(this).data("senin");
+      var selasa = $(this).data("selasa");
+      var rabu = $(this).data("rabu");
+      var kamis = $(this).data("kamis");
+      var jumat = $(this).data("jumat");
+      var mingguan = $(this).data("mingguan");
+      var komentar = $(this).data("komentar");
+      var isVerif = $(this).data("isVerif");
+      $('#updateLaporan').attr('action', id);
+      $('#senin').val(senin);
+      $('#selasa').val(selasa);
+      $('#rabu').val(rabu);
+      $('#kamis').val(kamis);
+      $('#jumat').val(jumat);
+      $('#mingguan').val(mingguan);
+      $('#komentar').val(komentar);
+      $('#isVerif').val(isVerif);
+      console.log($(senin));
+    //   console.log($('.basic-conf'));
+
+    });
         </script>
     @endpush
 </x-app-layout>
