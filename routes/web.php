@@ -56,6 +56,30 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('Divisi/{divisi}/Laporan', [LaporanController::class, 'index'])->name('indexLaporan');
+    Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
+    Route::put('/updateLaporan', [LaporanController::class, 'update'])->name('updateLaporan');
+
+    Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
+    Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen');
+    Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDosen'])->name('deleteDataDosen');
+
+    Route::resource('Program', ProgramController::class);
+    Route::resource('Divisi', DivisiController::class);
+    Route::controller(AksesProgramController::class)->group(function () {
+        Route::get('aksesProgram', 'index');
+        Route::get('tambahAksesProgram/{id}', 'create');
+        Route::post('storeAksesProgram', 'store');
+        Route::put('aksesProgram/{id}', 'update');
+        Route::get('destroyAksesProgram/{id}', 'delete');
+    });
+    Route::controller(AksesDivisiController::class)->group(function () {
+        Route::get('aksesDivisi', 'index');
+        Route::get('tambahAksesDivisi/{id}', 'create');
+        Route::post('storeAksesDivisi', 'store');
+        Route::put('updateAksesDivisi/{id}', 'update');
+        Route::get('destroyAksesDivisi/{id}', 'delete');
+    });
 });
 
 require __DIR__ . '/auth.php';

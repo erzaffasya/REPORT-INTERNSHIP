@@ -83,10 +83,10 @@
               <div class="col-sm-auto col-8 my-auto">
                 <div class="h-100">
                   <h5 class="mb-1 font-weight-bolder">
-                    Alec Thompson
+                    {{Auth::user()->name}}
                   </h5>
                   <p class="mb-0 font-weight-bold text-sm">
-                    App & Web Development
+                    {{$divisi->nama_divisi}}
                   </p>
                 </div>
               </div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="ms-2">
                       <span class="text-dark font-weight-bold d-block text-sm">Disetujui Mentor</span>
-                      <span class="text-xs d-block">Minggu ke-1</span>
+                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
                     </div>
                   </div>
                 @else
@@ -122,7 +122,7 @@
                     </div>
                     <div class="ms-2">
                       <span class="text-dark font-weight-bold d-block text-sm">Belum dibuat</span>
-                      <span class="text-xs d-block">Minggu ke- {{ $item->mingguan }}</span>
+                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
                     </div>
                   </div>
                 @endif

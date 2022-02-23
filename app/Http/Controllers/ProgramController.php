@@ -62,38 +62,10 @@ class ProgramController extends Controller
     {
         $Akses_program = Akses_program::where('program_id',$id)->get();
         $Divisi = Divisi::where('program_id',$id)->get();
-        // dd($Divisi);
-        // dd($Akses_program);
         $user = User::all();
         $Program = Program::where('id', $id)->first();
         $periode = Carbon::parse($Program->periode_mulai)->diffInDays(Carbon::parse($Program->periode_berakhir),false) + 1;
-        // $program = Program::all();
-        // $data = NULL;
-        // foreach ($program as $item) {
-        //     // $formatted_dt1 = Carbon::parse($item->periode_mulai);
-        //     // $formatted_dt2 = Carbon::parse($item->periode_berakhir);
-        //     // $date_diff = $formatted_dt1->diffInDays($formatted_dt2);
-        //     $date_diff = Carbon::parse($item->periode_mulai)->diffInDays(Carbon::parse($item->periode_berakhir),false) + 1;
-        //     // dd($date_diff);
-        //     // echo $date_diff;
-        //     if ($date_diff >= "6") {
-        //         //butuh id
-        //         // $asd = Divisi::where('program_id',$item->id)->get();
-        //         // dd($asd);
-        //         $divisi = Divisi::select('akses_divisi.user_id','akses_divisi.divisi_id','divisi.program_id')->join('akses_divisi','akses_divisi.divisi_id','divisi.id')->where('divisi.program_id',$item->id)->get();
-        //     //    dd($divisi);
-        //         foreach($divisi as $divisis){
-        //             Laporan::create([
-        //                 'isVerif' => False,
-        //                 'user_id' => $divisis->user_id,
-        //                 'divisi_id' => $divisis->divisi_id,
-        //             ]);
-        //             // echo $divisis->user_id;
-        //         }
-        //     }
-        // }
-        // echo $data;
-        // dd($divisis->divisi_id);
+        
         return view('admin.Program.show', compact('Program','Akses_program','Divisi','periode', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

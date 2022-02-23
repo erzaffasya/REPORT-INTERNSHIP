@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Divisi;
 use App\Models\Laporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
-    public function index()
+    public function index($divisi)
     {
-        $laporan = Laporan::where('user_id', 2)->where('divisi_id', 1)->orderBy('id', 'DESC')->get();
-        // dd($laporan[1]->isVerif);
-        return view ('index', compact('laporan'));
+        $laporan = Laporan::where('user_id', Auth::user()->id)->where('divisi_id', $divisi)->orderBy('id', 'DESC')->get();
+        $divisi = Divisi::find($divisi);
+        return view ('magang.laporan.index', compact('laporan','divisi'));
     }
 
     public function create()
@@ -49,8 +50,8 @@ class LaporanController extends Controller
     public function show($id)
     {
         // $minggu = Laporan::findorFail($minggu);
-        $laporan = Laporan::where('id', $id)->where('user_id', 2)->where('divisi_id', 1)->first();
-        return view ('view', compact('laporan'));
+        $laporan = Laporan::find($id);
+        return view ('magang.laporan.view', compact('laporan'));
     }
 
 
