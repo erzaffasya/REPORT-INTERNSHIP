@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akses_divisi;
 use App\Models\Akses_program;
 use App\Models\User;
 use App\Models\Program;
@@ -21,8 +22,9 @@ class AksesProgramController extends Controller
     public function create($id)
     {
         // $kategori = Kategori::all();
-        $user = User::all();
+        $user = User::doesnthave('akses_program')->get();
         $program = Program::where('id', $id)->first();
+        // dd($user);
         return view('admin.akses_program.tambah', compact('user', 'program'));
     }
 
