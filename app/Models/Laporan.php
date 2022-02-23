@@ -16,6 +16,7 @@ class Laporan extends Model
         'kamis',
         'jumat',
         'isVerif',
+        'komentar',
         'user_id',
         'divisi_id',
     ];

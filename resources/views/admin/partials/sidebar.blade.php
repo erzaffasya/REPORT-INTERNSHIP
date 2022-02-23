@@ -166,7 +166,7 @@
                             <ul class="nav ms-4 ps-3">
                                 <li class="nav-item ">
                                     <a class="nav-link {{ Route::is('indexLaporan') ? 'active' : '' }}"
-                                        href="{{ url('Divisi/'.$item->id.'/Laporan') }}">
+                                        href="{{ url('Divisi/'.$item->divisi->id.'/Laporan') }}">
                                         <span class="sidenav-mini-icon"> K </span>
                                         <span class="sidenav-normal"> Laporan Harian </span>
                                     </a>

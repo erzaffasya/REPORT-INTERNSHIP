@@ -28,6 +28,11 @@ class Akses_divisi extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function divisi()
+    {
+        return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
+    }
+
 
 
 

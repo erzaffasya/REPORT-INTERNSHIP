@@ -58,7 +58,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('Divisi/{divisi}/Laporan', [LaporanController::class, 'index'])->name('indexLaporan');
     Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
-    Route::put('/updateLaporan', [LaporanController::class, 'update'])->name('updateLaporan');
+    Route::put('/updateLaporan/{id}', [LaporanController::class, 'update'])->name('updateLaporan');
+
+    Route::put('/verif-laporan/{id}', [LaporanController::class, 'veriflaporan'])->name('veriflaporan');
 
     Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
     Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen');

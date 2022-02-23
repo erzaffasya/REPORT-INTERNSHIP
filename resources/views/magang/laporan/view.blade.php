@@ -282,7 +282,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan',$laporan->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="mb-3">
@@ -308,7 +308,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan',$laporan->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="mb-3">
@@ -334,7 +334,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan',$laporan->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="mb-3">
@@ -360,7 +360,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan',$laporan->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="mb-3">
@@ -386,7 +386,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan',$laporan->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="mb-3">
@@ -412,7 +412,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan',$laporan->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="mb-3">
