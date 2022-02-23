@@ -56,26 +56,42 @@ class LaporanController extends Controller
 
     public function edit($id)
     {
-        $produk = Produk::find($id);
+        $laporan = Laporan::find($id);
         // $kategori = Kategori::all();
-        return view('admin.produk.edit',compact('produk'));
+        return view('admin.produk.edit',compact('laporan'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         // $laporan = Laporan::findorFail($id);
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        Laporan::where('user_id', 2)->where('divisi_id', 1)->update([
-            'senin' => $request->senin,
-            'selasa' => $request->selasa,
-            'rabu' => $request->rabu,
-            'kamis' => $request->kamis,
-            'jumat' => $request->jumat
-        ]);
+        // Laporan::where('id',$id)->update([
+        //     'senin' => $request->senin,
+        //     'selasa' => $request->selasa,
+        //     'rabu' => $request->rabu,
+        //     'kamis' => $request->kamis,
+        //     'jumat' => $request->jumat,
+        //     'mingguan' => $request->mingguan,
+        //     'komentar' => $request->komentar,
+        //     'isVerif' => $request->isVerif
+        // ]);
+        // if ( $request->isMethod( 'post' ) ) {
+        //     $laporan = $request->all();
 
-        return redirect()->route('indexLaporan')
-        ->with('edit', 'Laporan Berhasil Dibuat');
+        $laporan = Laporan::findOrfail($id);
+        $laporan->senin = $request->senin;
+        $laporan->selasa = $request->selasa;
+        $laporan->rabu = $request->rabu;
+        $laporan->kamis = $request->kamis;
+        $laporan->jumat = $request->jumat;
+        $laporan->mingguan = $request->mingguan;
+        $laporan->komentar = $request->komentar;
+        $laporan->isVerif = 1;
+        $laporan->save();
+        return redirect()->back()
+        ->with('edit', 'Laporan Berhasil Diverifikasi');
+        
     }
 
     public function destroy($id)

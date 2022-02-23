@@ -56,10 +56,11 @@ class DivisiController extends Controller
         $Akses_divisi = Akses_divisi::where('divisi_id',$id)->get();
         $Divisi = Divisi::where('program_id',$id)->first();
         $Laporan = Laporan::where('divisi_id',$id)->get();
+        $Laporanselect = Laporan::find($id);
         // dd($Divisi);
         // dd($Laporan->where('isVerif', '!=', 1));
         $Divisiselect = Divisi::where('id', $id)->first();
-        return view('admin.Divisi.show', compact('Divisi','Divisiselect','Laporan','Akses_divisi', 'akses_program'))
+        return view('admin.Divisi.show', compact('Divisi','Divisiselect','Laporan','Akses_divisi', 'akses_program', 'Laporanselect'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

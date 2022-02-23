@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 Route::get('laporan', [LaporanController::class, 'index'])->name('indexLaporan');
 Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
-Route::put('/updateLaporan', [LaporanController::class, 'update'])->name('updateLaporan');
-
+Route::put('/updateLaporan/{id}', [LaporanController::class, 'update'])->name('updateLaporan');
+// Route::match(['get', 'post'], '/updateLaporan/{id}', [LaporanController::class, 'update']);
 Route::get('/Program/{program}/Divisi/{id}', [DivisiController::class, 'show'])->name('showDataDosen');
 Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen'])->name('updateDataDosen');
 Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDosen'])->name('deleteDataDosen');
