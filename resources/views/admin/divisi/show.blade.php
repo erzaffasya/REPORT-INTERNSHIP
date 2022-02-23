@@ -474,7 +474,7 @@
                   </div>
                 <div class="form-group">
                   <label for="komentar" class="col-form-label">Komentar</label>
-                  <textarea name="kommentar" id="komentar" class="form-control" rows="4" cols="100">
+                  <textarea name="komentar" id="komentar" class="form-control" rows="4" cols="100">
                   </textarea>
                 </div>
                 <input type="hidden" name="isVerif">
