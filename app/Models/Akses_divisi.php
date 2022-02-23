@@ -31,10 +31,7 @@ class Akses_divisi extends Model
         return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
     }
 
-    public function program()
-    {
-        return $this->belongsTo(Program::class, 'program_id', 'id');
-    }
+
 
    
 }

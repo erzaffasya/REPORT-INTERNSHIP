@@ -110,8 +110,8 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->mingguan == NULL)
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                @if ($laporan->mingguan == NULL || $laporan->isVerif == False)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#mingguanModal">
                     Buat Laporan
                   </button>
                 @else
@@ -138,7 +138,7 @@
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
-                @if ($laporan->senin == NULL)
+                @if ($laporan->senin == NULL || $laporan->isVerif == False)
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
                     Buat Laporan
                   </button>
@@ -171,8 +171,8 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->selasa == NULL)
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                @if ($laporan->selasa == NULL || $laporan->isVerif == False)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#selasaModal">
                     Buat Laporan
                   </button>
                 @else
@@ -200,8 +200,8 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->rabu == NULL)
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                @if ($laporan->rabu == NULL || $laporan->isVerif == False)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#rabuModal">
                     Buat Laporan
                   </button>
                 @else
@@ -229,8 +229,8 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->kamis == NULL)
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                @if ($laporan->kamis == NULL || $laporan->isVerif == False)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#kamisModal">
                     Buat Laporan
                   </button>
                 @else
@@ -258,8 +258,8 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->jumat == NULL)
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                @if ($laporan->jumat == NULL || $laporan->isVerif == False)
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#jumatModal">
                     Buat Laporan
                   </button>
                 @else
@@ -308,14 +308,15 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="selasa" rows="5" required></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+                <button type="submit" class="btn bg-gradient-primary">Simpan</button>
               </div>
             </form>
           </div>
@@ -333,14 +334,15 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="rabu" rows="5" required></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+                <button type="submit" class="btn bg-gradient-primary">Simpan</button>
               </div>
             </form>
           </div>
@@ -358,39 +360,15 @@
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="kamis" rows="5" required></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-gradient-primary">Simpan</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="kamisModal" tabindex="-1" role="dialog" aria-labelledby="kamisModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="kamisModalLabel">Jumat</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
-              @csrf
-              <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+                <button type="submit" class="btn bg-gradient-primary">Simpan</button>
               </div>
             </form>
           </div>
@@ -402,20 +380,47 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="jumatModalLabel">Selasa</h5>
+            <h5 class="modal-title" id="jumatModalLabel">Jumat</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form role="form text-left" action="#" method="POST" enctype="multipart/form-data">
+            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="deskripsi" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="jumat" rows="5" required></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-gradient-primary">Simpan</button>
+                <button type="submit" class="btn bg-gradient-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="mingguanModal" tabindex="-1" role="dialog" aria-labelledby="mingguanModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="mingguanModalLabel">Mingguan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form text-left" action="{{ route('updateLaporan') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+              <div class="mb-3">
+                <textarea class="form-control" aria-label="With textarea" name="mingguan" rows="5" required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn bg-gradient-primary">Simpan</button>
               </div>
             </form>
           </div>

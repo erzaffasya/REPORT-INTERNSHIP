@@ -83,10 +83,10 @@
               <div class="col-sm-auto col-8 my-auto">
                 <div class="h-100">
                   <h5 class="mb-1 font-weight-bolder">
-                    Alec Thompson
+                    {{Auth::user()->name}}
                   </h5>
                   <p class="mb-0 font-weight-bold text-sm">
-                    App & Web Development
+                    {{$divisi->nama_divisi}}
                   </p>
                 </div>
               </div>
