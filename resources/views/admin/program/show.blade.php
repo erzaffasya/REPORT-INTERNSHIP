@@ -110,10 +110,10 @@
                                 <h6 class="mb-0">Informasi Program</h6>
                             </div>
                             <div class="col-md-4 text-end">
-                                <a class="btn " data-bs-toggle="modal" data-bs-target="#tambahdivisi">
+                                {{-- <a class="btn " data-bs-toggle="modal" data-bs-target="#tambahdivisi">
                                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
                                         data-bs-placement="top" title="Edit Profile"></i>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>
@@ -435,7 +435,9 @@
                                         <th>Nama</th>
                                         <th>Email</th>
                                         {{-- <th>Status</th> --}}
-                                        <th>Action</th>
+                                        @can('admin')
+                                            <th>Action</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -447,23 +449,14 @@
                                             {{-- <td>
                                                 <span class="badge badge-danger badge-sm">Out of Stock</span>
                                             </td> --}}
-                                            <td class="text-sm">
-                                                {{-- <a href="javascript:;" data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Preview product">
-                                                    <i class="fas fa-eye text-secondary"></i>
-                                                </a>
-                                                <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Edit product">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
-                                                </a> --}}
-                                                @can('admin')
+                                            @can('admin')
+                                                <td class="text-sm">
                                                     <a href="{{ url('destroyAksesProgram', $item->id) }}"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                                         <i class="fas fa-trash text-secondary"></i>
                                                     </a>
-                                                @endcan
-
-                                            </td>
+                                                </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>

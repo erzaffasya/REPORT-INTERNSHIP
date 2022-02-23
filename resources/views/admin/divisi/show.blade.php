@@ -159,7 +159,8 @@
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="flexCheckDefault1" checked>
                                                 </div>
-                                                <h6 class="mb-0 text-dark font-weight-bold text-sm">{{ $item->user->name }}
+                                                <h6 class="mb-0 text-dark font-weight-bold text-sm">
+                                                    {{ $item->user->name }}
                                                     - {{ $item->divisi->nama_divisi }}
                                                 </h6>
                                                 <div class="dropstart float-lg-end ms-auto pe-0">
@@ -181,7 +182,8 @@
                                             <div class="d-flex justify-content-between align-items-center ms-4 mt-3 ps-1">
                                                 <div>
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Tanggal</p>
-                                                    <span class="text-xs font-weight-bolder">{{ $item->created_at }}</span>
+                                                    <span
+                                                        class="text-xs font-weight-bolder">{{ $item->created_at }}</span>
                                                 </div>
                                                 <div class="ms-auto">
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Project</p>
@@ -282,8 +284,11 @@
                                 </div>
                                 <div class="ms-auto my-auto mt-lg-0 mt-4">
                                     <div class="ms-auto my-auto">
-                                        <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
-                                            class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
+                                        @can('admin')
+                                            <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
+                                                class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
+                                        @endcan
+
                                         {{-- <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#tambahAnggota">
                                             +&nbsp; Anggota 
                                         </button> --}}
@@ -336,7 +341,9 @@
                                             <th>Nama</th>
                                             <th>Email</th>
                                             {{-- <th>Status</th> --}}
-                                            <th>Action</th>
+                                            @can('admin')
+                                                <th>Action</th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -345,24 +352,15 @@
                                                 <td class="text-sm">{{ $loop->iteration }}</td>
                                                 <td class="text-sm">{{ $item->user->name }}</td>
                                                 <td class="text-sm">{{ $item->user->email }}</td>
-                                                {{-- <td>
-                                                    <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                                </td> --}}
-                                                <td class="text-sm">
-                                                    {{-- <a href="javascript:;" data-bs-toggle="tooltip"
-                                                        data-bs-original-title="Preview product">
-                                                        <i class="fas fa-eye text-secondary"></i>
-                                                    </a>
-                                                    <a href="javascript:;" class="mx-3"
-                                                        data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                                        <i class="fas fa-user-edit text-secondary"></i>
-                                                    </a> --}}
-                                                    <a href="{{ url('destroyAksesDivisi', $item->id) }}"
-                                                        data-bs-toggle="tooltip"
-                                                        data-bs-original-title="Delete product">
-                                                        <i class="fas fa-trash text-secondary"></i>
-                                                    </a>
-                                                </td>
+                                                @can('admin')
+                                                    <td class="text-sm">
+                                                        <a href="{{ url('destroyAksesDivisi', $item->id) }}"
+                                                            data-bs-toggle="tooltip"
+                                                            data-bs-original-title="Delete product">
+                                                            <i class="fas fa-trash text-secondary"></i>
+                                                        </a>
+                                                    </td>
+                                                @endcan
                                             </tr>
                                         @endforeach
                                     </tbody>
