@@ -4,7 +4,7 @@
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="post" action="{{route('Divisi.store')}}">
+                <form method="post" action="{{ route('Divisi.store') }}">
                     @csrf
 
                     <div class="modal-header">
@@ -18,7 +18,7 @@
                             <label for="recipient-name" class="col-form-label">Nama Divisi:</label>
                             <input type="text" class="form-control" name="nama_divisi">
                             <input type="hidden" class="form-control" value="1" name="status">
-                            <input type="hidden" class="form-control" value="{{$Program->id}}" name="program_id">
+                            <input type="hidden" class="form-control" value="{{ $Program->id }}" name="program_id">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Detail:</label>
@@ -55,7 +55,8 @@
                             <label for="recipient-name" class="col-form-label">Nama Divisi:</label>
                             <input type="text" class="form-control" name="nama_divisi" id="nama_divisi">
                             <input type="hidden" class="form-control" value="1" name="status" id="status">
-                            <input type="hidden" class="form-control" value="{{$Program->id}}" name="program_id" id="program_id">
+                            <input type="hidden" class="form-control" value="{{ $Program->id }}" name="program_id"
+                                id="program_id">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Detail:</label>
@@ -153,7 +154,7 @@
                             <div class="col-7 text-start">
                                 <p class="text-sm mb-1 text-capitalize font-weight-bold">Periode Program</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                   {{$periode}} Hari lagi
+                                    {{ $periode }} Hari lagi
                                 </h5>
                                 {{-- <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+12%
                                     <span class="font-weight-normal text-secondary">since last month</span></span> --}}
@@ -162,7 +163,10 @@
                                 <div class="dropdown text-end">
                                     <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="text-xs text-secondary">{{\Carbon\Carbon::parse($Program->periode_mulai)->format('d M Y')}} - {{\Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y')}}</span>
+                                        <span
+                                            class="text-xs text-secondary">{{ \Carbon\Carbon::parse($Program->periode_mulai)->format('d M Y') }}
+                                            -
+                                            {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
                                         aria-labelledby="dropdownUsers2">
@@ -329,27 +333,30 @@
                                                     href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
                                                     class="btn btn-outline-primary btn-sm mb-0">View
                                                     Project</a>
-                                                    <a type="button"
-                                                    href="{{ route('Divisi.edit', $item->id) }}"
-                                                    class="btn btn-outline-primary btn-sm mb-0">Edit</a>
-                                                    {{-- <button type="button"
+                                                @can('admin')
+                                                    <a type="button" href="{{ route('Divisi.edit', $item->id) }}"
+                                                        class="btn btn-outline-primary btn-sm mb-0">Edit</a>
+                                                @endcan
+
+                                                {{-- <button type="button"
                                                 class="btn btn-outline-primary btn-sm mb-0 btn-update" data-bs-toggle="modal" data-bs-target="#editdivisi" data-link="{{ route('Divisi.update', $item->id) }}" data-nama_divisi="{{ $item->nama_divisi }}" data-program_id="{{$item->program_id}}" data-status="{{$item->status}}" data-detail="{{ $item->detail }}">Edit</button> --}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-
-                            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                                <div class="card h-100 card-plain border">
-                                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#tambahdivisi">
-                                            <i class="fa fa-plus text-secondary mb-3"></i>
-                                            <h5 class=" text-secondary"> New project </h5>
-                                        </a>
+                            @can('admin')
+                                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                    <div class="card h-100 card-plain border">
+                                        <div class="card-body d-flex flex-column justify-content-center text-center">
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#tambahdivisi">
+                                                <i class="fa fa-plus text-secondary mb-3"></i>
+                                                <h5 class=" text-secondary"> New project </h5>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -371,48 +378,51 @@
                                 </p>
                             </div>
                             <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                <div class="ms-auto my-auto">
+                                @can('admin')
+                                    <div class="ms-auto my-auto">
                                         {{-- <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#tambahAnggota">
-                                            +&nbsp; Anggota 
-                                        </button> --}}
-                                        <a href="{{url('tambahAksesProgram', $Program->id)}}" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
-                                    <button type="button" class="btn btn-outline-primary btn-sm mb-0"
-                                        data-bs-toggle="modal" data-bs-target="#import">
-                                        Import
-                                    </button>
-                                    <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog mt-lg-10">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="ModalLabel">Import CSV</h5>
-                                                    <i class="fas fa-upload ms-3"></i>
-                                                    <button type="button" class="btn-close"
-                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>You can browse your computer for a file.</p>
-                                                    <input type="text" placeholder="Browse file..."
-                                                        class="form-control mb-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="importCheck" checked="">
-                                                        <label class="custom-control-label" for="importCheck">I
-                                                            accept
-                                                            the terms and conditions</label>
+                                        +&nbsp; Anggota 
+                                    </button> --}}
+                                        <a href="{{ url('tambahAksesProgram', $Program->id) }}"
+                                            class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
+                                        <button type="button" class="btn btn-outline-primary btn-sm mb-0"
+                                            data-bs-toggle="modal" data-bs-target="#import">
+                                            Import
+                                        </button>
+                                        <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog mt-lg-10">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="ModalLabel">Import CSV</h5>
+                                                        <i class="fas fa-upload ms-3"></i>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn bg-gradient-secondary btn-sm"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="button"
-                                                        class="btn bg-gradient-primary btn-sm">Upload</button>
+                                                    <div class="modal-body">
+                                                        <p>You can browse your computer for a file.</p>
+                                                        <input type="text" placeholder="Browse file..."
+                                                            class="form-control mb-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                id="importCheck" checked="">
+                                                            <label class="custom-control-label" for="importCheck">I
+                                                                accept
+                                                                the terms and conditions</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-gradient-secondary btn-sm"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="button"
+                                                            class="btn bg-gradient-primary btn-sm">Upload</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1"
+                                            data-type="csv" type="button" name="button">Export</button>
                                     </div>
-                                    <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1"
-                                        data-type="csv" type="button" name="button">Export</button>
-                                </div>
+                                @endcan
                             </div>
                         </div>
                     </div>
@@ -446,10 +456,13 @@
                                                     data-bs-original-title="Edit product">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a> --}}
-                                                <a href="{{url('destroyAksesProgram', $item->id)}}" data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Delete product">
-                                                    <i class="fas fa-trash text-secondary"></i>
-                                                </a>
+                                                @can('admin')
+                                                    <a href="{{ url('destroyAksesProgram', $item->id) }}"
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                        <i class="fas fa-trash text-secondary"></i>
+                                                    </a>
+                                                @endcan
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -475,42 +488,44 @@
     <div class="col-md-4">
 
         <!-- Discussion Modal -->
-        <div class="modal fade" id="tambahAnggota" tabindex="-1" role="dialog" aria-labelledby="tambahAnggotaTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Anggota</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="{{url('aksesProgram.store')}}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  <div class="mb-3">
-                    <label for="exampleFormControlSelect1">Nama Anggota</label>
-                    <select class="form-control" name="user_id" id="exampleFormControlSelect1">
-                      @foreach ($user as $item)
-                      <option value="{{$item->id}}">{{$item->name}}</option>
-                      @endforeach
-                    </select> 
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlSelect1">Program</label>
-                    <select class="form-control" name="program_id" id="exampleFormControlSelect1">
-                      <option value="{{$Program->id}}" selected>{{$Program->judul}}</option>
-                    </select> 
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn bg-gradient-primary">Tambah</button>
-                  </div>
-                </form>
-              </div>
+        <div class="modal fade" id="tambahAnggota" tabindex="-1" role="dialog" aria-labelledby="tambahAnggotaTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Anggota</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ url('aksesProgram.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1">Nama Anggota</label>
+                                <select class="form-control" name="user_id" id="exampleFormControlSelect1">
+                                    @foreach ($user as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1">Program</label>
+                                <select class="form-control" name="program_id" id="exampleFormControlSelect1">
+                                    <option value="{{ $Program->id }}" selected>{{ $Program->judul }}</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn bg-gradient-primary">Tambah</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
     @push('scripts')
         <script>
             var ctx2 = document.getElementById("chart-pie").getContext("2d");
@@ -581,22 +596,23 @@
                 },
             });
         </script>
-        <script>    $('.btn-update').click(function(event) {
-            var id = $(this).data("link");
-            var nama_divisi = $(this).data("nama_divisi");
-            var detail = $(this).data("detail");
-            var status = $(this).data("status");
-            var program_id = $(this).data("program_id")
-            $('#divisiUpdate').attr('action', id);
-            $('#nama_divisi').val(nama_divisi);
-            $('#detail').val(detail);
-            $('#status').val(status);
-            $('#program_id').val(program_id);
-            console.log($('nama_divisi'));
-            console.log($('detail'));
-            console.log($('status'));
-            console.log($('program_id'));
-          });
+        <script>
+            $('.btn-update').click(function(event) {
+                var id = $(this).data("link");
+                var nama_divisi = $(this).data("nama_divisi");
+                var detail = $(this).data("detail");
+                var status = $(this).data("status");
+                var program_id = $(this).data("program_id")
+                $('#divisiUpdate').attr('action', id);
+                $('#nama_divisi').val(nama_divisi);
+                $('#detail').val(detail);
+                $('#status').val(status);
+                $('#program_id').val(program_id);
+                console.log($('nama_divisi'));
+                console.log($('detail'));
+                console.log($('status'));
+                console.log($('program_id'));
+            });
         </script>
         <script>
             if (document.getElementById('products-list')) {
