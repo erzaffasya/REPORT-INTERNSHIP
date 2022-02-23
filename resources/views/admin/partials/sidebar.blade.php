@@ -160,9 +160,9 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">Program</span>
+                            <span class="nav-link-text ms-1">{{$item->divisi->program->judul}}</span>
                         </a>
-                        <div class="collapse {{ Route::is('indexLaporan*') ? 'show' : '' }}" id="program">
+                        <div class="collapse {{ Route::is('indexLaporan*','or','Program*') ? 'show' : '' }}" id="program">
                             <ul class="nav ms-4 ps-3">
                                 <li class="nav-item ">
                                     <a class="nav-link {{ Route::is('indexLaporan') ? 'active' : '' }}"
@@ -172,8 +172,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link {{ Route::is('yyy.index') ? 'active' : '' }}"
-                                        href="{{ route('Program.index') }}">
+                                    <a class="nav-link {{ Route::is('Program*') ? 'active' : '' }}"
+                                        href="{{ route('Program.show',$item->divisi->program->id) }}">
                                         <span class="sidenav-mini-icon"> K </span>
                                         <span class="sidenav-normal"> Lihat Program </span>
                                     </a>

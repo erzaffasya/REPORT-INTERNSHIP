@@ -24,7 +24,7 @@ class Divisi extends Model
     // }
     public function program()
     {
-        return $this->belongsTo(Divisi::class, 'program_id', 'id');
+        return $this->belongsTo(Program::class, 'program_id', 'id');
     }
     public function akses_divisi()
     {

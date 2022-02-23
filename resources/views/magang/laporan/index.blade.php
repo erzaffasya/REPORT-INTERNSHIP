@@ -112,7 +112,7 @@
                     </div>
                     <div class="ms-2">
                       <span class="text-dark font-weight-bold d-block text-sm">Disetujui Mentor</span>
-                      <span class="text-xs d-block">Minggu ke-1</span>
+                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
                     </div>
                   </div>
                 @else
@@ -122,7 +122,7 @@
                     </div>
                     <div class="ms-2">
                       <span class="text-dark font-weight-bold d-block text-sm">Belum dibuat</span>
-                      <span class="text-xs d-block">Minggu ke- {{ $item->mingguan }}</span>
+                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
                     </div>
                   </div>
                 @endif
