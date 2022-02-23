@@ -12,11 +12,13 @@ class Akses_divisi extends Model
     protected $fillable = [
         'user_id',
         'divisi_id',
+        'akses_proggram_id'
     ];
 
     protected $casts = [ 
         'user_id' => 'integer', 
-        'divisi_id' => 'integer',];
+        'divisi_id' => 'integer',
+        'akses_program_id' => 'integer'];
 
     protected $primaryKey = 'id';
 
@@ -25,11 +27,7 @@ class Akses_divisi extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    
-    public function divisi()
-    {
-        return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
-    }
+
 
 
 
