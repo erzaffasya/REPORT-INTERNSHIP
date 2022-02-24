@@ -212,8 +212,8 @@
 
                                                 </div>
                                                 <div class="mx-auto">
-                                                    <p class="text-xs mb-0 text-secondary font-weight-bold">Company</p>
-                                                    <span class="text-xs font-weight-bolder">Apple</span>
+                                                    <p class="text-xs mb-0 text-secondary font-weight-bold">Program</p>
+                                                    <span class="text-xs font-weight-bolder">{{ $item->divisi->program->judul }}</span>
                                                 </div>
                                             </div>
                                         </div>
