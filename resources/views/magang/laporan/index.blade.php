@@ -6,11 +6,17 @@
           <div class="card position-sticky top-1">
             <ul class="nav flex-column bg-white border-radius-lg p-3">
               <li class="nav-item my-4 text-center">
-                <div class="">
-                  <div class="card">
-                    <div class="card-header pb-0 p-3">
-                      <h6 class="mb-0">{{ $divisi->program->judul }}</h6> 
+                <div class="card">
+                  <div class="card-header mx-4 p-3 text-center">
+                    <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                      <i class="fas fa-landmark opacity-10"></i>
                     </div>
+                  </div>
+                  <div class="card-body pt-0 p-3 text-center">
+                    <h6 class="text-center mb-0">PT. Menara Indonesia</h6>
+                    <span class="text-xs">Nama Program</span>
+                    <hr class="horizontal dark my-2">
+                    <h5 class="mb-0">{{ $divisi->program->judul }}</h5>
                   </div>
                 </div>
               </li>
@@ -51,13 +57,23 @@
                 <p class="text-sm mb-0">Lengkapi laporan harian untuk mengisi laporan mingguan</p>
               </div>
               <div class="card-body d-sm-flex pt-0">
-                @if ($item->isVerif == true)
+                @if ($item->isVerif == 1)
                   <div class="d-flex align-items-center mb-sm-0 mb-4">
                     <div>
                       <i class="ni ni-like-2 text-success"></i>
                     </div>
                     <div class="ms-2">
                       <span class="text-dark font-weight-bold d-block text-sm">Disetujui Mentor</span>
+                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
+                    </div>
+                  </div>
+                @elseif($item->isVerif == 2)
+                  <div class="d-flex align-items-center mb-sm-0 mb-4">
+                    <div>
+                      <i class="ni ni-like-2 text-warning"></i>
+                    </div>
+                    <div class="ms-2">
+                      <span class="text-dark font-weight-bold d-block text-sm">Sedang dicek</span>
                       <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
                     </div>
                   </div>
@@ -72,7 +88,9 @@
                     </div>
                   </div>
                 @endif
-                <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button>
+                <div class="mb-0 ms-auto">
+                </div>
+                {{-- <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button> --}}
                 <a href="{{ route('showLaporan', $item->id) }}" class="btn bg-gradient-primary mb-0 ms-2">Lengkapi Laporan</a>
               </div>
             </div>

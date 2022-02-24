@@ -22,7 +22,12 @@ return new class extends Migration
             $table->longText('jumat')->nullable();
             $table->longText('mingguan')->nullable();
             $table->longText('komentar')->nullable();
-            $table->boolean('isVerif')->nullable();
+            $table->integer('isVerif')->nullable();
+            // Ketentuan isVerif
+            // 1 = udah ga revisi atau approve
+            // 0 = revisi
+            // NULL = baru ke create
+            // 2 = mahasiswa ngirim revisi
             $table->foreignId("user_id")->constrained("users")->onDelete("cascade")->onUpdate("cascade");
             $table->foreignId("divisi_id")->constrained("divisi")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();

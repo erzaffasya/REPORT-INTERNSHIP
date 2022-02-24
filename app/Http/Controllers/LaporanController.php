@@ -59,6 +59,7 @@ class LaporanController extends Controller
         }
         if ($request->mingguan != NULL) {
             $Laporan->mingguan = $request->mingguan;
+            $Laporan->isVerif = 2;
         }      
         $Laporan->save();
         // dd($id, $request, $Laporan);

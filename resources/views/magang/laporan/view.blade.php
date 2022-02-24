@@ -18,7 +18,7 @@
                 <span class="text-dark font-weight-bold d-block text-sm">Minggu ke-1</span>
               </li>
               <li class="nav-item my-4 text-center">
-                @if ($laporan->jumat != NULL || $laporan->isVerif == False)
+                @if (($laporan->jumat != NULL && $laporan->mingguan == NULL) || $laporan->isVerif == 0)
                   <button type="button" class="btn bg-gradient-info mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#mingguanModal">
                     Buat Laporan Mingguan
                   </button>
@@ -96,15 +96,11 @@
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
-                @if ($laporan->senin == NULL || $laporan->isVerif == False)
+                @if ($laporan->senin == NULL || $laporan->isVerif == 0)
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
                     Buat Laporan
                   </button>
                 @endif
-                <!-- Button trigger modal -->
-                {{-- <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
-                  Buat Laporan
-                </button> --}}
               </div>
             </div>
           </div>
@@ -127,7 +123,7 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->senin != NULL || $laporan->isVerif == False && $laporan->selasa != NULL)
+                @if (($laporan->senin != NULL && $laporan->selasa == NULL) || $laporan->isVerif == 0 )
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#selasaModal">
                     Buat Laporan 1
                   </button>
@@ -158,16 +154,14 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->selasa != NULL || $laporan->isVerif == False)
+                @if (($laporan->selasa != NULL && $laporan->rabu == NULL) || $laporan->isVerif == 0 )
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#rabuModal">
-                    Buat Laporan
+                    Buat Laporan 1
                   </button>
                 @elseif ($laporan->selasa == Null)
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#rabuModal" disabled>
-                    Buat Laporan
+                    Buat Laporan 2 dan 3
                   </button>
-                @else
-
                 @endif
               </div>
             </div>
@@ -191,16 +185,14 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->rabu != NULL || $laporan->isVerif == False)
+                @if (($laporan->rabu != NULL && $laporan->kamis == NULL) || $laporan->isVerif == 0 )
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#kamisModal">
-                    Buat Laporan
+                    Buat Laporan 1
                   </button>
                 @elseif ($laporan->rabu == Null)
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#kamisModal" disabled>
-                    Buat Laporan
+                    Buat Laporan 2 dan 3
                   </button>
-                @else
-
                 @endif
               </div>
             </div>
@@ -224,16 +216,14 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
-                @if ($laporan->kamis != NULL || $laporan->isVerif == False)
+                @if (($laporan->kamis != NULL && $laporan->jumat == NULL) || $laporan->isVerif == 0 )
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#jumatModal">
-                    Buat Laporan
+                    Buat Laporan 1
                   </button>
                 @elseif ($laporan->kamis == Null)
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#jumatModal" disabled>
-                    Buat Laporan
+                    Buat Laporan 2 dan 3
                   </button>
-                @else
-
                 @endif
               </div>
             </div>
