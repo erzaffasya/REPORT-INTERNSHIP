@@ -123,7 +123,7 @@
                   <label class="form-check-label" for="rememberMe">Remember me</label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn bg-gradient-info w-100 my-4 mb-2">Sign in</button>
+                  <button type="submit" class="btn bg-gradient-info w-100 my-4 mb-2">Masuk</button>
                 </div>
                 <div class="mb-2 position-relative text-center">
                   <p class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3">
@@ -131,7 +131,7 @@
                   </p>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn bg-gradient-dark w-100 mt-2 mb-4">Sign up</button>
+                  <a href="{{ url('register') }}" class="btn bg-gradient-dark w-100 mt-2 mb-4">Daftar Akun</a>
                 </div>
               </form>
             </div>
@@ -141,7 +141,7 @@
     </div>
   </main>
   <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-  <footer class="footer py-5">
+  {{-- <footer class="footer py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mb-4 mx-auto text-center">
@@ -192,7 +192,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Core JS Files   -->
   <script src="tadmin/assets/js/core/popper.min.js"></script>
