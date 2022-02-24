@@ -28,7 +28,7 @@ class Laporan extends Model
     protected $primaryKey = 'id';
 
 
-    public function user()
+    public function user1()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
