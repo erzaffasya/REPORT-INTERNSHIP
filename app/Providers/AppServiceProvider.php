@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('AksesDivisi', Akses_divisi::all());
+        // View::share('AksesDivisi', Akses_divisi::all());
     }
 }
