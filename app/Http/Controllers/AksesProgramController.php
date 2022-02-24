@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class AksesProgramController extends Controller
 {
-    public function index()
+    public function index($id)
     {
         $akses_program = Akses_program::where('user_id', 'id')->get();
-        $program = Program::where('divisi_id', 'id')->first();
+        $program = Program::where('program_id', $id)->first();
         return view('admin.akses_program.index', compact('akses_program', 'program'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -23,13 +23,14 @@ class AksesProgramController extends Controller
     {
         // $kategori = Kategori::all();
         $user = User::doesnthave('akses_program')->get();
-        $program = Program::where('id', $id)->first();
+        $program = Program::find($id);
         // dd($user);
         return view('admin.akses_program.tambah', compact('user', 'program'));
     }
 
     public function store(Request $request)
     {
+        // dd($request);
         Akses_program::create([
             'program_id' => $request->program_id,
             'user_id' => $request->user_id,

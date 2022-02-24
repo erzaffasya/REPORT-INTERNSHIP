@@ -25,6 +25,10 @@ class Akses_program extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function akses_divisi()
+    {
+        return $this->belongsTo(Akses_divisi::class, 'user_id', 'user_id');
+    }
     
     public function program()
     {

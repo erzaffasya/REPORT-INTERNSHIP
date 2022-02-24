@@ -11,7 +11,8 @@ class AksesDivisiController extends Controller
 {
     public function create($id)
     {
-        $user = User::doesnthave('akses_divisi')->get();
+        $user = Akses_program::doesnthave('akses_divisi')->get();
+        // dd($user);
         $divisi = Divisi::where('id', $id)->first();
         return view('admin.akses_divisi.tambah', compact('divisi', 'user'));
     }
@@ -21,11 +22,6 @@ class AksesDivisiController extends Controller
             'user_id' => 'required',
             'divisi_id' =>'required'
         ]);
-
-        // $date = date("his");
-        // $extension = $request->file('gambar1')->extension();
-        // $file_name = "akses_program_$date.$extension";
-        // $path = $request->file('gambar1')->storeAs('public/akses_program', $file_name);
 
         Akses_divisi::create([
             'user_id' => $request->user_id,
