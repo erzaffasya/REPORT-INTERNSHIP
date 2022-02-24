@@ -33,14 +33,14 @@
                                 <td class="align-middle text-center">
                                     <p class="text-xs font-weight-bold mb-0">{{ $item->name }}</p>
                                 </td>
-                                <form action="{{ url('storeAksesProgram') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="user_id" value="{{ $item->id }}">
-                                    <input type="hidden" name="program_id" value="{{ $program->id }}">
                                     <td>
+                                        <form action="{{ url('storeAksesProgram') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="user_id" value="{{ $item->id }}">
+                                            <input type="hidden" name="program_id" value="{{ $program->id }}">
                                         <button type="submit" class="btn btn-success btn-sm">Tambah</button>
+                                    </form>
                                     </td>
-                                </form>
                             </tr>
                         @endforeach
                     </tbody>
@@ -48,12 +48,12 @@
             </div>
         </div>
     </div>
-    {{-- @push('scripts')
+    @push('scripts')
         <script>
             const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {
                 searchable: true,
                 fixedHeight: true
             });
         </script>
-    @endpush --}}
+    @endpush
 </x-app-layout>

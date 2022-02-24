@@ -5,6 +5,7 @@ use App\Http\Controllers\AksesDivisiController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
-});
+
 
 
 Route::get('laporan', [LaporanController::class, 'index'])->name('indexLaporan');
@@ -56,6 +55,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
     Route::get('Divisi/{divisi}/Laporan', [LaporanController::class, 'index'])->name('indexLaporan');
     Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
     Route::put('/updateLaporan/{id}', [LaporanController::class, 'update'])->name('updateLaporan');
@@ -74,6 +76,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('storeAksesProgram', 'store');
         Route::put('aksesProgram/{id}', 'update');
         Route::get('destroyAksesProgram/{id}', 'delete');
+    });
+    Route::controller(UserController::class)->group(function (){
+        Route::get('user', 'index');
+        Route::post('storeUser', 'store')->name('storeUser');
+        Route::put('updateUser/{id}', 'update')->name('updateUser');
+        Route::delete('deleteUser/{id}', 'delete')->name('deleteUser');
     });
     Route::controller(AksesDivisiController::class)->group(function () {
         Route::get('aksesDivisi', 'index');
