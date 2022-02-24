@@ -16,7 +16,9 @@
 <script src="{{asset('tadmin/assets/js/plugins/chartjs.min.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/threejs.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/orbit-controls.js')}}"></script>
-
+  <!-- Js conf delete-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

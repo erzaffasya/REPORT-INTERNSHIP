@@ -32,12 +32,6 @@ Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDose
 
 Route::resource('Program', ProgramController::class);
 Route::resource('Divisi', DivisiController::class);
-Route::controller(UserController::class)->group(function (){
-    Route::get('user', 'index');
-    Route::post('storeUser', 'store')->name('storeUser');
-    Route::put('updateUser/{id}', 'update')->name('updateUser');
-    Route::delete('deleteUser/{id}', 'delete')->name('deleteUser');
-});
 Route::controller(AksesProgramController::class)->group(function () {
     Route::get('aksesProgram', 'index');
     Route::get('tambahAksesProgram/{id}', 'create');
@@ -82,6 +76,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('storeAksesProgram', 'store');
         Route::put('aksesProgram/{id}', 'update');
         Route::get('destroyAksesProgram/{id}', 'delete');
+    });
+    Route::controller(UserController::class)->group(function (){
+        Route::get('user', 'index');
+        Route::post('storeUser', 'store')->name('storeUser');
+        Route::put('updateUser/{id}', 'update')->name('updateUser');
+        Route::delete('deleteUser/{id}', 'delete')->name('deleteUser');
     });
     Route::controller(AksesDivisiController::class)->group(function () {
         Route::get('aksesDivisi', 'index');

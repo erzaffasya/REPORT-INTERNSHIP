@@ -52,7 +52,7 @@
                       <form id="form-delete" action="{{url('deleteUser', $i->id)}}" method="POST" style="display: inline">
                         @csrf
                         @method("DELETE")
-                        <button type="submit" class="btn btn-sm bg-gradient-danger mb-0" style="padding: 10px 24px"><i class="fas fa-trash"></i>&nbsp; Hapus</button>
+                        <button type="submit" class="btn btn-sm bg-gradient-danger mb-0 show_confirm" style="padding: 10px 24px"><i class="fas fa-trash"></i>&nbsp; Hapus</button>
                       </form>
                     </div>
                   </td>
@@ -165,6 +165,24 @@
     searchable: true,
     fixedHeight: true
   });
+  $('.show_confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                title: `Hapus Data?`,
+                text: "Jika data terhapus, data akan hilang selamanya!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+              if (willDelete) {
+                form.submit();
+              }
+            });
+        });
+    
       </script>
       @endpush
 </x-app-layout>
