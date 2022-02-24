@@ -105,7 +105,7 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 @if ($laporan->senin == NULL || $laporan->isVerif == 0)
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal-{{$laporan->id}}">
                     Buat Laporan
                   </button>
                 @endif
@@ -239,7 +239,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal fade" id="seninModal-{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="seninModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
