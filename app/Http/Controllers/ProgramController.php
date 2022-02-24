@@ -17,14 +17,14 @@ class ProgramController extends Controller
     public function index()
     {
         $Program = Program::all();
-        return view('admin.Program.index', compact('Program'))
+        return view('admin.program.index', compact('Program'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
         // $kategori = Kategori::all();
-        return view('admin.Program.tambah');
+        return view('admin.program.tambah');
     }
 
     public function store(Request $request)
@@ -75,7 +75,7 @@ class ProgramController extends Controller
     {
         $Program = Program::find($id);
         // $kategori = Kategori::all();
-        return view('admin.Program.edit',compact('Program'));
+        return view('admin.program.edit',compact('Program'));
     }
 
     public function update(Request $request, $id)

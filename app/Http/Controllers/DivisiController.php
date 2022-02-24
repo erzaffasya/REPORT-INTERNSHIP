@@ -14,14 +14,14 @@ class DivisiController extends Controller
     public function index()
     {
         $Divisi = Divisi::all();
-        return view('admin.Divisi.index', compact('Divisi'))
+        return view('admin.divisi.index', compact('Divisi'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
         // $kategori = Kategori::all();
-        return view('admin.Divisi.tambah');
+        return view('admin.divisi.tambah');
     }
 
     public function store(Request $request)
@@ -60,7 +60,7 @@ class DivisiController extends Controller
         // dd($Divisi);
         // dd($Laporan->where('isVerif', '!=', 1));
         $Divisiselect = Divisi::where('id', $id)->first();
-        return view('admin.Divisi.show', compact('Divisi','Divisiselect','Laporan','Akses_divisi', 'akses_program', 'Laporanselect'))
+        return view('admin.divisi.show', compact('Divisi','Divisiselect','Laporan','Akses_divisi', 'akses_program', 'Laporanselect'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -69,7 +69,7 @@ class DivisiController extends Controller
     {
         $Divisi = Divisi::find($id);
         // $kategori = Kategori::all();
-        return view('admin.Divisi.edit',compact('Divisi'));
+        return view('admin.divisi.edit',compact('Divisi'));
     }
 
     public function update(Request $request, $id)
