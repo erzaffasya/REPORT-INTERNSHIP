@@ -79,8 +79,10 @@
 
 
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#user" class="nav-link " aria-controls="user" role="button"
-                        aria-expanded="false">
+                    {{-- <a data-bs-toggle="collapse" href="#user" class="nav-link " aria-controls="user" role="button"
+                        aria-expanded="false"> --}}
+                        <a class="nav-link {{ Route::is('user.*') ? 'active' : '' }}"
+                        href="{{ url('user') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
@@ -108,7 +110,7 @@
                         </div>
                         <span class="nav-link-text ms-1">User</span>
                     </a>
-                    <div class="collapse " id="user">
+                    {{-- <div class="collapse " id="user">
                         <ul class="nav ms-4 ps-3">
                             <li class="nav-item ">
                                 <a class="nav-link " href="../../pages/applications/kanban.html">
@@ -117,7 +119,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
             @endif
 
