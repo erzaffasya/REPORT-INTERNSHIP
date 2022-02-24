@@ -9,7 +9,7 @@
                 <div class="">
                   <div class="card">
                     <div class="card-header pb-0 p-3">
-                      <h6 class="mb-0">{{ $divisi->program->judul }}</h6>
+                      <h6 class="mb-0">{{ $divisi->program->judul }}</h6> 
                     </div>
                   </div>
                 </div>

@@ -133,7 +133,7 @@
                   </button>
                 @elseif ($laporan->senin == Null)
                   <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#selasaModal" disabled>
-                    Buat Laporan 2
+                    Buat Laporan 2 dan 3
                   </button>
                 @endif
               </div>
