@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\akses_divisi;
+use App\Models\Akses_divisi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
