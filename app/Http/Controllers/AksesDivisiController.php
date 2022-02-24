@@ -11,7 +11,8 @@ class AksesDivisiController extends Controller
 {
     public function create($id)
     {
-        $user = User::doesnthave('akses_divisi')->get();
+        $user = Akses_program::doesnthave('akses_divisi')->get();
+        // dd($user);
         $divisi = Divisi::where('id', $id)->first();
         return view('admin.akses_divisi.tambah', compact('divisi', 'user'));
     }
@@ -21,7 +22,7 @@ class AksesDivisiController extends Controller
             'user_id' => 'required',
             'divisi_id' =>'required'
         ]);
-        
+
         Akses_divisi::create([
             'user_id' => $request->user_id,
             'divisi_id' => $request->divisi_id
