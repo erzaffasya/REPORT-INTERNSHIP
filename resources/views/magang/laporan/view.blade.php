@@ -27,7 +27,7 @@
               @endif
               <li class="nav-item my-3 text-center">
                 @if (($laporan->jumat != NULL && $laporan->mingguan == NULL) || $laporan->isVerif == 0)
-                  <button type="button" class="btn bg-gradient-info mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#mingguanModal">
+                  <button type="button" class="btn bg-gradient-info mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#mingguanModal-{{$laporan->id}}">
                     Buat Laporan Mingguan
                   </button>
                 @else
@@ -105,7 +105,7 @@
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
                 @if ($laporan->senin == NULL || $laporan->isVerif == 0)
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal">
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#seninModal-{{$laporan->id}}">
                     Buat Laporan
                   </button>
                 @endif
@@ -132,7 +132,7 @@
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
                 @if (($laporan->senin != NULL && $laporan->selasa == NULL) || $laporan->isVerif == 0 )
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#selasaModal">
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#selasaModal-{{$laporan->id}}">
                     Buat Laporan 1
                   </button>
                 @elseif ($laporan->senin == Null)
@@ -163,7 +163,7 @@
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
                 @if (($laporan->selasa != NULL && $laporan->rabu == NULL) || $laporan->isVerif == 0 )
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#rabuModal">
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#rabuModal-{{$laporan->id}}">
                     Buat Laporan 1
                   </button>
                 @elseif ($laporan->selasa == Null)
@@ -194,7 +194,7 @@
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
                 @if (($laporan->rabu != NULL && $laporan->kamis == NULL) || $laporan->isVerif == 0 )
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#kamisModal">
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#kamisModal-{{$laporan->id}}">
                     Buat Laporan 1
                   </button>
                 @elseif ($laporan->rabu == Null)
@@ -225,7 +225,7 @@
               <div class="card-body d-sm-flex pt-0">
                 <!-- Button trigger modal -->
                 @if (($laporan->kamis != NULL && $laporan->jumat == NULL) || $laporan->isVerif == 0 )
-                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#jumatModal">
+                  <button type="button" class="btn bg-gradient-primary mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#jumatModal-{{$laporan->id}}">
                     Buat Laporan 1
                   </button>
                 @elseif ($laporan->kamis == Null)
@@ -239,8 +239,9 @@
         </div>
       </div>
     </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="seninModal" tabindex="-1" role="dialog" aria-labelledby="seninModalLabel" aria-hidden="true">
+    <div class="modal fade" id="seninModal-{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="seninModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -254,7 +255,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="senin" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="senin" rows="5" required>{{$laporan->senin}}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -265,8 +266,9 @@
         </div>
       </div>
     </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="selasaModal" tabindex="-1" role="dialog" aria-labelledby="selasaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="selasaModal-{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="selasaModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -280,7 +282,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="selasa" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="selasa" rows="5" required>{{$laporan->selasa}}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -291,8 +293,9 @@
         </div>
       </div>
     </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="rabuModal" tabindex="-1" role="dialog" aria-labelledby="rabuModalLabel" aria-hidden="true">
+    <div class="modal fade" id="rabuModal-{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="rabuModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -306,7 +309,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="rabu" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="rabu" rows="5" required>{{$laporan->rabu}}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -317,8 +320,9 @@
         </div>
       </div>
     </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="kamisModal" tabindex="-1" role="dialog" aria-labelledby="kamisModalLabel" aria-hidden="true">
+    <div class="modal fade" id="kamisModal-{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="kamisModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -332,7 +336,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="kamis" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="kamis" rows="5" required>{{$laporan->kamis}}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -343,8 +347,9 @@
         </div>
       </div>
     </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="jumatModal" tabindex="-1" role="dialog" aria-labelledby="jumatModalLabel" aria-hidden="true">
+    <div class="modal fade" id="jumatModal-{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="jumatModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -358,7 +363,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="jumat" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="jumat" rows="5" required>{{$laporan->jumat}}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -369,8 +374,9 @@
         </div>
       </div>
     </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="mingguanModal" tabindex="-1" role="dialog" aria-labelledby="mingguanModalLabel" aria-hidden="true">
+    <div class="modal fade" id="mingguanModal-{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="mingguanModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -384,7 +390,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control" aria-label="With textarea" name="mingguan" rows="5" required></textarea>
+                <textarea class="form-control" aria-label="With textarea" name="mingguan" rows="5" required>{{$laporan->mingguan}}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
