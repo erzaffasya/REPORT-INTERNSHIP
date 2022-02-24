@@ -5,6 +5,7 @@ use App\Http\Controllers\AksesDivisiController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,12 @@ Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDose
 
 Route::resource('Program', ProgramController::class);
 Route::resource('Divisi', DivisiController::class);
+Route::controller(UserController::class)->group(function (){
+    Route::get('user', 'index');
+    Route::post('storeUser', 'store')->name('storeUser');
+    Route::put('updateUser/{id}', 'update')->name('updateUser');
+    Route::delete('deleteUser/{id}', 'delete')->name('deleteUser');
+});
 Route::controller(AksesProgramController::class)->group(function () {
     Route::get('aksesProgram', 'index');
     Route::get('tambahAksesProgram/{id}', 'create');

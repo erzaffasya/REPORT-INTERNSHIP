@@ -380,9 +380,6 @@
                             <div class="ms-auto my-auto mt-lg-0 mt-4">
                                 @can('admin')
                                     <div class="ms-auto my-auto">
-                                        {{-- <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#tambahAnggota">
-                                        +&nbsp; Anggota 
-                                    </button> --}}
                                         <a href="{{ url('tambahAksesProgram', $Program->id) }}"
                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                         <button type="button" class="btn btn-outline-primary btn-sm mb-0"
@@ -480,7 +477,6 @@
     </div>
     <div class="col-md-4">
 
-        <!-- Discussion Modal -->
         <div class="modal fade" id="tambahAnggota" tabindex="-1" role="dialog" aria-labelledby="tambahAnggotaTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
