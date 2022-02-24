@@ -21,12 +21,7 @@ class AksesDivisiController extends Controller
             'user_id' => 'required',
             'divisi_id' =>'required'
         ]);
-
-        // $date = date("his");
-        // $extension = $request->file('gambar1')->extension();
-        // $file_name = "akses_program_$date.$extension";
-        // $path = $request->file('gambar1')->storeAs('public/akses_program', $file_name);
-
+        
         Akses_divisi::create([
             'user_id' => $request->user_id,
             'divisi_id' => $request->divisi_id
