@@ -20,7 +20,9 @@
                                             alt="slack_logo">
                                     </div>
                                     <div class="ms-3 my-auto">
-                                        <h6>{{ $item->judul }}</h6>
+                                        <a href="{{route('Program.show',$item->id)}}">
+                                            <h6>{{ $item->judul }}</h6>
+                                        </a>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="dropdown">
