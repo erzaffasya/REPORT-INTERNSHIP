@@ -66,7 +66,7 @@ class ProgramController extends Controller
         $Program = Program::where('id', $id)->first();
         $periode = Carbon::parse($Program->periode_mulai)->diffInDays(Carbon::parse($Program->periode_berakhir),false) + 1;
         
-        return view('admin.Program.show', compact('Program','Akses_program','Divisi','periode', 'user'))
+        return view('admin.program.show', compact('Program','Akses_program','Divisi','periode', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
