@@ -17,7 +17,15 @@
                 <h5>22 - 25 Feb 2022</h5>
                 <span class="text-dark font-weight-bold d-block text-sm">Minggu ke-1</span>
               </li>
-              <li class="nav-item my-4 text-center">
+              @if ($laporan->isVerif == 0 || $laporan->isVerif == 2)
+                <li class="nav-item mx-3 mt-3 text-start">
+                  <span class="text-dark font-weight-bold d-block text-sm">Revisi</span>
+                  <p align = "justify">
+                    {{ $laporan->komentar }}
+                  </p>
+                </li>
+              @endif
+              <li class="nav-item my-3 text-center">
                 @if (($laporan->jumat != NULL && $laporan->mingguan == NULL) || $laporan->isVerif == 0)
                   <button type="button" class="btn bg-gradient-info mb-0 ms-2" data-bs-toggle="modal" data-bs-target="#mingguanModal">
                     Buat Laporan Mingguan
