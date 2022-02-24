@@ -259,33 +259,18 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card-body pb-0 p-3 mt-4">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <div class="chart">
-                                    <canvas id="chart-pie" class="chart-canvas" height="200"></canvas>
-                                </div>
+                    <div class="col-md-6 mt-md-0 mt-4">
+                        <div class="card z-index-2">
+                          <div class="card-header p-3 pb-0">
+                            <h6>Pie chart</h6>
+                          </div>
+                          <div class="card-body p-3">
+                            <div class="chart">
+                              <canvas id="pie-chart" class="chart-canvas" height="300"></canvas>
                             </div>
-                            {{-- <div class="col-5 my-auto">
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-info"></i>
-                                    <span class="text-dark text-xs">Facebook</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-primary"></i>
-                                    <span class="text-dark text-xs">Direct</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-dark"></i>
-                                    <span class="text-dark text-xs">Organic</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-secondary"></i>
-                                    <span class="text-dark text-xs">Referral</span>
-                                </span>
-                            </div> --}}
+                          </div>
                         </div>
-                    </div>
+                      </div>
                     {{-- <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
                         <div class="w-60">
                             <p class="text-sm">
@@ -516,7 +501,7 @@
         </div>
     </div>
     @push('scripts')
-        <script>
+        {{-- <script>
             var ctx2 = document.getElementById("chart-pie").getContext("2d");
 
             var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
@@ -584,6 +569,65 @@
                     },
                 },
             });
+        </script> --}}
+        <script>
+                // Pie chart
+    var ctx4 = document.getElementById("pie-chart").getContext("2d");
+
+new Chart(ctx4, {
+  type: "pie",
+  data: {
+    labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
+    datasets: [{
+      label: "Projects",
+      weight: 9,
+      cutout: 0,
+      tension: 0.9,
+      pointRadius: 2,
+      borderWidth: 2,
+      backgroundColor: ['#17c1e8', '#cb0c9f', '#3A416F', '#a8b8d8'],
+      data: [15, 20, 12, 60],
+      fill: false
+    }],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      }
+    },
+    interaction: {
+      intersect: false,
+      mode: 'index',
+    },
+    scales: {
+      y: {
+        grid: {
+          drawBorder: false,
+          display: false,
+          drawOnChartArea: false,
+          drawTicks: false,
+        },
+        ticks: {
+          display: false
+        }
+      },
+      x: {
+        grid: {
+          drawBorder: false,
+          display: false,
+          drawOnChartArea: false,
+          drawTicks: false,
+        },
+        ticks: {
+          display: false,
+        }
+      },
+    },
+  },
+});
         </script>
         <script>
             $('.btn-update').click(function(event) {
