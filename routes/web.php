@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
-});
+
 
 
 Route::get('laporan', [LaporanController::class, 'index'])->name('indexLaporan');
@@ -56,6 +54,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
     Route::get('Divisi/{divisi}/Laporan', [LaporanController::class, 'index'])->name('indexLaporan');
     Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
     Route::put('/updateLaporan/{id}', [LaporanController::class, 'update'])->name('updateLaporan');
