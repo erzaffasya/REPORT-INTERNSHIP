@@ -147,7 +147,7 @@
                                     <h6 class="mb-0">Laporan Harian</h6>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end align-items-center">
-                                    <small>23 - 30 March 2020</small>
+                                    <small></small>
                                 </div>
                             </div>
                             <hr class="horizontal dark mb-0">
@@ -198,7 +198,7 @@
                                                 <div>
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Tanggal</p>
                                                     <span
-                                                        class="text-xs font-weight-bolder">{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</span>
+                                                        class="text-xs font-weight-bolder">{{$item->created_at->isoFormat('D')}}-{{$item->created_at->addDays(6)->isoFormat('D MMM Y')}}</span>
                                                 </div>
                                                 <div class="ms-auto">
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Status</p>

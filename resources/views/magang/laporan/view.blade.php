@@ -14,7 +14,7 @@
                 </a>
               </li>
               <li class="nav-item mx-3 mt-2 text-start">
-                <h5>22 - 25 Feb 2022</h5>
+                <h5>{{$laporan->created_at->isoFormat('D')}}-{{$laporan->created_at->addDays(6)->isoFormat('D MMM Y')}}</h5>
                 <span class="text-dark font-weight-bold d-block text-sm">Minggu ke-1</span>
               </li>
               @if ($laporan->isVerif == 0 || $laporan->isVerif == 2)
@@ -89,7 +89,7 @@
           <!-- Card Laporan Harian -->
           <div class="card mt-4">
             <div class="card-header">
-              <h5>Senin, 21 Feb 2022</h5>
+              <h5>{{$laporan->created_at->format('l, d M Y')}}</h5>
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
@@ -115,7 +115,7 @@
           <!-- Card Laporan Harian -->
           <div class="card mt-4">
             <div class="card-header">
-              <h5>Selasa, 21 Feb 2022</h5>
+              <h5>{{$laporan->created_at->addDays(1)->format('l, d M Y')}}</h5>
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
@@ -146,7 +146,7 @@
           <!-- Card Laporan Harian -->
           <div class="card mt-4">
             <div class="card-header">
-              <h5>Rabu, 21 Feb 2022</h5>
+              <h5>{{$laporan->created_at->addDays(2)->format('l, d M Y')}}</h5>
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
@@ -177,7 +177,7 @@
           <!-- Card Laporan Harian -->
           <div class="card mt-4">
             <div class="card-header">
-              <h5>Kamis, 21 Feb 2022</h5>
+              <h5>{{$laporan->created_at->addDays(3)->format('l, d M Y')}}</h5>
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">
@@ -208,7 +208,7 @@
           <!-- Card Laporan Harian -->
           <div class="card mt-4">
             <div class="card-header">
-              <h5>Jumat, 21 Feb 2022</h5>
+              <h5>{{$laporan->created_at->addDays(4)->format('l, d M Y')}}</h5>
             </div>
             <div class="row">
               <div class="card-body d-sm-flex pt-0">

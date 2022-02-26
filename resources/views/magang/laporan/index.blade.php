@@ -53,7 +53,7 @@
           @foreach ($laporan as $item)
             <div class="card mt-4" id="delete">
               <div class="card-header">
-                <h5>22 - 25 Feb 2022</h5>
+                <h5>{{$item->created_at->isoFormat('D')}}-{{$item->created_at->addDays(6)->isoFormat('D MMM Y')}} </h5>
                 <p class="text-sm mb-0">Lengkapi laporan harian untuk mengisi laporan mingguan</p>
               </div>
               <div class="card-body d-sm-flex pt-0">

@@ -164,10 +164,10 @@
                             </div>
                             <span class="nav-link-text ms-1">{{$item->divisi->program->judul}}</span>
                         </a>
-                        <div class="collapse {{ Route::is('indexLaporan*','or','Program*') ? 'show' : '' }} {{ request()->is('Program*') ? 'show' : '' }}" id="program">
+                        <div class="collapse {{ Route::is('indexLaporan*','Program*','showLaporan') ? 'show' : '' }} {{ request()->is('Program*') ? 'show' : '' }}" id="program">
                             <ul class="nav ms-4 ps-3">
                                 <li class="nav-item ">
-                                    <a class="nav-link {{ Route::is('indexLaporan') ? 'active' : '' }}"
+                                    <a class="nav-link {{ Route::is('indexLaporan','showLaporan') ? 'active' : '' }}"
                                         href="{{ url('Divisi/'.$item->divisi->id.'/Laporan') }}">
                                         <span class="sidenav-mini-icon"> K </span>
                                         <span class="sidenav-normal"> Laporan Harian </span>
