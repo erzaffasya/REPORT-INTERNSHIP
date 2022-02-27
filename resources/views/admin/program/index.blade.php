@@ -34,7 +34,7 @@
                                             <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3"
                                                 aria-labelledby="navbarDropdownMenuLink">
                                                 <a class="dropdown-item" href="{{route('Program.edit',$item->id)}}">Ubah</a>
-                                                <a class="dropdown-item" href="javascript:;">Hapus</a>
+                                                <a class="dropdown-item" href="{{url('destroyProgram', $item->id)}}">Hapus</a>
                                                 <a class="dropdown-item" href="{{route('Program.show',$item->id)}}">Detail Program</a>
                                             </div>
                                         </div>
