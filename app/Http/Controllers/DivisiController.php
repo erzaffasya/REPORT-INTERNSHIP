@@ -49,18 +49,15 @@ class DivisiController extends Controller
         ]);
         return back();
     }
-    public function show($id, $program)
+    public function show($program,$divisi)
     {
         $akses_program = Akses_program::where('program_id', 'id')->get();
         // $program = Program::where('divisi_id', 'id')->first();
-        $Akses_divisi = Akses_divisi::where('divisi_id',$id)->get();
-        $Divisi = Divisi::where('program_id',$id)->first();
-        $Laporan = Laporan::where('divisi_id',$id)->get();
-        $Laporanselect = Laporan::find($id);
-        // dd($Divisi);
-        // dd($Laporan->where('isVerif', '!=', 1));
-        $Divisiselect = Divisi::where('id', $id)->first();
-        return view('admin.divisi.show', compact('Divisi','Divisiselect','Laporan','Akses_divisi', 'akses_program', 'Laporanselect'))
+        $Akses_divisi = Akses_divisi::where('divisi_id',$divisi)->get();
+        $Divisi = Divisi::find($divisi);
+        $Laporan = Laporan::where('divisi_id',$divisi)->get();
+        $Laporanselect = Laporan::find($divisi);
+        return view('admin.divisi.show', compact('Divisi','Laporan','Akses_divisi', 'akses_program', 'Laporanselect'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
