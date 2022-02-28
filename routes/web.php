@@ -31,7 +31,7 @@ Route::put('/updateDataDosen/{id}', [DivisiController::class, 'updateDataDosen']
 Route::delete('/deleteDataDosen/{id}', [DivisiController::class, 'deleteDataDosen'])->name('deleteDataDosen');
 
 Route::resource('Program', ProgramController::class);
-Route::resource('Divisi', DivisiController::class);
+Route::resource('Divisi', DivisiController::class)->except('destroy');
 Route::controller(AksesProgramController::class)->group(function () {
     Route::get('aksesProgram', 'index');
     Route::get('tambahAksesProgram/{id}', 'create');
@@ -70,7 +70,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('Program', ProgramController::class)->except('destroy');
     Route::get('destroyProgram/{id}', [ProgramController::class, 'destroy']);
-    Route::resource('Divisi', DivisiController::class);
+    Route::resource('Divisi', DivisiController::class)->except('destroy');
+    Route::get('destroyDivisi/{id}', [DivisiController::class, 'destroy']);
     Route::controller(AksesProgramController::class)->group(function () {
         Route::get('aksesProgram', 'index');
         Route::get('tambahAksesProgram/{id}', 'create');

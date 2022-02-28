@@ -319,6 +319,8 @@
                                                     class="btn btn-outline-primary btn-sm mb-0">View
                                                     Project</a>
                                                 @can('admin')
+                                                <a type="button" href="{{ url('destroyDivisi', $item->id) }}"
+                                                    class="btn btn-outline-primary btn-sm mb-0">Hapus</a>
                                                     <a type="button" href="{{ route('Divisi.edit', $item->id) }}"
                                                         class="btn btn-outline-primary btn-sm mb-0">Edit</a>
                                                 @endcan

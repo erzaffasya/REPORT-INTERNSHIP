@@ -105,10 +105,10 @@ class DivisiController extends Controller
 
     public function destroy($id)
     {
-        $Divisi = Divisi::findOrFail($id);
+        Divisi::where('id',$id)->delete();
         // Storage::delete("public/Divisi/$Divisi->gambar");
-        $Divisi->delete();
-        return redirect()->route('Divisi.index')
+        // $Divisi->delete();
+        return back()
             ->with('delete', 'Divisi Berhasil Dihapus');
     }
 }
