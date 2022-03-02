@@ -55,6 +55,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::post('/laporan-manual', [ProgramController::class, 'laporanManual'])->name('laporanManual');
     Route::get('/', function () {
         return view('admin.index');
     });
