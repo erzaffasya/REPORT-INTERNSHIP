@@ -49,7 +49,7 @@ class KirimLaporan extends Command
                 $divisi = Divisi::select('akses_divisi.user_id','akses_divisi.divisi_id','divisi.program_id')->join('akses_divisi','akses_divisi.divisi_id','divisi.id')->where('divisi.program_id',$item->id)->get();
                 foreach($divisi as $divisis){
                     Laporan::create([
-                        'isVerif' => False,
+                        'isVerif' => 4,
                         'user_id' => $divisis->user_id,
                         'divisi_id' => $divisis->divisi_id,
                     ]);
