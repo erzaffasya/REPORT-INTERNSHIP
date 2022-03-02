@@ -97,13 +97,13 @@
                         </p>
                     </div>
                 </div>
-                <form method="post" action="{{ route('laporanManual') }}">
+                {{-- <form method="post" action="{{ route('laporanManual') }}">
                     @csrf
                     <button
                         class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center">
                         <i class="fas fa-info" aria-hidden="true"></i>
                     </button>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>
