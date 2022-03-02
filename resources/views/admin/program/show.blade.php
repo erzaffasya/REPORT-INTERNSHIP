@@ -330,8 +330,7 @@
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <a type="button"
                                                     href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
-                                                    class="btn btn-outline-primary btn-sm mb-0">View
-                                                    Project</a>
+                                                    class="btn btn-outline-primary btn-sm mb-0">View</a>
                                                 @can('admin')
                                                     <a type="button" href="{{ url('destroyDivisi', $item->id) }}"
                                                         class="btn btn-outline-primary btn-sm mb-0">Hapus</a>

@@ -110,9 +110,9 @@ class ProgramController extends Controller
 
     public function destroy($id)
     {
-        $Program = Program::findOrFail($id);
+        $Program = Program::where('id', $id)->delete();
         // Storage::delete("public/Program/$Program->gambar");
-        $Program->delete();
+        // $Program->delete();
         return redirect()->route('Program.index')
             ->with('delete', 'Program Berhasil Dihapus');
     }

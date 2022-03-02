@@ -34,7 +34,7 @@
                                             <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3"
                                                 aria-labelledby="navbarDropdownMenuLink">
                                                 <a class="dropdown-item" href="{{route('Program.edit',$item->id)}}">Ubah</a>
-                                                <a class="dropdown-item" href="javascript:;">Hapus</a>
+                                                <a class="dropdown-item" href="{{url('destroyProgram', $item->id)}}">Hapus</a>
                                                 <a class="dropdown-item" href="{{route('Program.show',$item->id)}}">Detail Program</a>
                                             </div>
                                         </div>
@@ -71,27 +71,26 @@
     </div>
 
     @push('scripts')
-    <script type="text/javascript">
- 
-        $('.show_confirm').click(function(event) {
-             var form =  $(this).closest("form");
-             var name = $(this).data("name");
-             event.preventDefault();
-             swal({
-                 title: `Are you sure you want to delete this record?`,
-                 text: "If you delete this, it will be gone forever.",
-                 icon: "warning",
-                 buttons: true,
-                 dangerMode: true,
-             })
-             .then((willDelete) => {
-               if (willDelete) {
-                 form.submit();
-               }
-             });
-         });
-     
-   </script>
-   
+    <script>
+
+$('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Hapus Data?`,
+              text: "Jika data terhapus, data akan hilang selamanya!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+  
+    </script>
     @endpush
 </x-app-layout>
