@@ -261,16 +261,16 @@
                     </div>
                     <div class="col-md-6 mt-md-0 mt-4">
                         <div class="card z-index-2">
-                          <div class="card-header p-3 pb-0">
-                            <h6>Pie chart</h6>
-                          </div>
-                          <div class="card-body p-3">
-                            <div class="chart">
-                              <canvas id="pie-chart" class="chart-canvas" height="300"></canvas>
+                            {{-- <div class="card-header p-3 pb-0">
+                                <h6>Pie chart</h6>
                             </div>
-                          </div>
+                            <div class="card-body p-3">
+                                <div class="chart">
+                                    <canvas id="pie-chart" class="chart-canvas" height="300"></canvas>
+                                </div>
+                            </div> --}}
                         </div>
-                      </div>
+                    </div>
                     {{-- <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
                         <div class="w-60">
                             <p class="text-sm">
@@ -316,11 +316,10 @@
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <a type="button"
                                                     href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
-                                                    class="btn btn-outline-primary btn-sm mb-0">View
-                                                    Project</a>
+                                                    class="btn btn-outline-primary btn-sm mb-0">View</a>
                                                 @can('admin')
-                                                <a type="button" href="{{ url('destroyDivisi', $item->id) }}"
-                                                    class="btn btn-outline-primary btn-sm mb-0">Hapus</a>
+                                                    <a type="button" href="{{ url('destroyDivisi', $item->id) }}"
+                                                        class="btn btn-outline-primary btn-sm mb-0">Hapus</a>
                                                     <a type="button" href="{{ route('Divisi.edit', $item->id) }}"
                                                         class="btn btn-outline-primary btn-sm mb-0">Edit</a>
                                                 @endcan
@@ -573,63 +572,63 @@
             });
         </script> --}}
         <script>
-                // Pie chart
-    var ctx4 = document.getElementById("pie-chart").getContext("2d");
+            // Pie chart
+            var ctx4 = document.getElementById("pie-chart").getContext("2d");
 
-new Chart(ctx4, {
-  type: "pie",
-  data: {
-    labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
-    datasets: [{
-      label: "Projects",
-      weight: 9,
-      cutout: 0,
-      tension: 0.9,
-      pointRadius: 2,
-      borderWidth: 2,
-      backgroundColor: ['#17c1e8', '#cb0c9f', '#3A416F', '#a8b8d8'],
-      data: [15, 20, 12, 60],
-      fill: false
-    }],
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false,
-      }
-    },
-    interaction: {
-      intersect: false,
-      mode: 'index',
-    },
-    scales: {
-      y: {
-        grid: {
-          drawBorder: false,
-          display: false,
-          drawOnChartArea: false,
-          drawTicks: false,
-        },
-        ticks: {
-          display: false
-        }
-      },
-      x: {
-        grid: {
-          drawBorder: false,
-          display: false,
-          drawOnChartArea: false,
-          drawTicks: false,
-        },
-        ticks: {
-          display: false,
-        }
-      },
-    },
-  },
-});
+            new Chart(ctx4, {
+                type: "pie",
+                data: {
+                    labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
+                    datasets: [{
+                        label: "Projects",
+                        weight: 9,
+                        cutout: 0,
+                        tension: 0.9,
+                        pointRadius: 2,
+                        borderWidth: 2,
+                        backgroundColor: ['#17c1e8', '#cb0c9f', '#3A416F', '#a8b8d8'],
+                        data: [15, 20, 12, 60],
+                        fill: false
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                drawBorder: false,
+                                display: false,
+                                drawOnChartArea: false,
+                                drawTicks: false,
+                            },
+                            ticks: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                drawBorder: false,
+                                display: false,
+                                drawOnChartArea: false,
+                                drawTicks: false,
+                            },
+                            ticks: {
+                                display: false,
+                            }
+                        },
+                    },
+                },
+            });
         </script>
         <script>
             $('.btn-update').click(function(event) {
