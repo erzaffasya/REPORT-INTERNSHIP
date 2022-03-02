@@ -35,16 +35,16 @@ class ProgramController extends Controller
             'detail' => 'required',
             'periode_mulai' => 'required',
             'periode_berakhir' => 'required',
-            'status' => 'required', 
+            'status' => 'required',
         ]);
 
         // $date = date("his");
         // $extension = $request->file('gambar1')->extension();
         // $file_name = "Program_$date.$extension";
         // $path = $request->file('gambar1')->storeAs('public/Program', $file_name);
-        if($request->status == NULL){
+        if ($request->status == NULL) {
             $status = false;
-        }else{
+        } else {
             $status = true;
         }
         Program::create([
@@ -60,13 +60,13 @@ class ProgramController extends Controller
     }
     public function show($id)
     {
-        $Akses_program = Akses_program::where('program_id',$id)->get();
-        $Divisi = Divisi::where('program_id',$id)->get();
+        $Akses_program = Akses_program::where('program_id', $id)->get();
+        $Divisi = Divisi::where('program_id', $id)->get();
         $user = User::all();
         $Program = Program::where('id', $id)->first();
-        $periode = Carbon::parse($Program->periode_mulai)->diffInDays(Carbon::parse($Program->periode_berakhir),false) + 1;
-        
-        return view('admin.program.show', compact('Program','Akses_program','Divisi','periode', 'user'))
+        $periode = Carbon::parse($Program->periode_mulai)->diffInDays(Carbon::parse($Program->periode_berakhir), false) + 1;
+
+        return view('admin.program.show', compact('Program', 'Akses_program', 'Divisi', 'periode', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -75,7 +75,7 @@ class ProgramController extends Controller
     {
         $Program = Program::find($id);
         // $kategori = Kategori::all();
-        return view('admin.program.edit',compact('Program'));
+        return view('admin.program.edit', compact('Program'));
     }
 
     public function update(Request $request, $id)
@@ -91,9 +91,9 @@ class ProgramController extends Controller
 
         $Program = Program::findOrFail($id);
 
-        if($request->status == NULL){
+        if ($request->status == NULL) {
             $status = false;
-        }else{
+        } else {
             $status = true;
         }
 
@@ -105,7 +105,7 @@ class ProgramController extends Controller
         $Program->save();
 
         return redirect()->route('Program.index')
-        ->with('edit', 'Program Berhasil Diedit');
+            ->with('edit', 'Program Berhasil Diedit');
     }
 
     public function destroy($id)
@@ -119,10 +119,30 @@ class ProgramController extends Controller
 
     public function tambahjadwal()
     {
-            Program::create([
-                'judul' => '1',
-                'detail' => '1',
-            ]);
-            return True;
+        Program::create([
+            'judul' => '1',
+            'detail' => '1',
+        ]);
+        return True;
+    }
+
+    public function laporanManual()
+    {
+        $program = Program::all();
+        $data = NULL;
+        foreach ($program as $item) {
+            $date_diff = Carbon::parse($item->periode_mulai)->diffInDays(Carbon::parse($item->periode_berakhir), false) + 1;
+            if ($date_diff >= "0") {
+                $divisi = Divisi::select('akses_divisi.user_id', 'akses_divisi.divisi_id', 'divisi.program_id')->join('akses_divisi', 'akses_divisi.divisi_id', 'divisi.id')->where('divisi.program_id', $item->id)->get();
+                foreach ($divisi as $divisis) {
+                    Laporan::create([
+                        'isVerif' => False,
+                        'user_id' => $divisis->user_id,
+                        'divisi_id' => $divisis->divisi_id,
+                    ]);
+                }
+            }
+        }
+        return back();
     }
 }

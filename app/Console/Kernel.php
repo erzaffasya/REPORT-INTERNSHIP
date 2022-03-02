@@ -41,7 +41,7 @@ class Kernel extends ConsoleKernel
         // })->everyMinute();
 
         // $schedule->call(new tambahjadwal)->daily();
-        $schedule->command('laporan_harian')->weeklyOn(1, '8:00');;
+        $schedule->command('laporan_harian')->everyMinute();
     }
 
     /**
