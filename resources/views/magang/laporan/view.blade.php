@@ -76,7 +76,7 @@
                   <div class="d-flex align-items-center mb-sm-0 mb-4">
                     <div class="ms-2 mx-4">
                       <p align = "justify">
-                        {{ $laporan->mingguan }}
+                        {!! $laporan->mingguan !!}
                       </p>
                     </div>
                   </div>
@@ -96,7 +96,7 @@
                 <div class="d-flex align-items-center mb-sm-0 mb-4">
                   <div class="ms-2 mx-4">
                     <p align = "justify">
-                      {{ $laporan->senin }}
+                      {!! $laporan->senin !!}
                     </p>
                   </div>
                 </div>
@@ -122,7 +122,7 @@
                 <div class="d-flex align-items-center mb-sm-0 mb-4">
                   <div class="ms-2 mx-4">
                     <p align = "justify">
-                      {{ $laporan->selasa }}
+                      {!! $laporan->selasa !!}
                     </p>
                   </div>
                 </div>
@@ -153,7 +153,7 @@
                 <div class="d-flex align-items-center mb-sm-0 mb-4">
                   <div class="ms-2 mx-4">
                     <p align = "justify">
-                      {{ $laporan->rabu }}
+                      {!! $laporan->rabu !!}
                     </p>
                   </div>
                 </div>
@@ -184,7 +184,7 @@
                 <div class="d-flex align-items-center mb-sm-0 mb-4">
                   <div class="ms-2 mx-4">
                     <p align = "justify">
-                      {{ $laporan->kamis }}
+                      {!! $laporan->kamis !!}
                     </p>
                   </div>
                 </div>
@@ -215,7 +215,7 @@
                 <div class="d-flex align-items-center mb-sm-0 mb-4">
                   <div class="ms-2 mx-4">
                     <p align = "justify">
-                      {{ $laporan->jumat }}
+                      {!! $laporan->jumat !!}
                     </p>
                   </div>
                 </div>
