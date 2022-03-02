@@ -11,7 +11,7 @@
               </div>
             </div>
           </div>
-          <div class="card-body  px-0 pt-0 pb-2">
+          <div class="card-body  px-0 pt-0 pb-2 table-responsive">
     
             <table id="datatable-search" class="table align-items-center mb-0">
     
