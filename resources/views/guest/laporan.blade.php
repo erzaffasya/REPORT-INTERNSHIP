@@ -27,7 +27,7 @@
                         </div>
                         <h5 class="mt-5">Pastikan data sudah benar</h5>
                         <p class="text-muted mb-2">
-                            Ikuti perintah dibawah ini:
+                            Sarat pencarian ada dibawah ini:
                         </p>
                         <ul class="text-muted ps-4 mb-0 float-start">
                             <li>
@@ -51,7 +51,7 @@
                     <div class="card-header pb-0">
                         <div class="d-lg-flex">
                             <div>
-                                <h5 class="mb-0">Daftar Anggota</h5>
+                                <h5 class="mb-0">Daftar List Laporan</h5>
                                 <p class="text-sm mb-0">
                                     {{-- Daftar anggota yang mengikuti program magang {{ $Program->judul }}. --}}
                                 </p>
