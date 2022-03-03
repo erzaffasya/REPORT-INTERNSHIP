@@ -16,7 +16,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <label class="form-label">Divisi</label>
+                        <label class="form-label">Departemen</label>
                         <div class="form-group">
                             <select class="form-control" name="divisi" id="choices-gender">
                                 @foreach ($Divisi as $item)
