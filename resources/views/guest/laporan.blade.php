@@ -84,12 +84,12 @@
                                                     @if ($item->isVerif == 0)
                                                         Revisi
                                                     @elseif ($item->isVerif == 1)
-                                                        Laporan Sudah Disetujui
+                                                        Laporan Disetujui
                                                     @elseif ($item->isVerif == 2)
-                                                        Revisi Sudah Dikirim
+                                                        Revisi Telah Dikirim
                                                     @elseif ($item->isVerif == 3)
                                                         Revisi
-                                                        @elseif ($item->isVerif == 4)
+                                                    @elseif ($item->isVerif == 4)
                                                         Laporan Belum Dibuat
                                                     @endif
                                                 </td>
