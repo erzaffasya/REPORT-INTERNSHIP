@@ -3,6 +3,7 @@
 use App\Http\Controllers\AksesProgramController;
 use App\Http\Controllers\AksesDivisiController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\UserController;
@@ -94,5 +95,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('destroyAksesDivisi/{id}', 'delete');
     });
 });
+
+
+Route::get('/{slug}', [GuestController::class, 'index'])->name('');
 
 require __DIR__ . '/auth.php';
