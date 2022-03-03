@@ -253,10 +253,12 @@
                                                 {{ $item->detail }}
                                             </p>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <a type="button"
+                                                {{-- <a type="button"
                                                     href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
+                                                    class="btn btn-outline-primary btn-sm mb-0">View</a> --}}
+                                                    <a type="button"
+                                                    href="#"
                                                     class="btn btn-outline-primary btn-sm mb-0">View</a>
-                                        
                                                 {{-- <button type="button"
                                                 class="btn btn-outline-primary btn-sm mb-0 btn-update" data-bs-toggle="modal" data-bs-target="#editdivisi" data-link="{{ route('Divisi.update', $item->id) }}" data-nama_divisi="{{ $item->nama_divisi }}" data-program_id="{{$item->program_id}}" data-status="{{$item->status}}" data-detail="{{ $item->detail }}">Edit</button> --}}
                                             </div>
@@ -264,16 +266,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                                <div class="card h-100 card-plain border">
-                                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#tambahdivisi">
-                                            <i class="fa fa-plus text-secondary mb-3"></i>
-                                            <h5 class=" text-secondary"> Tambah Divisi </h5>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
