@@ -97,6 +97,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::get('/{slug}', [GuestController::class, 'index'])->name('');
+Route::get('/Eksternal/{slug}', [GuestController::class, 'index'])->name('');
 
 require __DIR__ . '/auth.php';
