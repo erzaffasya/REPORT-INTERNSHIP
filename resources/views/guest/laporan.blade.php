@@ -99,7 +99,7 @@
                                                         class="btn btn-sm btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-3"
                                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
                                                         data-bs-original-title="Refund rate is higher with 70% than other users">
-                                                        <i class="fas fa-info" aria-hidden="true">Detail</i>
+                                                        <i class="fas fa-info" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
                                             </tr>
