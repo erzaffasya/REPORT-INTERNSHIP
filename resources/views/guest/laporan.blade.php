@@ -78,12 +78,29 @@
                                             <tr>
                                                 <td class="text-sm">{{ $loop->iteration }}</td>
                                                 <td class="text-sm">{{ $item->user->name }}</td>
-                                                <td class="text-sm">{{ $item->created_at->Format('D, H M Y') }}</td>
-                                                <td class="text-sm">{{ $item->isVerif }}</td>
+                                                <td class="text-sm">{{ $item->created_at->Format('D, H M Y') }}
+                                                </td>
+                                                <td class="text-sm">
+                                                    @if ($item->isVerif == 0)
+                                                        Revisi
+                                                    @elseif ($item->isVerif == 1)
+                                                        Laporan Sudah Disetujui
+                                                    @elseif ($item->isVerif == 2)
+                                                        Revisi Sudah Dikirim
+                                                    @elseif ($item->isVerif == 3)
+                                                        Revisi
+                                                        @elseif ($item->isVerif == 4)
+                                                        Laporan Belum Dibuat
+                                                    @endif
+                                                </td>
                                                 <td>
-                                                <a type="button" href="{{route('guestdetaillaporan',$item->id)}}" class="btn btn-sm btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Refund rate is higher with 70% than other users">
-                                                    <i class="fas fa-info" aria-hidden="true"></i>
-                                                </a>
+                                                    <a type="button"
+                                                        href="{{ route('guestdetaillaporan', $item->id) }}"
+                                                        class="btn btn-sm btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-3"
+                                                        data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
+                                                        data-bs-original-title="Refund rate is higher with 70% than other users">
+                                                        <i class="fas fa-info" aria-hidden="true">Detail</i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
