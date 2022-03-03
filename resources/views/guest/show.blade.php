@@ -1,77 +1,4 @@
 <x-guest-layout>
-    <!-- Modal Tambah Divisi -->
-    <div class="modal fade" id="tambahdivisi" tabindex="-1" role="dialog" aria-labelledby="tambahdivisiLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form method="post" action="{{ route('Divisi.store') }}">
-                    @csrf
-
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="tambahdivisiLabel">Tambah Divisi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Nama Divisi:</label>
-                            <input type="text" class="form-control" name="nama_divisi">
-                            <input type="hidden" class="form-control" value="1" name="status">
-                            <input type="hidden" class="form-control" value="{{ $Program->id }}" name="program_id">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Detail:</label>
-                            <textarea class="form-control" name="detail"></textarea>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn bg-gradient-primary">Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Edit Divisi -->
-    <div class="modal fade" id="editdivisi" tabindex="-1" role="dialog" aria-labelledby="editdivisiLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form id="divisiUpdate" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editdivisiLabel">Edit Divisi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Nama Divisi:</label>
-                            <input type="text" class="form-control" name="nama_divisi" id="nama_divisi">
-                            <input type="hidden" class="form-control" value="1" name="status" id="status">
-                            <input type="hidden" class="form-control" value="{{ $Program->id }}" name="program_id"
-                                id="program_id">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Detail:</label>
-                            <textarea class="form-control" name="detail" id="detail"></textarea>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn bg-gradient-primary btn-update">Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
     <div class="container-fluid">
         <div class="page-header min-height-300 border-radius-xl mt-4"
             style="background-image: url('../tadmin/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
@@ -119,60 +46,82 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4 mt-sm-0 mt-4">
-                <div class="card">
-                    <div class="card-body p-3 position-relative">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Periode Program</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $periode }} Hari lagi
-                                </h5>
-                            </div>
-                            <div class="col-5">
-                                <div class="dropdown text-end">
-                                    <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span
-                                            class="text-xs text-secondary">{{ \Carbon\Carbon::parse($Program->periode_mulai)->format('d M Y') }}
-                                            -
-                                            {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
-                                        aria-labelledby="dropdownUsers2">
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7
-                                                days</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last
-                                                week</a>
-                                        </li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30
-                                                days</a></li>
-                                    </ul>
+            <div class="col-sm-4 mt-sm-0 mt-4 mb-4">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body p-3 position-relative">
+                            <div class="row">
+                                <div class="col-7 text-start">
+                                    <p class="text-sm mb-1 text-capitalize font-weight-bold">Periode Program</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{ $periode }} Hari lagi
+                                    </h5>
+                                    {{-- <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+12%
+                                        <span class="font-weight-normal text-secondary">since last month</span></span> --}}
+                                </div>
+                                <div class="col-5">
+                                    <div class="dropdown text-end">
+                                        <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span
+                                                class="text-xs text-secondary">{{ \Carbon\Carbon::parse($Program->periode_mulai)->format('d M Y') }}
+                                                -
+                                                {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
+                                            aria-labelledby="dropdownUsers2">
+                                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7
+                                                    days</a></li>
+                                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last
+                                                    week</a>
+                                            </li>
+                                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30
+                                                    days</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mt-4 ">
-                    <div class="card-body p-3 position-relative">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Jumlah Anggota</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $Akses_program->count() }}
-                                </h5>
+                <div class="row justify-content-around mt-4">
+                    <div class="col-lg-6 col-md-6 col-12 mb-4">
+                        <div class="card"
+                            style="background-image: url('../../../assets/img/curved-images/white-curved.jpeg')">
+                            <span class="mask bg-gradient-dark opacity-9 border-radius-xl"></span>
+                            <div class="card-body p-3 position-relative">
+                                <div class="row">
+                                    <div class="col-8 text-start">
+                                        <div class="icon icon-shape bg-white shadow text-center border-radius-md">
+                                            <i class="ni ni-circle-08 text-dark text-gradient text-lg opacity-10"
+                                                aria-hidden="true"></i>
+                                        </div>
+                                        <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                                            {{ $Akses_program->count() }}
+                                        </h5>
+                                        <span class="text-white text-sm">Jumlah Anggota</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mt-4 ">
-                    <div class="card-body p-3 position-relative">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Jumlah Divisi</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $Divisi->count() }}
-                                </h5>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="card"
+                            style="background-image: url('../../../assets/img/curved-images/white-curved.jpeg')">
+                            <span class="mask bg-gradient-dark opacity-9 border-radius-xl"></span>
+                            <div class="card-body p-3 position-relative">
+                                <div class="row">
+                                    <div class="col-8 text-start">
+                                        <div class="icon icon-shape bg-white shadow text-center border-radius-md">
+                                            <i class="ni ni-circle-08 text-dark text-gradient text-lg opacity-10"
+                                                aria-hidden="true"></i>
+                                        </div>
+                                        <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                                            {{ $Divisi->count() }}
+                                        </h5>
+                                        <span class="text-white text-sm">Jumlah Divisi</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -181,46 +130,69 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="mb-0">Channels</h6>
-                            <button type="button"
-                                class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center"
-                                data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
-                                data-bs-original-title="See traffic channels">
-                                <i class="fas fa-info" aria-hidden="true"></i>
-                            </button>
-                        </div>
+                        <h6 class="mb-0">Laporan Harian</h6>
                     </div>
-                    <div class="col-md-12 mt-md-0 mt-4">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <div class="chart">
-                                    <canvas id="pie-chart" class="chart-canvas" height="300"></canvas>
+                    <div class="card-body pb-0 p-3">
+                        <ul class="list-group">
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-0">
+                                <div class="w-100">
+                                    <div class="d-flex mb-2">
+                                        <span class="me-2 text-sm font-weight-bold text-capitalize">Positive
+                                            reviews</span>
+                                        <span class="ms-auto text-sm font-weight-bold">80%</span>
+                                    </div>
+                                    <div>
+                                        <div class="progress progress-md">
+                                            <div class="progress-bar bg-gradient-info w-80" role="progressbar"
+                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-5 my-auto">
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-info"></i>
-                                    <span class="text-dark text-xs">Facebook</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-primary"></i>
-                                    <span class="text-dark text-xs">Direct</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-dark"></i>
-                                    <span class="text-dark text-xs">Organic</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-secondary"></i>
-                                    <span class="text-dark text-xs">Referral</span>
-                                </span>
-                            </div>
-                        </div>
-
-
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="w-100">
+                                    <div class="d-flex mb-2">
+                                        <span class="me-2 text-sm font-weight-bold text-capitalize">Neutral
+                                            reviews</span>
+                                        <span class="ms-auto text-sm font-weight-bold">17%</span>
+                                    </div>
+                                    <div>
+                                        <div class="progress progress-md">
+                                            <div class="progress-bar bg-gradient-dark w-10" role="progressbar"
+                                                aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="w-100">
+                                    <div class="d-flex mb-2">
+                                        <span class="me-2 text-sm font-weight-bold text-capitalize">Negative
+                                            reviews</span>
+                                        <span class="ms-auto text-sm font-weight-bold">3%</span>
+                                    </div>
+                                    <div>
+                                        <div class="progress progress-md">
+                                            <div class="progress-bar bg-gradient-danger w-5" role="progressbar"
+                                                aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-
+                    <div class="card-footer pt-0 p-3 d-flex align-items-center">
+                        <div class="w-60">
+                            <p class="text-sm">
+                                More than <b>1,500,000</b> developers used Creative Tim's products and over
+                                <b>700,000</b> projects were created.
+                            </p>
+                        </div>
+                        <div class="w-40 text-end">
+                            <a href="{{ route('guestlihatlaporan') }}" class="btn bg-gradient-dark mb-0 text-end"
+                                href="javascript:;">Lihat Laporan</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -253,12 +225,11 @@
                                                 {{ $item->detail }}
                                             </p>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                {{-- <a type="button"
+                                                <a type="button"
                                                     href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
-                                                    class="btn btn-outline-primary btn-sm mb-0">View</a> --}}
-                                                    <a type="button"
-                                                    href="#"
                                                     class="btn btn-outline-primary btn-sm mb-0">View</a>
+                                                {{-- <a type="button" href="#"
+                                                    class="btn btn-outline-primary btn-sm mb-0">View</a> --}}
                                                 {{-- <button type="button"
                                                 class="btn btn-outline-primary btn-sm mb-0 btn-update" data-bs-toggle="modal" data-bs-target="#editdivisi" data-link="{{ route('Divisi.update', $item->id) }}" data-nama_divisi="{{ $item->nama_divisi }}" data-program_id="{{$item->program_id}}" data-status="{{$item->status}}" data-detail="{{ $item->detail }}">Edit</button> --}}
                                             </div>
@@ -286,7 +257,7 @@
                                     Daftar anggota yang mengikuti program magang {{ $Program->judul }}.
                                 </p>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="card-body px-0 pb-0">
@@ -297,6 +268,7 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Email</th>
+                                        {{-- <th>Divisi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -305,18 +277,16 @@
                                             <td class="text-sm">{{ $loop->iteration }}</td>
                                             <td class="text-sm">{{ $item->user->name }}</td>
                                             <td class="text-sm">{{ $item->user->email }}</td>
+                                            {{-- <td class="text-sm">{{ $item->divisi->divisi->nama_divisi }}</td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Category</th>
-                                        <th>Price</th>
-                                        <th>SKU</th>
-                                        <th>Quantity</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        {{-- <th>Divisi</th> --}}
                                     </tr>
                                 </tfoot>
                             </table>
@@ -327,83 +297,6 @@
         </div>
     </div>
     @push('scripts')
-        <script>
-            // Pie chart
-            var ctx4 = document.getElementById("pie-chart").getContext("2d");
-
-            new Chart(ctx4, {
-                type: "pie",
-                data: {
-                    labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
-                    datasets: [{
-                        label: "Projects",
-                        weight: 9,
-                        cutout: 0,
-                        tension: 0.9,
-                        pointRadius: 2,
-                        borderWidth: 2,
-                        backgroundColor: ['#17c1e8', '#cb0c9f', '#3A416F', '#a8b8d8'],
-                        data: [15, 20, 12, 60],
-                        fill: false
-                    }],
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false,
-                        }
-                    },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index',
-                    },
-                    scales: {
-                        y: {
-                            grid: {
-                                drawBorder: false,
-                                display: false,
-                                drawOnChartArea: false,
-                                drawTicks: false,
-                            },
-                            ticks: {
-                                display: false
-                            }
-                        },
-                        x: {
-                            grid: {
-                                drawBorder: false,
-                                display: false,
-                                drawOnChartArea: false,
-                                drawTicks: false,
-                            },
-                            ticks: {
-                                display: false,
-                            }
-                        },
-                    },
-                },
-            });
-        </script>
-        <script>
-            $('.btn-update').click(function(event) {
-                var id = $(this).data("link");
-                var nama_divisi = $(this).data("nama_divisi");
-                var detail = $(this).data("detail");
-                var status = $(this).data("status");
-                var program_id = $(this).data("program_id")
-                $('#divisiUpdate').attr('action', id);
-                $('#nama_divisi').val(nama_divisi);
-                $('#detail').val(detail);
-                $('#status').val(status);
-                $('#program_id').val(program_id);
-                console.log($('nama_divisi'));
-                console.log($('detail'));
-                console.log($('status'));
-                console.log($('program_id'));
-            });
-        </script>
         <script>
             if (document.getElementById('products-list')) {
                 const dataTableSearch = new simpleDatatables.DataTable("#products-list", {

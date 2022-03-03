@@ -98,5 +98,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/Eksternal/{slug}', [GuestController::class, 'index'])->name('');
-
+Route::get('/Program/{program}/Divisi/{id}', [GuestController::class, 'show'])->name('');
+Route::get('/Lihat-laporan', [GuestController::class, 'lihatlaporan'])->name('guestlihatlaporan');
+Route::get('/Lihat-laporan/Data',[GuestController::class, 'carilaporan'])->name('filterlaporan');
+Route::get('/Detail-laporan/{id}', [GuestController::class, 'detaillaporan'])->name('guestdetaillaporan');
 require __DIR__ . '/auth.php';
