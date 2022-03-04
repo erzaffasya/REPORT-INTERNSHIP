@@ -255,7 +255,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control tinymce-editor" aria-label="With textarea" name="senin" rows="5" required>{{$laporan->senin}}</textarea>
+                <textarea class="form-control tinymce-editor" aria-label="With textarea" name="senin" rows="5" required>{{$laporan->senin}} </textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -282,7 +282,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="selasa" rows="5" required>{{$laporan->selasa}}</textarea>
+                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="selasa" rows="5" required>{{$laporan->selasa}} </textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -309,7 +309,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="rabu" rows="5" required>{{$laporan->rabu}}</textarea>
+                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="rabu" rows="5" required>{{$laporan->rabu}} </textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -336,7 +336,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="kamis" rows="5" required>{{$laporan->kamis}}</textarea>
+                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="kamis" rows="5" required>{{$laporan->kamis}} </textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -363,7 +363,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="jumat" rows="5" required>{{$laporan->jumat}}</textarea>
+                <textarea class="form-control tinymce-editor"  aria-label="With textarea" name="jumat" rows="5" required>{{$laporan->jumat}} </textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -390,7 +390,7 @@
               @csrf
               @method('PUT')
               <div class="mb-3">
-                <textarea class="form-control tinymce-editor" aria-label="With textarea" name="mingguan" rows="5" required>{{$laporan->mingguan}}</textarea>
+                <textarea class="form-control tinymce-editor" aria-label="With textarea" name="mingguan" rows="5" required>{{$laporan->mingguan}} </textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
