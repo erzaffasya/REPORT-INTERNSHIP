@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Talent;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserTalent;
 
 class UserController extends Controller
 {
@@ -29,33 +31,50 @@ class UserController extends Controller
             'role' => $request->role
         ]);
         return back()
-        ->with('success', 'User berhasil ditambahkan!');
+            ->with('success', 'User berhasil ditambahkan!');
     }
+
+    public function edit($id)
+    {
+        $User = User::find($id);
+        $talent = Talent::all();
+        $talentUser =  UserTalent::where('user_id', $id)->get();
+        return view('admin.user.edit', compact('User', 'talent', 'talentUser'));
+    }
+
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required',
-        //     'role' => 'required'
-        // ]);
-            $user = User::findOrFail($id);
-
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->role = $request->role;
-            $user->save();
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+        $user->save();
 
         return back()
-        ->with('success', 'User berhasil diedit!');
+            ->with('success', 'User berhasil diedit!');
+    }
+
+    public function updateTalent(Request $request)
+    {
+        UserTalent::where('user_id', $request->user_id)->delete();
+        foreach ($request->talent as $key => $value) {
+            if ($value != null && $value != 0) {
+                UserTalent::create([
+                    'user_id' => $request->user_id,
+                    'talent_id' => $key,
+                    'score' => $value
+                ]);
+            }
+        }
+        return back();
     }
 
     public function delete($id)
     {
         User::findOrfail($id)->delete();
         return back()
-        ->with('success', 'User berhasil diedit!');
+            ->with('success', 'User berhasil diedit!');
     }
 }

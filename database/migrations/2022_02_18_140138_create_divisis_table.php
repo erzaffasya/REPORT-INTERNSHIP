@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('detail');
             $table->boolean('status')->nullable();
             $table->foreignId("program_id")->constrained("program")->onDelete("cascade")->onUpdate("cascade");
+            $table->json('criteria')->nullable(); // Kriteria sebagai JSON
             $table->timestamps();
         });
     }

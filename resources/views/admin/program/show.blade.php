@@ -392,16 +392,16 @@
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="ModalLabel">Import CSV</h5>
                                                         <i class="fas fa-upload ms-3"></i>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>You can browse your computer for a file.</p>
                                                         <input type="text" placeholder="Browse file..."
                                                             class="form-control mb-3">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                id="importCheck" checked="">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                value="" id="importCheck" checked="">
                                                             <label class="custom-control-label" for="importCheck">I
                                                                 accept
                                                                 the terms and conditions</label>
@@ -443,14 +443,16 @@
                                             <td class="text-sm">{{ $loop->iteration }}</td>
                                             <td class="text-sm">{{ $item->user->name }}</td>
                                             <td class="text-sm">{{ $item->user->email }}</td>
-                                            {{-- <td>
-                                                <span class="badge badge-danger badge-sm">Out of Stock</span>
-                                            </td> --}}
                                             @can('admin')
                                                 <td class="text-sm">
                                                     <a href="{{ url('destroyAksesProgram', $item->id) }}"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                                         <i class="fas fa-trash text-secondary"></i>
+                                                    </a>
+                                                    
+                                                    <a href="{{ route('rekomendasi-divisi', $item->user->id) }}"
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                        <i class="fas fa-edit text-secondary"></i>
                                                     </a>
                                                 </td>
                                             @endcan
@@ -477,8 +479,8 @@
     </div>
     <div class="col-md-4">
 
-        <div class="modal fade" id="tambahAnggota" tabindex="-1" role="dialog" aria-labelledby="tambahAnggotaTitle"
-            aria-hidden="true">
+        <div class="modal fade" id="tambahAnggota" tabindex="-1" role="dialog"
+            aria-labelledby="tambahAnggotaTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -516,75 +518,6 @@
         </div>
     </div>
     @push('scripts')
-        {{-- <script>
-            var ctx2 = document.getElementById("chart-pie").getContext("2d");
-
-            var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-            gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-            gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-            gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
-
-            var gradientStroke2 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-            gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-            gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-            gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-            new Chart(ctx2, {
-                type: "pie",
-                data: {
-                    labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
-                    datasets: [{
-                        label: "Projects",
-                        weight: 9,
-                        cutout: 0,
-                        tension: 0.9,
-                        pointRadius: 2,
-                        borderWidth: 2,
-                        backgroundColor: ['#17c1e8', '#cb0c9f', '#3A416F', '#a8b8d8'],
-                        data: [15, 20, 12, 60],
-                        fill: false
-                    }],
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false,
-                        }
-                    },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index',
-                    },
-                    scales: {
-                        y: {
-                            grid: {
-                                drawBorder: false,
-                                display: false,
-                                drawOnChartArea: false,
-                                drawTicks: false,
-                            },
-                            ticks: {
-                                display: false
-                            }
-                        },
-                        x: {
-                            grid: {
-                                drawBorder: false,
-                                display: false,
-                                drawOnChartArea: false,
-                                drawTicks: false,
-                            },
-                            ticks: {
-                                display: false,
-                            }
-                        },
-                    },
-                },
-            });
-        </script> --}}
         <script>
             // Pie chart
             var ctx4 = document.getElementById("pie-chart").getContext("2d");

@@ -6,6 +6,8 @@ use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\TalentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +58,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::resource('talent', TalentController::class);
+    Route::get('/rekomendasi/{id}', [RecommendationController::class, 'recommend'])->name('rekomendasi-divisi');
+
+
+
     Route::post('/laporan-manual', [ProgramController::class, 'laporanManual'])->name('laporanManual');
     Route::get('/', function () {
         return view('admin.index');
@@ -81,11 +89,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('aksesProgram/{id}', 'update');
         Route::get('destroyAksesProgram/{id}', 'delete');
     });
-    Route::controller(UserController::class)->group(function (){
+    Route::controller(UserController::class)->group(function () {
         Route::get('user', 'index');
+        Route::get('user/{id}', 'edit');
         Route::post('storeUser', 'store')->name('storeUser');
         Route::put('updateUser/{id}', 'update')->name('updateUser');
         Route::delete('deleteUser/{id}', 'delete')->name('deleteUser');
+
+        Route::post('talent-user', 'updateTalent')->name('updateTalentUser');
     });
     Route::controller(AksesDivisiController::class)->group(function () {
         Route::get('aksesDivisi', 'index');
@@ -100,6 +111,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/Eksternal/{slug}', [GuestController::class, 'index'])->name('');
 Route::get('/Program/{program}/Divisi/{id}', [GuestController::class, 'show'])->name('');
 Route::get('/Lihat-laporan', [GuestController::class, 'lihatlaporan'])->name('guestlihatlaporan');
-Route::get('/Lihat-laporan/Data',[GuestController::class, 'carilaporan'])->name('filterlaporan');
+Route::get('/Lihat-laporan/Data', [GuestController::class, 'carilaporan'])->name('filterlaporan');
 Route::get('/Detail-laporan/{id}', [GuestController::class, 'detaillaporan'])->name('guestdetaillaporan');
+
+
 require __DIR__ . '/auth.php';

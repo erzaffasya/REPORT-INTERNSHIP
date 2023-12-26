@@ -46,9 +46,7 @@
                   </td>
                   <td>
                     <div class="col-12 text-end">
-                        <button type="button" class="btn btn-sm bg-gradient-warning mb-0"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editUser-{{ $i->id }}" style="padding: 10px 24px"><i class="fas fa-user"></i>&nbsp; Edit</button>
+                        <a type="button" class="btn btn-sm bg-gradient-warning mb-0" href="{{url('user', $i->id)}}"><i class="fas fa-user"></i>&nbsp; Edit</a>
                       <form id="form-delete" action="{{url('deleteUser', $i->id)}}" method="POST" style="display: inline">
                         @csrf
                         @method("DELETE")

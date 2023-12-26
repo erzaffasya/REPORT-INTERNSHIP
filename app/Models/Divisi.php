@@ -13,7 +13,8 @@ class Divisi extends Model
         'nama_divisi',
         'detail',
         'status',
-        'program_id'
+        'program_id',
+        'criteria'
     ];
 
     protected $primaryKey = 'id';

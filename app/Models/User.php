@@ -53,4 +53,8 @@ class User extends Authenticatable
         // return $this->belongsToMany(Program::class,'akses_program','program_id','user_id');
         return $this->hasMany(Akses_program::class,'user_id');
     }
+    public function talents()
+    {
+        return $this->belongsToMany(Talent::class)->withPivot('score');
+    }
 }
