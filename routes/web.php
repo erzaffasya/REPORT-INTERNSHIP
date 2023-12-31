@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AksesProgramController;
 use App\Http\Controllers\AksesDivisiController;
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\LaporanController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TalentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DivAnggotaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 
 
@@ -104,6 +108,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('storeAksesDivisi', 'store');
         Route::put('updateAksesDivisi/{id}', 'update');
         Route::get('destroyAksesDivisi/{id}', 'delete');
+    });
+    Route::get('/rekomendasi', function () {
+        return view('admin.anggota.rekomendasi');
     });
 });
 

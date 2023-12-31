@@ -93,7 +93,7 @@
                             {{ $Program->judul }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
-                            M-Knows Consulting
+                            Internship
                         </p>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
     </div>
     <div class="container-fluid py-4">
         <div class="row mt-3">
-            <div class="col-12 col-md-6 col-xl-4 mt-md-0 mt-4">
+            <div class="col-12 col-md-6 col-xl-8 mt-md-0 mt-4">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
                         <div class="row">
@@ -175,7 +175,7 @@
                                             -
                                             {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
+                                    {{-- <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
                                         aria-labelledby="dropdownUsers2">
                                         <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7
                                                 days</a></li>
@@ -184,7 +184,7 @@
                                         </li>
                                         <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30
                                                 days</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                             </div>
                         </div>
@@ -253,7 +253,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
+            {{-- <div class="col-lg-4 col-sm-6">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
                         <div class="d-flex justify-content-between">
@@ -297,7 +297,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="row mt-4">
             <div class="col-12">
@@ -309,7 +309,7 @@
                     <div class="card-body p-3">
                         <div class="row">
                             @foreach ($Divisi as $item)
-                                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4 mt-4">
+                                <div class="col-xl-4 col-md-6 mb-xl-0 mb-4 mt-4">
                                     <div class="card card-blog card-plain">
                                         <div class="position-relative">
                                             <a class="d-block shadow-xl border-radius-xl">
@@ -453,6 +453,10 @@
                                                     <a href="{{ route('rekomendasi-divisi', $item->user->id) }}"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                                         <i class="fas fa-edit text-secondary"></i>
+                                                    </a>
+                                                    <a href="/rekomendasi"
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                        <i class="fas fa-eye text-secondary"></i>
                                                     </a>
                                                 </td>
                                             @endcan

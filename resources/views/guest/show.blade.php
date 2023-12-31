@@ -68,7 +68,7 @@
                                                 -
                                                 {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
+                                        {{-- <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
                                             aria-labelledby="dropdownUsers2">
                                             <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7
                                                     days</a></li>
@@ -77,7 +77,7 @@
                                             </li>
                                             <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30
                                                     days</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
+            {{-- <div class="col-lg-4 col-sm-6">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
                         <h6 class="mb-0">Laporan Harian</h6>
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="row mt-4">
             <div class="col-12">
