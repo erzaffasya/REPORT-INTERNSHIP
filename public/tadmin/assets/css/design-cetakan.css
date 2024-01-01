@@ -1,0 +1,300 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #fafafa;
+	/* font: 12pt "Tahoma"; */
+	color-adjust: exact !important;
+	print-color-adjust: exact !important;
+	-webkit-print-color-adjust: exact !important;
+}
+
+* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+/* 
+table.report-container {
+	page-break-after: always;
+}
+
+thead.report-header {
+	display: table-header-group;
+}
+
+tfoot.report-footer {
+	display: table-footer-group;
+} */
+
+/* tbody.report-content .table-details td {
+	padding: 0.22rem !important;
+}
+
+.report-header-cell,
+.report-footer-cell,
+.report-content-cell {
+	padding: 0 !important;
+}
+
+
+
+.row {
+	margin: 0;
+} */
+
+.page {
+	width: 21cm;
+	padding: 0.35cm;
+	margin: 1cm auto;
+	border: 1px #d3d3d3 solid;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.subpage {
+	width: 100%;
+	padding: 0cm;
+	/* height: 256mm; */
+}
+
+.fit-mt {
+	margin: -0.36cm -0.36cm 0;
+}
+
+.fit-mx {
+	margin: 0 -0.36cm;
+}
+
+.ttd-img {
+	object-fit: contain;
+}
+
+.opacity-75 {
+	opacity: 0.75;
+}
+
+.v-top {
+	vertical-align: top;
+}
+
+.bt-2-dark {
+	border-bottom: 2px solid #2f2f2f;
+}
+
+#template2 .col-balok1 {
+	height: 70px;
+	width: 1.25rem;
+}
+
+#template2 .col-balok2 {
+	height: 70px;
+	width: 0.5rem;
+}
+
+#template3 .img-logo {
+	width: 32%;
+}
+
+#template5 .img-logo {
+	filter: brightness(0) invert(1);
+}
+
+/* #template2 .component1 {
+	position: absolute;
+	width: .75rem;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	margin: 0 auto!important;
+	display: block;
+	height: 100%;
+} */
+
+#template1 {}
+
+#template2 {}
+
+#template3 {}
+
+#template4 {}
+
+#template5 {}
+
+p {
+	margin: 0 !important;
+}
+
+h1 {
+	text-align: center;
+}
+
+.font-smaller0 {
+	font-size: 10px;
+}
+
+.font-smaller {
+	font-size: 12px;
+}
+
+.bg-lightgrey {
+	background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.company-details,
+.page-details,
+.table-details,
+.footer-details {
+	position: relative;
+}
+
+/* COMPANY DETAILS */
+.company-details {
+	border: 2px solid black;
+	border-bottom: none;
+	font-size: 12px;
+}
+
+.company-details .img-logo {
+	width: 100%;
+}
+
+
+/* END COMPANY DETAILS */
+
+/* PAGE DETAILS */
+.page-details {
+	border: 2px solid black;
+	border-bottom: none;
+}
+
+.page-details .page-title {
+	padding: 0;
+	margin: 0.75rem 0 0;
+}
+
+.page-details .page-title p {
+	line-height: 1rem;
+	padding: 0;
+	display: inline-block;
+	border-bottom: 1px solid black;
+}
+
+
+/* END PAGE DETAILS */
+
+/* TABLE DETAILS */
+/* .table-details .table {
+    margin-bottom: 0;
+}
+.table-details table,
+.table-details thead,
+.table-details td,
+.table-details th {
+	top: 0 !important;
+	left: 0 !important;
+	border: none !important;
+	box-shadow: none !important;
+	outline: none !important;
+	border-collapse: collapse !important;
+}
+
+.table-details table,
+.table-details thead,
+.table-details tbody,
+.table-details tr,
+.table-details th,
+.table-details td {
+	border: 2px solid black !important;
+	border-collapse: collapse !important;
+	box-sizing: border-box !important;
+} */
+
+.table-details td {
+	background: #fff !important;
+}
+
+.table-details th {
+	/* background: #2d2d2d !important; */
+	/* color: white !important; */
+}
+
+.table-details .table-footers {
+	position: relative;
+	z-index: 9;
+	/* margin-top: -2px; */
+	border: 2px solid black;
+}
+
+.table-bd-none td {
+	top: 0 !important;
+	left: 0 !important;
+	border: none !important;
+	box-shadow: none !important;
+	outline: none !important;
+	border-collapse: collapse !important;
+}
+
+/* END TABLE DETAILS */
+
+/* FOOTER DETAILS */
+.footer-details {
+	border: 2px solid black;
+	border-top: none;
+}
+
+/* END FOOTER DETAILS */
+
+@page {
+	size: A4;
+	/* size: 210mm 140mm; size trend*/
+	margin: 150mm 0 !important;
+}
+
+@media print {
+
+	#template5 .fit-mt{
+		margin: 0 -0.36cm!important;
+	}
+	
+	#template5 .company-details {
+		margin-bottom: 1rem;
+	}
+	
+	#template5 .page-details {
+		margin-top: -1rem;
+	}
+
+	/* table.report-container {
+		page-break-after: always;
+	}
+
+	thead.report-header {
+		display: table-header-group;
+	}
+
+	tfoot.report-footer {
+		display: table-footer-group;
+	} */
+
+	.report-header-cell,
+	.report-footer-cell,
+	.report-content-cell {
+		padding: 0;
+	}
+
+	.ttd-div {
+		break-inside: avoid;
+	}
+
+	.page {
+		padding-top: 0;
+		margin: 0;
+		border: initial;
+		border-radius: initial;
+		width: initial;
+		min-height: initial;
+		box-shadow: initial;
+		background: initial;
+		page-break-after: always;
+	}
+}

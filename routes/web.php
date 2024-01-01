@@ -112,6 +112,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/rekomendasi', function () {
         return view('admin.anggota.rekomendasi');
     });
+    Route::get('/cetaknilai', function () {
+        return view('admin.anggota.cetaknilai');
+    });
+    Route::get('/masternilai', function () {
+        return view('admin.anggota.masternilai');
+    });
+    Route::get('/penilaian', function () {
+        return view('admin.anggota.penilaian');
+    });
 });
 
 
