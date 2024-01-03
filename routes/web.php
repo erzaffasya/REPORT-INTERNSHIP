@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-    Route::post('/laporan-manual', [ProgramController::class, 'laporanManual'])->name('laporanManual');
+    Route::get('/laporan-manual', [ProgramController::class, 'laporanManual'])->name('laporanManual');
     Route::get('/', function () {
         return view('admin.index');
     });
@@ -125,7 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/Eksternal/{slug}', [GuestController::class, 'index'])->name('');
-Route::get('/Program/{program}/Divisi/{id}', [GuestController::class, 'show'])->name('');
+Route::get('/guest/Program/{program}/Divisi/{id}', [GuestController::class, 'show'])->name('');
 Route::get('/Lihat-laporan', [GuestController::class, 'lihatlaporan'])->name('guestlihatlaporan');
 Route::get('/Lihat-laporan/Data', [GuestController::class, 'carilaporan'])->name('filterlaporan');
 Route::get('/Detail-laporan/{id}', [GuestController::class, 'detaillaporan'])->name('guestdetaillaporan');

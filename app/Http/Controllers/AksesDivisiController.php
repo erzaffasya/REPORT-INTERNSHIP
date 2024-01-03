@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Akses_divisi;
 use App\Models\Akses_program;
 use App\Models\Divisi;
@@ -12,7 +13,6 @@ class AksesDivisiController extends Controller
     public function create($id)
     {
         $user = Akses_program::doesnthave('akses_divisi')->get();
-        // dd($user);
         $divisi = Divisi::where('id', $id)->first();
         return view('admin.akses_divisi.tambah', compact('divisi', 'user'));
     }
@@ -20,14 +20,13 @@ class AksesDivisiController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'divisi_id' =>'required'
+            'divisi_id' => 'required'
         ]);
-
         Akses_divisi::create([
             'user_id' => $request->user_id,
             'divisi_id' => $request->divisi_id
         ]);
-        return redirect()->back()
+        return redirect()->route('Program.show', Divisi::find($request->divisi_id)->program_id)
             ->with('success', 'Akses Divisi Berhasil Ditambahkan');
     }
 
@@ -35,6 +34,6 @@ class AksesDivisiController extends Controller
     {
         Akses_divisi::where('id', $id)->delete();
         return redirect()->back()
-        ->with('success', 'Data berhasil dihapus');
+            ->with('success', 'Data berhasil dihapus');
     }
 }

@@ -32,7 +32,7 @@ class RecommendationController extends Controller
                 
             }
         }
-        dd($recommendedDepartments);
+        // dd($student);
 
         return view('admin.program.recommendation', compact('student', 'recommendedDepartments'));
     }

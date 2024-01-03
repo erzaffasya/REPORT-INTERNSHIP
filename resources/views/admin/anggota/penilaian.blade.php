@@ -29,13 +29,6 @@
                 <div class="card-body px-3 pt-0">
                     <form method="POST" action="storeUser">
                         @csrf
-                        <div class="my-2">
-                            <label for="exampleFormControlSelect1">Pilih Kategori Pekerjaan</label>
-                            <select class="form-control" name="role" id="exampleFormControlSelect1" required>
-                                    <option value="admin">001</option>
-                                    <option value="magang">002</option>
-                            </select>
-                        </div>
                         <p class="text-sm fw-bold my-3">Masukkan Nilai</p>
                         <div class="mb-3 d-flex">
                             <span class="text-sm fw-bold" style="width: 5%">1. </span>
@@ -112,13 +105,6 @@
                 <div class="card-body px-3 pt-0">
                     <form method="POST" action="storeUser">
                         @csrf
-                        <div class="my-2">
-                            <label for="exampleFormControlSelect1">Pilih Kategori Pekerjaan</label>
-                            <select class="form-control" name="role" id="exampleFormControlSelect1" required>
-                                    <option value="admin">001</option>
-                                    <option value="magang">002</option>
-                            </select>
-                        </div>
                         <p class="text-sm fw-bold my-3">Masukkan Nilai</p>
                         <div class="mb-3 d-flex">
                             <span class="text-sm fw-bold" style="width: 5%">1. </span>
