@@ -78,7 +78,7 @@
                         <span class="nav-link-text ms-1">Program</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link"
                         href="/masternilai">
                         <div
@@ -105,7 +105,7 @@
                         </div>
                         <span class="nav-link-text ms-1">Master Nilai</span>
                     </a>
-                </li>
+                </li> --}}
 
 
 
