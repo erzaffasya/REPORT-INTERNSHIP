@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="row">
         <div class="col-lg-7 position-relative z-index-2">
-            <div class="card card-plain mb-4">
+            {{-- <div class="card card-plain mb-4">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-lg-6">
@@ -11,7 +11,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <div class="card  mb-4">
