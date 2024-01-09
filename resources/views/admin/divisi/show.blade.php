@@ -319,10 +319,10 @@
                                 </div>
                                 @can('admin')
     <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                                                    <div class="ms-auto my-auto">
+                                                                    {{-- <div class="ms-auto my-auto">
                                                                         <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
                                                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
 @endcan
 
