@@ -244,12 +244,12 @@
                         <div class="card-body p-3 pt-0">
                             <ul class="list-group list-group-flush" data-toggle="checklist">
                                 @foreach ($Laporan->where('isVerif', '!=', 1) as $item)
-<li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
+                                    <li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
                                         <div class="checklist-item checklist-item-dark ps-2 ms-3">
                                             <div class="d-flex align-items-center">
                                                 <h6 class="mb-0 text-dark font-weight-bold text-sm">
-                                                    {{ $item->user->name }}
-                                                    - {{ $item->divisi->nama_divisi }}
+                                                {{ ucfirst($item->user->name) }}
+                                                    - {{ ucfirst($item->divisi->nama_divisi) }}
                                                 </h6>
                                                 <div class="dropstart float-lg-end ms-auto pe-0">
                                                     <a href="javascript:;" class="cursor-pointer" id="dropdownTable3"
@@ -284,10 +284,10 @@
                                                 <div class="ms-auto">
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Status</p>
                                                     @if ($item->isVerif == 0)
-<span class="badge badge-warning badge-sm">Revisi telah terkirim</span>
-@else
-<span class="badge badge-danger badge-sm">Mengunggu Verifikasi</span>
-@endif
+                                                    <span class="badge badge-warning badge-sm">Revisi telah terkirim</span>
+                                                    @else
+                                                    <span class="badge badge-danger badge-sm">Mengunggu Verifikasi</span>
+                                                    @endif
                                                 </div>
                                                 <div class="mx-auto">
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Program</p>
