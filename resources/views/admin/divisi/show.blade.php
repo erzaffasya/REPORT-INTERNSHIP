@@ -46,25 +46,6 @@
                         </div>
                     </div> --}}
                     <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
-                        <div class="card">
-                            <div class="card-body p-3">
-                                <div class="d-flex">
-                                    <div>
-                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md">
-                                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="ms-3">
-                                        <div class="numbers">
-                                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Dana Divisi</p>
-                                            <h5 class="font-weight-bolder mb-0">
-                                                Rp. 1.000.0000
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card mt-4">
                             <div class="card-body p-3">
                                 <div class="d-flex">
@@ -87,26 +68,6 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
-                        <div class="card mt-4">
-                            <div class="card-body p-3">
-                                <div class="d-flex">
-                                    <div>
-                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md">
-                                            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="ms-3">
-                                        <div class="numbers">
-                                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Mentor</p>
-                                            <h5 class="font-weight-bolder mb-0">
-                                                3
-                                                <span class="text-success text-sm font-weight-bolder"></span>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card mt-4">
                             <div class="card-body p-3">
                                 <div class="d-flex">
