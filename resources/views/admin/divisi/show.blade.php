@@ -1,7 +1,35 @@
 <x-app-layout>
     <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-lg-8 col-12">
+        
+        <div class="col-lg-4 col-12 mt-4 mt-lg-0">
+                <div class="card">
+                    <div class="card-header p-3 pb-0">
+                        <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style="width: 100%; height: 125px; object-fit: cover; object-position: center;">
+
+                        <h6 class="mb-0 text-2xl my-3">{{ $Divisi->nama_divisi }}</h6>
+                    </div>
+                    <div class="card-body p-3 pt-1">
+                        {{-- <h6>I need a Ruby developer for my new website.</h6> --}}
+                        <p class="text-sm">{{ $Divisi->detail }}</p>
+                        @can('admin')
+                            <div class="d-flex bg-gray-100 border-radius-lg p-3">
+                                <h4 class="my-auto">
+                                    {{-- Hapus Divisi --}}
+                                </h4>
+                                <a href="javascript:;" class="btn btn-danger mb-0 ms-auto">Hapus</a>
+                            </div>
+
+                            
+                        @endcan
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-lg-3 col-12 gap-3">
                 <div class="row">
                     {{-- <div class="col-lg-4 col-12">
                         <div class="card card-background card-background-mask-info h-100 tilt" data-tilt=""
@@ -17,7 +45,7 @@
                             </div>
                         </div>
                     </div> --}}
-                    <div class="col-lg-4 col-md-6 col-12 mt-4 mt-lg-0">
+                    <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
                         <div class="card">
                             <div class="card-body p-3">
                                 <div class="d-flex">
@@ -58,8 +86,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-12 mt-4 mt-lg-0">
-                        <div class="card">
+                    <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
+                        <div class="card mt-4">
                             <div class="card-body p-3">
                                 <div class="d-flex">
                                     <div>
@@ -102,39 +130,100 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-12 mt-4 mt-lg-0">
+
+
+           
+
+            <div class="col-lg-5 col-12 mt-4 mt-lg-0">
                 <div class="card">
                     <div class="card-header p-3 pb-0">
-                        <div class="row">
-                            <div class="col-8 d-flex">
+                        <div class="" style="width: 100%; display: flex; justify-content: space-between">
+                            <div class="d-flex">
                                 <div>
-                                    <img src="../../../tadmin/assets/img/team-3.jpg" class="avatar avatar-sm me-2"
+                                    <img src="../../../tadmin/assets/img/small-logos/icon-bulb.svg" class="avatar avatar-sm me-2"
                                         alt="avatar image">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">{{ $Divisi->nama_divisi }}</h6>
-                                    <p class="text-xs">2h ago</p>
+                                    <h6 class="mb-0 text-sm">Berita</h6>
+                                    <p class="text-xs">Tim Web</p>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                {{-- <span class="badge bg-gradient-info ms-auto float-end">Recommendation</span> --}}
+                            <div class="" >
+                                    <a href=""
+                                        class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Berita</a>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body p-3 pt-1">
-                        {{-- <h6>I need a Ruby developer for my new website.</h6> --}}
-                        <p class="text-sm">{{ $Divisi->detail }}</p>
-                        @can('admin')
-                            <div class="d-flex bg-gray-100 border-radius-lg p-3">
-                                <h4 class="my-auto">
-                                    {{-- Hapus Divisi --}}
-                                </h4>
-                                <a href="javascript:;" class="btn btn-danger mb-0 ms-auto">Hapus</a>
+                    <div class="card-body p-3 pt-1" >
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                            <div class="d-flex justify-center align-items-baseline">
+                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <div>
+                                    <p style="font-weight: 600;">Penggumpulan Progress Akhir Magang!</p>
+                                    <p style="font-weight: 300; font-size: 0.8rem;">10 Januari 2024</p>
+                                </div>
                             </div>
-                        @endcan
+
+                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
+                                Lihat Detail
+                            </a>
+                        </div>
+
+
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                            <div class="d-flex justify-center align-items-baseline">
+                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <div>
+                                    <p style="font-weight: 600;">Jadwal Presentasi Akhir Magang!</p>
+                                    <p style="font-weight: 300; font-size: 0.8rem;">12 Januari 2024</p>
+                                </div>
+                            </div>
+
+                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
+                                Lihat Detail
+                               
+                            </a>
+                        </div>
+
+
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                            <div class="d-flex justify-center align-items-baseline">
+                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <div>
+                                    <p style="font-weight: 600;">Hasil Presentasi Akhir Magang!</p>
+                                    <p style="font-weight: 300; font-size: 0.8rem;">18 Januari 2024</p>
+                                </div>
+                            </div>
+
+                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
+                                Lihat Detail
+                               
+                            </a>
+                        </div>
+
+
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                            <div class="d-flex justify-center align-items-baseline">
+                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <div>
+                                    <p style="font-weight: 600;">Penggambilan Sertifikat Magang!</p>
+                                    <p style="font-weight: 300; font-size: 0.8rem;">20 Januari 2024</p>
+                                </div>
+                            </div>
+
+                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
+                                Lihat Detail
+                               
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
+
+          
+
+            
         </div>
 
         <div class="row mt-4">
