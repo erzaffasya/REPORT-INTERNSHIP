@@ -11,6 +11,7 @@ use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TalentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DivAnggotaController;
+use App\Http\Controllers\BeritaAcaraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -121,6 +122,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/penilaian', function () {
         return view('admin.anggota.penilaian');
     });
+
+
+    Route::get('/berita-acara', [BeritaAcaraController::class, 'index'])->name('berita.index');
+
 });
 
 

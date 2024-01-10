@@ -110,8 +110,8 @@
                                 </div>
                             </div>
                             <div class="" >
-                                    <a href=""
-                                        class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Berita</a>
+                                    <a href="/berita-acara"
+                                        class="btn bg-gradient-primary btn-sm mb-0">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
