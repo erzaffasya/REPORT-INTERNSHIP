@@ -12,6 +12,7 @@ use App\Http\Controllers\TalentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DivAnggotaController;
 use App\Http\Controllers\BeritaAcaraController;
+use App\Http\Controllers\NilaiUsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,9 +120,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/masternilai', function () {
         return view('admin.anggota.masternilai');
     });
-    Route::get('/penilaian', function () {
-        return view('admin.anggota.penilaian');
-    });
+    // Route::get('/penilaian', function () {
+    //     return view('admin.anggota.penilaian');
+    // });
+
+    Route::get('/penilaian/{id}/{divisi}', [NilaiUsersController::class, 'index'])->name('penilaian');
+    Route::post('/penilaian', [NilaiUsersController::class, 'store'])->name('penilaian.store');
 
 
     Route::get('/berita-acara', [BeritaAcaraController::class, 'index'])->name('berita.index');

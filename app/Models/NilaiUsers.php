@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class NilaiUsers extends Model
 {
     use HasFactory;
+    protected $table = 'nilai_users';
+    protected $guarded = [];
+
+    protected $primaryKey = 'id';
+
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

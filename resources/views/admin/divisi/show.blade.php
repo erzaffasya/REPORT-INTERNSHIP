@@ -1,11 +1,13 @@
 <x-app-layout>
     <div class="container-fluid py-4">
         <div class="row">
-        
-        <div class="col-lg-4 col-12 mt-4 mt-lg-0">
+
+            <div class="col-lg-4 col-12 mt-4 mt-lg-0">
                 <div class="card">
                     <div class="card-header p-3 pb-0">
-                        <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style="width: 100%; height: 125px; object-fit: cover; object-position: center;">
+                        <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt=""
+                            style="width: 100%; height: 125px; object-fit: cover; object-position: center;">
 
                         <h6 class="mb-0 text-2xl my-3">{{ $Divisi->nama_divisi }}</h6>
                     </div>
@@ -19,8 +21,6 @@
                                 </h4>
                                 <a href="javascript:;" class="btn btn-danger mb-0 ms-auto">Hapus</a>
                             </div>
-
-                            
                         @endcan
                     </div>
                 </div>
@@ -93,7 +93,7 @@
             </div>
 
 
-           
+
 
             <div class="col-lg-5 col-12 mt-4 mt-lg-0">
                 <div class="card">
@@ -101,24 +101,25 @@
                         <div class="" style="width: 100%; display: flex; justify-content: space-between">
                             <div class="d-flex">
                                 <div>
-                                    <img src="../../../tadmin/assets/img/small-logos/icon-bulb.svg" class="avatar avatar-sm me-2"
-                                        alt="avatar image">
+                                    <img src="../../../tadmin/assets/img/small-logos/icon-bulb.svg"
+                                        class="avatar avatar-sm me-2" alt="avatar image">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm">Berita</h6>
                                     <p class="text-xs">Tim Web</p>
                                 </div>
                             </div>
-                            <div class="" >
-                                    <a href="/berita-acara"
-                                        class="btn bg-gradient-primary btn-sm mb-0">Selengkapnya</a>
+                            <div class="">
+                                <a href="/berita-acara" class="btn bg-gradient-primary btn-sm mb-0">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body p-3 pt-1" >
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                    <div class="card-body p-3 pt-1">
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
                             <div class="d-flex justify-center align-items-baseline">
-                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <span
+                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
+                                    class="bg-primary"></span>
                                 <div>
                                     <p style="font-weight: 600;">Penggumpulan Progress Akhir Magang!</p>
                                     <p style="font-weight: 300; font-size: 0.8rem;">10 Januari 2024</p>
@@ -131,9 +132,11 @@
                         </div>
 
 
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
                             <div class="d-flex justify-center align-items-baseline">
-                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <span
+                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
+                                    class="bg-primary"></span>
                                 <div>
                                     <p style="font-weight: 600;">Jadwal Presentasi Akhir Magang!</p>
                                     <p style="font-weight: 300; font-size: 0.8rem;">12 Januari 2024</p>
@@ -142,14 +145,16 @@
 
                             <a href="" style="font-size: 0.8rem; opacity: 0.9;">
                                 Lihat Detail
-                               
+
                             </a>
                         </div>
 
 
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
                             <div class="d-flex justify-center align-items-baseline">
-                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <span
+                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
+                                    class="bg-primary"></span>
                                 <div>
                                     <p style="font-weight: 600;">Hasil Presentasi Akhir Magang!</p>
                                     <p style="font-weight: 300; font-size: 0.8rem;">18 Januari 2024</p>
@@ -158,14 +163,16 @@
 
                             <a href="" style="font-size: 0.8rem; opacity: 0.9;">
                                 Lihat Detail
-                               
+
                             </a>
                         </div>
 
 
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;" >
+                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
                             <div class="d-flex justify-center align-items-baseline">
-                                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;" class="bg-primary"></span>
+                                <span
+                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
+                                    class="bg-primary"></span>
                                 <div>
                                     <p style="font-weight: 600;">Penggambilan Sertifikat Magang!</p>
                                     <p style="font-weight: 300; font-size: 0.8rem;">20 Januari 2024</p>
@@ -174,7 +181,7 @@
 
                             <a href="" style="font-size: 0.8rem; opacity: 0.9;">
                                 Lihat Detail
-                               
+
                             </a>
                         </div>
 
@@ -182,9 +189,9 @@
                 </div>
             </div>
 
-          
 
-            
+
+
         </div>
 
         <div class="row mt-4">
@@ -205,7 +212,7 @@
                         <div class="card-body p-3 pt-0">
                             <ul class="list-group list-group-flush" data-toggle="checklist">
                                 @foreach ($Laporan->where('isVerif', '!=', 1) as $item)
-                                    <li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
+<li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
                                         <div class="checklist-item checklist-item-dark ps-2 ms-3">
                                             <div class="d-flex align-items-center">
                                                 <h6 class="mb-0 text-dark font-weight-bold text-sm">
@@ -245,10 +252,10 @@
                                                 <div class="ms-auto">
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Status</p>
                                                     @if ($item->isVerif == 0)
-                                                    <span class="badge badge-warning badge-sm">Revisi telah terkirim</span>
-                                                    @else
-                                                    <span class="badge badge-danger badge-sm">Mengunggu Verifikasi</span>
-                                                    @endif
+<span class="badge badge-warning badge-sm">Revisi telah terkirim</span>
+@else
+<span class="badge badge-danger badge-sm">Mengunggu Verifikasi</span>
+@endif
                                                 </div>
                                                 <div class="mx-auto">
                                                     <p class="text-xs mb-0 text-secondary font-weight-bold">Program</p>
@@ -280,11 +287,11 @@
                                 </div>
                                 @can('admin')
     <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                                                    {{-- <div class="ms-auto my-auto">
+                                                                        {{-- <div class="ms-auto my-auto">
                                                                         <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
                                                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                                                     </div> --}}
-                                                                </div>
+                                                                    </div>
 @endcan
 
                             </div>
@@ -322,10 +329,15 @@
                                                     </a> --}}
                                                     @can('admin')
     <a href="{{ url('destroyAksesDivisi', $item->id) }}"
-                                                                                        data-bs-toggle="tooltip"
-                                                                                        data-bs-original-title="Delete product">
-                                                                                        <i class="fas fa-trash text-secondary"></i>
-                                                                                    </a>
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Delete product">
+                                                                                            <i class="fas fa-trash text-secondary"></i>
+                                                                                        </a>
+
+                                                        <a href="{{ url('penilaian/'.$item->user->id.'/'.$item->divisi->id) }}"
+                                                            data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                            <i class="fas fa-book text-secondary"></i>
+                                                        </a>
 @endcan
                                                 </td>
                                             </tr>

@@ -454,10 +454,6 @@
                                                         data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                                         <i class="fas fa-edit text-secondary"></i>
                                                     </a>
-                                                    <a href="/penilaian"
-                                                        data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                                        <i class="fas fa-book text-secondary"></i>
-                                                    </a>
                                                 </td>
                                             @endcan
                                         </tr>
