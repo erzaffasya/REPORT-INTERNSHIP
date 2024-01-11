@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <form method="POST" action="{{ route('penilaian.store') }}">
+        <form method="POST" action="{{ route('penilaian.store') }}" class="row">
             @csrf
             <div class="col-8">
                 <div class="card mb-4">
