@@ -93,39 +93,21 @@
                     <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
                        
                         <div class="card mt-4">
-                            <div class="card-body p-3">
-                                <h4 class="text-[1.5rem]">Talent</h4>
-                                <div class="" style="display: flex; justify-content: space-evenly;">
+                        <div class="card-body p-3">
+                            <h4 class="text-[1.5rem]">Talent</h4>
+                            <div class="gap-1" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                                @foreach (json_decode($Divisi->criteria) as $key => $value)
                                     <div class="" style="display: flex; align-items: center; flex-direction: column;">
                                         <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
-                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'IT'} }}</span>
+                                            <span class="d-block text-white text-[1.5rem] mx-auto">{{ $value }}</span>
                                         </div>
-                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">IT</p>
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">{{ $key }}</p>
                                     </div>
-
-                                    <div class="" style="display: flex; align-items: center; flex-direction: column;" >
-                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
-                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'Dokumen'} }}</span>
-                                        </div>
-                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Dokumen</p>
-                                    </div>
-
-                                    <div class="" style="display: flex; align-items: center; flex-direction: column;" >
-                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
-                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'Finance'} }}</span>
-                                        </div>
-                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Finance</p>
-                                    </div>
-
-                                    <div class="">
-                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
-                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'Desain'} }}</span>
-                                        </div>
-                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Desain</p>
-                                    </div>
-                                   
-                                </div>
+                                @endforeach
+                               
                             </div>
+                        </div>
+
                         </div>
                     </div>
 
