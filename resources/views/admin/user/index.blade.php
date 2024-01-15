@@ -22,6 +22,7 @@
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E-mail</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Talent</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"width="100px">Aksi</th>
                 </tr>
               </thead>
@@ -44,6 +45,18 @@
                   <td>
                     <p class="text-xs font-weight-bold mb-0">{{ $i->password }}</p>
                   </td>
+
+                  <td style="">
+                      <p class="text-xs font-weight-bold mb-0 mx-auto text-center">
+                          @if($i->talent_id)
+                            <span class="badge badge-success">Terdapat Talent</span>
+                             
+                          @else
+                              <span class="badge badge-danger">Tidak Ada</span>
+                          @endif
+                      </p>
+                  </td>
+
                   <td>
                     <div class="col-12 text-end">
                         <a type="button" class="btn btn-sm bg-gradient-warning mb-0" href="{{url('user', $i->id)}}"><i class="fas fa-user"></i>&nbsp; Edit</a>
@@ -57,7 +70,7 @@
                 </tr>
                 @endforeach
                 </tbody>
-              </table>
+            </table>
             </div>
           </div>
         </div>
@@ -107,6 +120,7 @@
             </div>
         </div>
     </div>
+
 
     @foreach ($user as $i)
     <div class="col-md-4">

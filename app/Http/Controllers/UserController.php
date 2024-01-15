@@ -7,13 +7,26 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserTalent;
 
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
-    public function index()
-    {
-        $user = User::all();
-        return view('admin.user.index', compact('user'));
-    }
+        public function index()
+        {
+            // $user = User::all();
+
+            $user = DB::table('users')
+                    ->leftJoin('talent_user', 'users.id', '=', 'talent_user.user_id')
+                    ->select('users.*', 'talent_user.*')
+                    ->get()
+                    ->groupBy('id')
+                    ->map(function ($group) {
+                        return $group->first();
+                    });;
+
+            
+            return view('admin.user.index', compact('user'));
+        }
 
     public function store(Request $request)
     {
