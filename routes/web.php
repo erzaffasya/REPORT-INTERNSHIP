@@ -102,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('updateUser/{id}', 'update')->name('updateUser');
         Route::delete('deleteUser/{id}', 'delete')->name('deleteUser');
 
+        Route::post('addTalentUser/{id}', 'addTalentUser')->name('addTalentUser');
         Route::post('talent-user', 'updateTalent')->name('updateTalentUser');
     });
     Route::controller(AksesDivisiController::class)->group(function () {

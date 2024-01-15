@@ -29,16 +29,14 @@
                     <h6 class="mb-0">Talent User</h6>
                     <hr class="horizontal dark my-3">
                     <div class="card-body">
-                        <form role="form text-left" action="{{ route('updateTalentUser', $User->id) }}" method="POST"
+                        <form role="form text-left" action="{{ route('addTalentUser', $User->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <input class="form-control" type="hidden" name="user_id" value="{{ $User->id }}" required>  
-
+                                <input class="form-control" type="hidden" name="user_id" value="{{ $User->id }}" required>  
                                 <div class="row">
                                     <div class="mb-3 col-lg-6">
                                         <label for="exampleFormControlSelect1">Talent</label>
-                                        <select class="form-select" name="" required>
-                                            <option value="" selected disabled>Select Talent</option>
+                                        <select class="form-select" name="talent_id" required>
                                             @foreach ($talent as $item)
                                                 <option value="{{ $item->id }}">
                                                     {{ $item->name}}
@@ -48,13 +46,13 @@
                                     </div>
                                     <div class="mb-3 col-lg-6">
                                         <label for="exampleFormControlSelect1">Score</label>
-                                        <input type="number" class="form-control" name="" value="" required>
+                                        <input type="number" class="form-control" name="score" value="" required>
                                     </div>
                                 </div>
                             
 
                             <div class="text-end">
-                                <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-plus"></i>&nbsp;&nbsp;Save</button>
+                                <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</button>
                             </div>
                         </form>
 

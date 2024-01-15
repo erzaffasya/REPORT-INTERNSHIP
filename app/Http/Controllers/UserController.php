@@ -69,19 +69,35 @@ class UserController extends Controller
             ->with('success', 'User berhasil diedit!');
     }
 
-    public function updateTalent(Request $request)
-    {
-        UserTalent::where('user_id', $request->user_id)->delete();
-        foreach ($request->talent as $key => $value) {
-            if ($value != null && $value != 0) {
-                UserTalent::create([
-                    'user_id' => $request->user_id,
-                    'talent_id' => $key,
-                    'score' => $value
-                ]);
+        public function updateTalent(Request $request)
+        {
+            UserTalent::where('user_id', $request->user_id)->delete();
+            foreach ($request->talent as $key => $value) {
+                if ($value != null && $value != 0) {
+                    UserTalent::create([
+                        'user_id' => $request->user_id,
+                        'talent_id' => $key,
+                        'score' => $value
+                    ]);
+                }
             }
+            return back();
         }
-        return back();
+
+    public function addTalentUser(Request $request, $userId)
+    {
+        $request->validate([
+            'talent_id' => 'required|numeric',
+            'score' => 'required|numeric',
+        ]);
+
+        UserTalent::create([
+            'user_id' => $userId,
+            'talent_id' => $request->talent_id,
+            'score' => $request->score,
+        ]);
+
+        return back()->with('success', 'Talent User berhasil ditambahkan');
     }
 
     public function delete($id)
