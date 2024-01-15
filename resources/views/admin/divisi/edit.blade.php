@@ -19,7 +19,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">Detail</label>
-                                <textarea class="form-control" aria-label="With textarea" name="detail" rows="4" required>{{ $Divisi->detail }}</textarea>
+                                <textarea class="form-control" aria-label="With textarea" name="detail" rows="9" required>{{ $Divisi->detail }}</textarea>
                             </div>
                             <div class="text-end">
                                 <a href="javascript:history.back()" class="btn bg-gradient-danger"><i
@@ -40,11 +40,13 @@
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            
                             @foreach ($Talent as $item)
                                 <div class="mb-3">
                                     <label for="exampleFormControlSelect1">{{ $item->name }}</label>
                                     <input type="number" class="form-control" name="criteria[{{ $item->name }}]"
-                                        value="" required>
+                                    value="{{ json_decode($Divisi->criteria)->{$item->name} }}" required>
+                                
                                 </div>
                             @endforeach
 
