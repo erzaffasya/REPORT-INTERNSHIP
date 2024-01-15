@@ -89,9 +89,51 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
+                       
+                        <div class="card mt-4">
+                            <div class="card-body p-3">
+                                <h4 class="text-[1.5rem]">Talent</h4>
+                                <div class="" style="display: flex; justify-content: space-evenly;">
+                                    <div class="" style="display: flex; align-items: center; flex-direction: column;">
+                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
+                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'IT'} }}</span>
+                                        </div>
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">IT</p>
+                                    </div>
+
+                                    <div class="" style="display: flex; align-items: center; flex-direction: column;" >
+                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
+                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'Dokumen'} }}</span>
+                                        </div>
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Dokumen</p>
+                                    </div>
+
+                                    <div class="" style="display: flex; align-items: center; flex-direction: column;" >
+                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
+                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'Finance'} }}</span>
+                                        </div>
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Finance</p>
+                                    </div>
+
+                                    <div class="">
+                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
+                                           <span class="d-block text-white text-[1.5rem] mx-auto">{{ json_decode($Divisi->criteria)->{'Desain'} }}</span>
+                                        </div>
+                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Desain</p>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
                 </div>
             </div>
 
+        
 
 
 
@@ -193,6 +235,8 @@
 
 
         </div>
+
+        
 
         <div class="row mt-4">
             @can('admin')
