@@ -45,7 +45,7 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlSelect1">{{ $item->name }}</label>
                                     <input type="number" class="form-control" name="criteria[{{ $item->name }}]"
-                                    value="{{ json_decode($Divisi->criteria)->{$item->name} }}" required>
+                                    value="{{ json_decode($Divisi->criteria)->{$item->name}??0 }}" required>
                                 
                                 </div>
                             @endforeach

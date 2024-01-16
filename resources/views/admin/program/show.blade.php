@@ -450,7 +450,7 @@
                                                         <i class="fas fa-trash text-secondary"></i>
                                                     </a>
                                                     
-                                                    <a href="{{ route('rekomendasi-divisi', $item->user->id) }}"
+                                                    <a href="{{ url('rekomendasi/'. $item->user->id.'/program/'.$item->program_id) }}"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                                         <i class="fas fa-edit text-secondary"></i>
                                                     </a>

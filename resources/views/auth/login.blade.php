@@ -126,9 +126,9 @@
                   <button type="submit" class="btn bg-gradient-info w-100 my-4 mb-2">Masuk</button>
                 </div>
                 
-                <div class="text-center">
+                {{-- <div class="text-center">
                   <a href="{{ url('register') }}" class="btn bg-gradient-dark w-100 mt-2 mb-4">Daftar Akun</a>
-                </div>
+                </div> --}}
               </form>
             </div>
           </div>

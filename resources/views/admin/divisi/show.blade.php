@@ -78,7 +78,14 @@
                                     </div>
                                     <div class="ms-3">
                                         <div class="numbers">
-                                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Laporan</p>
+                                            @if (Auth::user()->role == 'admin')
+                                                <a href="{{ route('guestlihatlaporan') }}"
+                                                    class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah
+                                                    Laporan</a>
+                                            @else
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Laporan
+                                                </p>
+                                            @endif
                                             <h5 class="font-weight-bolder mb-0">
                                                 {{ $Laporan->count() }}
                                                 <span class="text-success text-sm font-weight-bolder"></span>
@@ -90,32 +97,39 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
-                       
+                    {{-- <div class="col-lg-12 col-md-6 col-12 mt-4 mt-lg-0">
+
                         <div class="card mt-4">
-                        <div class="card-body p-3">
-                            <h4 class="text-[1.5rem]">Talent</h4>
-                            <div class="gap-1" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
-                                @foreach (json_decode($Divisi->criteria) as $key => $value)
-                                    <div class="" style="display: flex; align-items: center; flex-direction: column;">
-                                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md" style="display: flex; align-items: center;">
-                                            <span class="d-block text-white text-[1.5rem] mx-auto">{{ $value }}</span>
-                                        </div>
-                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">{{ $key }}</p>
-                                    </div>
-                                @endforeach
-                               
+                            <div class="card-body p-3">
+                                <h4 class="text-[1.5rem]">Talent</h4>
+                                <div class="gap-1"
+                                    style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                                    @if (json_decode($Divisi->criteria) != null)
+                                        @foreach (json_decode($Divisi->criteria) as $key => $value)
+                                            <div class=""
+                                                style="display: flex; align-items: center; flex-direction: column;">
+                                                <div class="icon icon-shape bg-gradient-dark text-center border-radius-md"
+                                                    style="display: flex; align-items: center;">
+                                                    <span
+                                                        class="d-block text-white text-[1.5rem] mx-auto">{{ $value }}</span>
+                                                </div>
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">
+                                                    {{ $key }}</p>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+                                </div>
                             </div>
-                        </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
-                   
+
                 </div>
             </div>
 
-        
+
 
 
 
@@ -218,7 +232,7 @@
 
         </div>
 
-        
+
 
         <div class="row mt-4">
             @can('admin')
@@ -296,7 +310,6 @@
                         </div>
                     </div>
                 </div>
-                
 @endcan
         <div class=" py-4">
             <div class="row">
@@ -313,11 +326,11 @@
                                 </div>
                                 @can('admin')
     <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                                                        {{-- <div class="ms-auto my-auto">
+                                                                                        {{-- <div class="ms-auto my-auto">
                                                                         <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
                                                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                                                     </div> --}}
-                                                                    </div>
+                                                                                    </div>
 @endcan
 
                             </div>
@@ -355,15 +368,15 @@
                                                     </a> --}}
                                                     @can('admin')
     <a href="{{ url('destroyAksesDivisi', $item->id) }}"
-                                                                                            data-bs-toggle="tooltip"
-                                                                                            data-bs-original-title="Delete product">
-                                                                                            <i class="fas fa-trash text-secondary"></i>
-                                                                                        </a>
+                                                                                                            data-bs-toggle="tooltip"
+                                                                                                            data-bs-original-title="Delete product">
+                                                                                                            <i class="fas fa-trash text-secondary"></i>
+                                                                                                        </a>
 
-                                                        <a href="{{ url('penilaian/'.$item->user->id.'/'.$item->divisi->id) }}"
-                                                            data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                                            <i class="fas fa-book text-secondary"></i>
-                                                        </a>
+                                                                        <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}"
+                                                                            data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                                            <i class="fas fa-book text-secondary"></i>
+                                                                        </a>
 @endcan
                                                 </td>
                                             </tr>
@@ -454,27 +467,28 @@
                             @method('PUT')
                             <div class="form-group">
                             <label for="senin" class="col-form-label">Senin</label>
-                            <textarea name="senin" id="senin" class="form-control" rows="4" cols="50" readonly>{{ $i->senin }}</textarea>
+                            <textarea name="senin" id="senin" class="form-control tinymce-editor" rows="4" cols="50" readonly>{{ $i->senin }}</textarea>
                             </div>
                             <div class="form-group">
                             <label for="selasa" class="col-form-label">Selasa</label>
-                            <textarea name="selasa" id="selasa" class="form-control" rows="4" cols="50" readonly>{{ $i->selasa }}</textarea>
+                            <textarea name="selasa" id="selasa" class="form-control tinymce-editor" rows="4" cols="50" readonly>{{ $i->selasa }}</textarea>
                             </div>
                             <div class="form-group">
                             <label for="rabu" class="col-form-label">Rabu</label>
-                            <textarea name="rabu" id="rabu" class="form-control" rows="4" cols="50" readonly>{{ $i->rabu }}</textarea>
+                            <textarea name="rabu" id="rabu" class="form-control tinymce-editor" rows="4" cols="50" readonly>{{ $i->rabu }}</textarea>
                             </div>
                             <div class="form-group">
                             <label for="kamis" class="col-form-label">Kamis</label>
-                            <textarea name="kamis" id="kamis" class="form-control" rows="4" cols="50" readonly>{{ $i->kamis }}</textarea>
+                            <textarea name="kamis" id="kamis" class="form-control tinymce-editor" rows="4" cols="50" readonly>{{ $i->kamis }}</textarea>
                             </div>
                             <div class="form-group">
                             <label for="jumat" class="col-form-label">Jumat</label>
-                            <textarea name="jumat" id="jumat" class="form-control" rows="4" cols="50" readonly>{{ $i->jumat }}</textarea>
+                            <textarea name="jumat" id="jumat" class="form-control tinymce-editor" rows="4" cols="50" readonly>{{ $i->jumat }}</textarea>
                             </div>
                             <div class="form-group">
                             <label for="mingguan" class="col-form-label">Mingguan</label>
-                            <textarea name="mingguan" id="senin" class="form-control" rows="4" cols="200" readonly>{{ $i->mingguan }}</textarea>
+                            <textarea name="mingguan" id="senin" class="form-control tinymce-editor" rows="4" cols="200"
+                                readonly>{{ $i->mingguan }}</textarea>
                             </div>
                             <div class="form-group">
                             <label for="komentar" class="col-form-label">Komentar</label>
@@ -557,5 +571,25 @@
                                         console.log($(senin));
                                     });
                                 </script>
+
+                                <script type="text/javascript">
+                                    tinymce.init({
+                                        selector: 'textarea.tinymce-editor',
+                                        width: 450,
+                                        height: 300,
+                                        menubar: false,
+                                        plugins: [
+                                            'advlist autolink lists link image charmap print preview anchor',
+                                            'searchreplace visualblocks code fullscreen',
+                                            'insertdatetime media table paste code help wordcount'
+                                        ],
+                                        toolbar: 'undo redo | formatselect | ' +
+                                            'bold italic backcolor | alignleft aligncenter ' +
+                                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                                            'removeformat | help',
+                                        content_css: '//www.tiny.cloud/css/codepen.min.css'
+                                    });
+                                </script>
                             @endpush
+
                             </x-app-layout>)

@@ -13,7 +13,7 @@
                     </div>
                   </div>
                   <div class="card-body pt-0 p-3 text-center">
-                    <h6 class="text-center mb-0">PT. Menara Indonesia</h6>
+                    <h6 class="text-center mb-0">INTERN DPMPTSP</h6>
                     <span class="text-xs">Nama Program</span>
                     <hr class="horizontal dark my-2">
                     <h5 class="mb-0">{{ $divisi->program->judul }}</h5>
@@ -91,7 +91,7 @@
                 <div class="mb-0 ms-auto">
                 </div>
                 {{-- <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button> --}}
-                <a href="{{ route('showLaporan', $item->id) }}" class="btn bg-gradient-primary mb-0 ms-2">Lengkapi Laporan</a>
+                <a href="{{ route('showLaporan', $item->id) }}" class="btn bg-gradient-primary mb-0 ms-2">Lihat Laporan</a>
               </div>
             </div>
           @endforeach

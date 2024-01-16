@@ -66,7 +66,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('talent', TalentController::class);
-    Route::get('/rekomendasi/{id}', [RecommendationController::class, 'recommend'])->name('rekomendasi-divisi');
+    Route::get('/rekomendasi/{id}/program/{program}', [RecommendationController::class, 'recommend'])->name('rekomendasi-divisi');
 
 
 

@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class RecommendationController extends Controller
 {
-    public function recommend($id)
+    public function recommend($id, $program)
     {
         $student = User::where('id',$id)->with('talents')->first();
-        $dataDivisi = Divisi::all();
+        $dataDivisi = Divisi::where('program_id', $program)->get();
         $recommendedDepartments = collect();
         // dd($student->talents);
         foreach ($dataDivisi as $divisi) {

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="../tadmin/assets/img/bruce-mars.jpg" alt="profile_image"
+                    <img src="{{asset('tadmin/assets/img/bruce-mars.jpg')}}" alt="profile_image"
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
@@ -33,7 +33,7 @@
                                 <div class="card card-blog card-plain">
                                     <div class="position-relative">
                                         <a class="d-block shadow border-radius-xl">
-                                            <img src="../tadmin/assets/img/home-decor-1.jpg" alt="img-blur-shadow"
+                                            <img src="{{asset('tadmin/assets/img/home-decor-1.jpg')}}" alt="img-blur-shadow"
                                                 class="img-fluid shadow border-radius-xl">
                                         </a>
                                     </div>

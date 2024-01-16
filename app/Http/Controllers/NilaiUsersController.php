@@ -22,6 +22,8 @@ class NilaiUsersController extends Controller
         $nilai->judul_3 = $request->judul_3;
         $nilai->nilai_3 = $request->nilai_3;
         $nilai->judul_4 = $request->judul_4;
+        $nilai->nilai_4 = $request->nilai_4;
+        $nilai->judul_5 = $request->judul_5;
         $nilai->nilai_5 = $request->nilai_5;
         $nilai->nilai_6 = $request->nilai_6;
         $nilai->nilai_7 = $request->nilai_7;
