@@ -157,7 +157,7 @@
                                         value="{{ $nilai->nilai_6 }}" id="inlineFormInputGroupUsername"
                                         placeholder="Nilai">
                                 </div>
-                                <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span>
+                                {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Cukup</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-warning fw-bold">Kurang</span> --}}
@@ -174,7 +174,7 @@
                                         value="{{ $nilai->nilai_7 }}" id="inlineFormInputGroupUsername"
                                         placeholder="Nilai">
                                 </div>
-                                <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span>
+                                {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Cukup</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-warning fw-bold">Kurang</span> --}}
@@ -191,7 +191,7 @@
                                         value="{{ $nilai->nilai_8 }}" id="inlineFormInputGroupUsername"
                                         placeholder="Nilai">
                                 </div>
-                                <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span>
+                                {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Cukup</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-warning fw-bold">Kurang</span> --}}
@@ -208,7 +208,7 @@
                                         value="{{ $nilai->nilai_9 }}" id="inlineFormInputGroupUsername"
                                         placeholder="Nilai">
                                 </div>
-                                <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span>
+                                {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Cukup</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-warning fw-bold">Kurang</span> --}}
@@ -225,7 +225,7 @@
                                         value="{{ $nilai->nilai_10 }}" id="inlineFormInputGroupUsername"
                                         placeholder="Nilai">
                                 </div>
-                                <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span>
+                                {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Sangat Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Baik</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-success fw-bold">Cukup</span> --}}
                                 {{-- <span class="text-xxs mt-n4 p-0 text-warning fw-bold">Kurang</span> --}}

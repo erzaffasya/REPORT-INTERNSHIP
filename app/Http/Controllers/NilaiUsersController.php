@@ -30,8 +30,8 @@ class NilaiUsersController extends Controller
         $nilai->nilai_8 = $request->nilai_8;
         $nilai->nilai_9 = $request->nilai_9;
         $nilai->nilai_10 = $request->nilai_10;
-        $nilai->total = $request->total;
-        $nilai->rata_rata = $request->rata_rata;
+        $nilai->total = $request->nilai_1 + $request->nilai_2 + $request->nilai_3 + $request->nilai_4 + $request->nilai_5 + $request->nilai_6 + $request->nilai_7 + $request->nilai_8 + $request->nilai_9 + $request->nilai_10;
+        $nilai->rata_rata = $nilai->total/10;
         $nilai->save();
         return back()->with('success', 'Data berhasil diupdate!');
     }
