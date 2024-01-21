@@ -12,13 +12,38 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">Nama</label>
-                                <input type="text" class="form-control" name="nama_divisi"
-                                    value="{{ $User->name }}" readonly>
+                                <input type="text" class="form-control" name="name" value="{{ $User->name }}"
+                                    readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">Email</label>
-                                <input type="text" class="form-control" name="nama_divisi"
-                                    value="{{ $User->email }}" readonly>
+                                <input type="text" class="form-control" name="email" value="{{ $User->email }}"
+                                    readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1">Role</label>
+                                <select class="form-control" name="role" required id="exampleFormControlSelect1">
+                                    <option @if ($User->role == 'magang') selected @endif value="magang">Magang
+                                    </option>
+                                    <option @if ($User->role == 'admin') selected @endif value="admin">Admin</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1">NIM</label>
+                                <input type="text" class="form-control" name="nim" value="{{ $User->nim }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1">Sekolah</label>
+                                <input type="text" class="form-control" name="sekolah" value="{{ $User->sekolah }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1">Kelas</label>
+                                <input type="text" class="form-control" name="kelas" value="{{ $User->kelas }}">
+                            </div>
+
+                            <div class="text-end">
+                                <button type="submit" class="btn bg-gradient-dark">Update Data</button>
                             </div>
                         </form>
                     </div>
@@ -32,34 +57,37 @@
                         <form role="form text-left" action="{{ route('addTalentUser', $User->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                                <input class="form-control" type="hidden" name="user_id" value="{{ $User->id }}" required>  
-                                <div class="row">
-                                    <div class="mb-3 col-lg-6">
-                                        <label for="exampleFormControlSelect1">Talent</label>
-                                        <select class="form-select" name="talent_id" required>
-                                            @foreach ($talent as $item)
-                                                <option value="{{ $item->id }}">
-                                                    {{ $item->name}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="mb-3 col-lg-6">
-                                        <label for="exampleFormControlSelect1">Score</label>
-                                        <input type="number" class="form-control" name="score" value="" required>
-                                    </div>
+                            <input class="form-control" type="hidden" name="user_id" value="{{ $User->id }}"
+                                required>
+                            <div class="row">
+                                <div class="mb-3 col-lg-6">
+                                    <label for="exampleFormControlSelect1">Talent</label>
+                                    <select class="form-select" name="talent_id" required>
+                                        @foreach ($talent as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            
+                                <div class="mb-3 col-lg-6">
+                                    <label for="exampleFormControlSelect1">Score</label>
+                                    <input type="number" class="form-control" name="score" value="" required>
+                                </div>
+                            </div>
+
 
                             <div class="text-end">
-                                <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</button>
+                                <button type="submit" class="btn bg-gradient-dark"><i
+                                        class="fas fa-plus"></i>&nbsp;&nbsp;Add</button>
                             </div>
                         </form>
 
                         <form role="form text-left" action="{{ route('updateTalentUser', $User->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <input class="form-control" type="hidden" name="user_id" value="{{ $User->id }}" required>
+                            <input class="form-control" type="hidden" name="user_id" value="{{ $User->id }}"
+                                required>
 
                             @foreach ($talentUser as $item)
                                 @php
@@ -78,7 +106,7 @@
                         </form>
 
 
-                
+
                     </div>
                 </div>
             </div>

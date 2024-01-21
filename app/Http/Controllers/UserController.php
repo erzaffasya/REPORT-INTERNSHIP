@@ -41,7 +41,10 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => $request->role
+            'role' => $request->role,
+            'sekolah' => $request->sekolah,
+            'kelas' => $request->kelas,
+            'nim' => $request->nim,
         ]);
         return back()
             ->with('success', 'User berhasil ditambahkan!');
@@ -63,6 +66,9 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->role = $request->role;
+        $user->sekolah = $request->sekolah;
+        $user->kelas = $request->kelas;
+        $user->nim = $request->nim;
         $user->save();
 
         return back()

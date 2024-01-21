@@ -21,6 +21,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role',['admin','magang']);
+
+            $table->string('sekolah')->nullable();
+            $table->string('kelas')->nullable();
+            $table->string('nim')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
