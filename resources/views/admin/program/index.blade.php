@@ -3,9 +3,8 @@
         <section class="py-3">
             <div class="row">
                 <div class="col-md-8 me-auto text-left">
-                    <h5>Some of Our Awesome Projects</h5>
-                    <p>This is the paragraph where you can write more details about your projects. Keep you user engaged
-                        by providing meaningful information.</p>
+                    <h5>Program Magang</h5>
+                    <p>Durasi penerimaan magang setiap programnya.</p>
                 </div>
             </div>
             <div class="row mt-lg-4 mt-2">
