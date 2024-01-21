@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('program_id')->constrained('program')->onDelete('cascade');
+            $table->foreignId('divisi_id')->constrained('divisi')->onDelete('cascade');
             
             $table->string('judul_1')->nullable();
             $table->float('nilai_1')->nullable();
