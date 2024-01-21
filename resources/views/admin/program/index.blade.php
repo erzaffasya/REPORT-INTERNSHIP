@@ -3,7 +3,7 @@
         <section class="py-3">
             <div class="row">
                 <div class="col-md-8 me-auto text-left">
-                    <h5>Program Magang</h5>
+                    <h5>PROGRAM MAGANG</h5>
                     <p>Durasi penerimaan magang setiap programnya.</p>
                 </div>
             </div>
