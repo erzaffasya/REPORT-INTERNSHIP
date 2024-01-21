@@ -26,7 +26,8 @@
                                 <select class="form-control" name="role" required id="exampleFormControlSelect1">
                                     <option @if ($User->role == 'magang') selected @endif value="magang">Magang
                                     </option>
-                                    <option @if ($User->role == 'admin') selected @endif value="admin">Admin</option>
+                                    <option @if ($User->role == 'admin') selected @endif value="admin">Admin
+                                    </option>
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -44,6 +45,7 @@
 
                             <div class="text-end">
                                 <button type="submit" class="btn bg-gradient-dark">Update Data</button>
+                                <a href="{{ url('user') }}" class="btn bg-gradient-dark">Back</a>
                             </div>
                         </form>
                     </div>

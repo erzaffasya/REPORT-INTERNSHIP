@@ -71,7 +71,7 @@ class DivisiController extends Controller
         }
         $Divisi->save();
 
-        return redirect()->route('Program.index')
+        return redirect()->route('Program.show', $Divisi->program_id)
             ->with('edit', 'Divisi Berhasil Diedit');
     }
 

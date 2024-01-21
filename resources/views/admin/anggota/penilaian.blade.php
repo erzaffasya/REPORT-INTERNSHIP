@@ -3,17 +3,17 @@
         <div class="row">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="../tadmin/assets/img/bruce-mars.jpg" alt="profile_image"
+                    <img src="{{asset('/tadmin/assets/img/bruce-mars.jp')}}g" alt="profile_image"
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        {{$nilai->user->name}}
+                        {{ $nilai->user->name }}
                     </h5>
                     <p class="mb-0 font-weight-bold text-sm">
-                        SMKN 2 Balikpapan
+                        {{ $nilai->user->sekolah }}
                     </p>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <div class=" align-items-center row my-3">
                             <div class="col-lg-9 col-sm-3 my-1">
                                 <label class="sr-only" for="inlineFormInputName">Name</label>
-                                <input type="text" class="form-control" value="{{ $nilai->nilai_2 }}" name="judul_2"
+                                <input type="text" class="form-control" value="{{ $nilai->judul_2 }}" name="judul_2"
                                     id="inlineFormInputName" placeholder="Masukkan Poin Penilaian">
                                 <p style="font-size: 0.7rem;">cth: Mengoperasikan paket program pengolah angka
                                     (spreadsheet/ excel) </p>

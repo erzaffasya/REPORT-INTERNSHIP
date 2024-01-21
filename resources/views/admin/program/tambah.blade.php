@@ -19,15 +19,14 @@
                                 </button>
                                 <button class="multisteps-form__progress-btn" type="button" title="Media">
                                     Periode</button>
-                                <button class="multisteps-form__progress-btn" type="button" title="Media">
-                                    Status</button>
                             </div>
                         </div>
                     </div>
                     <!--form panels-->
                     <div class="row">
                         <div class="col-12 col-lg-5 m-auto">
-                            <form class="multisteps-form__form mb-8" method="post" action="{{route('Program.store')}}">
+                            <form class="multisteps-form__form mb-8" method="post"
+                                action="{{ route('Program.store') }}">
                                 @csrf
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
@@ -37,7 +36,8 @@
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-12">
                                                 <label>Nama Program</label>
-                                                <input class="multisteps-form__input form-control" name="judul" type="text" />
+                                                <input class="multisteps-form__input form-control" name="judul"
+                                                    type="text" />
                                             </div>
 
                                         </div>
@@ -60,51 +60,21 @@
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
                                     data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Periode Magang</h5>
+                                    <h5 class="font-weight-bolder">Periode</h5>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
-                                            <div class="col-6">
-                                                <label class="form-label">Periode Mulai</label>
-                                                <input class="form-control datetimepicker" name="periode_mulai" type="date"
-                                                    placeholder="Please select start date" data-input>
-                                            </div>
-                                            <div class="col-6">
-                                                <label class="form-label">Periode Berakhir</label>
-                                                <input class="form-control datetimepicker" name="periode_berakhir" type="date"
-                                                    placeholder="Please select start date" data-input>
-                                            </div>
-                                        </div>
-                                        <div class="button-row d-flex mt-4">
-                                            <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
-                                                title="Prev">Prev</button>
-                                            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
-                                                title="Next">Next</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--single form panel-->
-                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
-                                    data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Status</h5>
-                                    <div class="multisteps-form__content">
-                                        <div class="row mt-3">
-                                            <div class="col-12 col-md-12">
-                                                <div class="form-group">
-                                                    <label>
-                                                        Status Program
-                                                    </label>
-                                                    <p class="form-text text-muted text-xs ms-1">
-                                                        Ubah status program.
-                                                    </p>
-                                                    <div class="form-check form-switch ms-1">
-                                                        <input class="form-check-input" name="status" type="checkbox"
-                                                            id="flexSwitchCheckDefault" onclick="notify(this)"
-                                                            data-type="warning"
-                                                            data-content="Status Program Telah Diubah"
-                                                            data-title="Warning" data-icon="ni ni-bell-55">
-                                                        <label class="form-check-label"
-                                                            for="flexSwitchCheckDefault"></label>
-                                                    </div>
+                                            <div class="row mt-3">
+                                                <div class="col-6">
+                                                    <label class="form-label">Periode Mulai</label>
+                                                    <input class="form-control datetimepicker" name="periode_mulai"
+                                                        type="date" placeholder="Please select start date"
+                                                        data-input>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="form-label">Periode Berakhir</label>
+                                                    <input class="form-control datetimepicker" name="periode_berakhir"
+                                                        type="date" placeholder="Please select start date"
+                                                        data-input>
                                                 </div>
                                             </div>
 
@@ -112,7 +82,8 @@
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
                                                 title="Prev">Prev</button>
-                                                <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Kirim</button>
+                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                                title="Send">Kirim</button>
                                         </div>
                                     </div>
                                 </div>

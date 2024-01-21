@@ -19,7 +19,7 @@
                                 <h4 class="my-auto">
                                     {{-- Hapus Divisi --}}
                                 </h4>
-                                <a href="javascript:;" class="btn btn-danger mb-0 ms-auto">Hapus</a>
+                                {{-- <a href="javascript:;" class="btn btn-danger mb-0 ms-auto">Hapus</a> --}}
                             </div>
                         @endcan
                     </div>
@@ -326,11 +326,11 @@
                                 </div>
                                 @can('admin')
     <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                                                                        {{-- <div class="ms-auto my-auto">
+                                                                                            {{-- <div class="ms-auto my-auto">
                                                                         <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
                                                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                                                     </div> --}}
-                                                                                    </div>
+                                                                                        </div>
 @endcan
 
                             </div>
@@ -368,15 +368,15 @@
                                                     </a> --}}
                                                     @can('admin')
     <a href="{{ url('destroyAksesDivisi', $item->id) }}"
-                                                                                                            data-bs-toggle="tooltip"
-                                                                                                            data-bs-original-title="Delete product">
-                                                                                                            <i class="fas fa-trash text-secondary"></i>
-                                                                                                        </a>
+                                                                                                                data-bs-toggle="tooltip"
+                                                                                                                data-bs-original-title="Delete product">
+                                                                                                                <i class="fas fa-trash text-secondary"></i>
+                                                                                                            </a>
 
-                                                                        <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}"
-                                                                            data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                                                            <i class="fas fa-book text-secondary"></i>
-                                                                        </a>
+                                                                            <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}"
+                                                                                data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                                                <i class="fas fa-book text-secondary"></i>
+                                                                            </a>
 @endcan
                                                 </td>
                                             </tr>

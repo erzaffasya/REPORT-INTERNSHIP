@@ -35,25 +35,19 @@ class ProgramController extends Controller
             'detail' => 'required',
             'periode_mulai' => 'required',
             'periode_berakhir' => 'required',
-            'status' => 'required',
         ]);
 
         // $date = date("his");
         // $extension = $request->file('gambar1')->extension();
         // $file_name = "Program_$date.$extension";
         // $path = $request->file('gambar1')->storeAs('public/Program', $file_name);
-        if ($request->status == NULL) {
-            $status = false;
-        } else {
-            $status = true;
-        }
         Program::create([
             'judul' => $request->judul,
             'detail' => $request->detail,
             // 'gambar' => $file_name,
             'periode_mulai' => Carbon::parse($request->periode_mulai),
             'periode_berakhir' => Carbon::parse($request->periode_berakhir),
-            'status' => $status,
+            'status' => true,
         ]);
         return redirect()->route('Program.index')
             ->with('success', 'Program Berhasil Ditambahkan');
@@ -83,24 +77,17 @@ class ProgramController extends Controller
         $request->validate([
             'judul' => 'required',
             'detail' => 'required',
-            // 'gambar1' => 'file|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
             'periode_mulai' => 'required',
             'periode_berakhir' => 'required',
-            // 'status' => 'required',
         ]);
 
         $Program = Program::findOrFail($id);
 
-        if ($request->status == NULL) {
-            $status = false;
-        } else {
-            $status = true;
-        }
 
         $Program->judul = $request->judul;
         $Program->detail = $request->detail;
         $Program->periode_mulai = $request->periode_mulai;
-        $Program->status = $status;
+        $Program->status = true;
         $Program->periode_berakhir = $request->periode_berakhir;
         $Program->save();
 
@@ -110,7 +97,16 @@ class ProgramController extends Controller
 
     public function destroy($id)
     {
-        $Program = Program::where('id', $id)->delete();
+        // dd('asd');
+        $Program = Program::find($id);
+        $Divisi = Divisi::where('program_id', $Program->id)->get();
+        // dd($Divisi, $Program);
+        foreach ($Divisi as $item) {
+            $Nilai = NilaiUser::where('divsi_id', $item->id)->delete();
+
+        }
+        $Divisi = Divisi::where('program_id', $Program->id)->delete();
+        $Program->delete();
         // Storage::delete("public/Program/$Program->gambar");
         // $Program->delete();
         return redirect()->route('Program.index')
