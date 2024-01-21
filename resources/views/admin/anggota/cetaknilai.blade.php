@@ -2,183 +2,57 @@
     <div class="layout-invoice-page">
         <div class="book">
             <div id="template4" class="pbf-laporanhutang page position-relative">
-                <div class="subpage">
+                <div class="subpage" >
                     <div class="">
-                        <table class="report-container w-100">
-                            <tbody class="report-content">
+                        <table class="report-container w-100" style="position: relative; padding:0;">
+                            <tbody class="report-content" style="position: relative; padding:0;">
+                                <img class="sertif-bg" src="{{asset('tadmin/assets/img/image1.png')}}" alt="">
                                 <tr>
                                     <td class="report-content-cell">
-                                        <div class="main-content">
-                                            <div class="page-details border-0 position-relative mb-2">
-                                                <div class="row justify-content-between">
-                                                    <div class="col-12 mb-0 px-2">
-                                                        <p class="fw-bold fs-6 mb-1 text-center text-decoration-underline">LAPORAN PEMBAYARAN HUTANG</p>
-                                                        <p class="fw-bold text-center font-smaller0">PEMBAYARAN CASH IN ADVANCE</p>
-                                                        <p class="fw-bold text-center font-smaller0">TANGGAL 30 DESEMBER 2023</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="table-details border-0 px-2">
-                                                <table class="table table-sm mb-1 font-smaller0 table-bordered border-dark text-dark w-100 ">
-                                                    <thead>
-                                                        <tr class="text-center">
-                                                            <th class="v-top">No</th>
-                                                            <th class="v-top">No Faktur</th>
-                                                            <th class="v-top">Tanggal Faktur</th>
-                                                            <th class="v-top">Tipe Pembayaran</th>
-                                                            <th class="v-top">Bank</th>
-                                                            <th class="v-top">No Cek/Bg</th>
-                                                            <th class="v-top">No BPK</th>
-                                                            <th class="v-top">Nilai Faktur</th>
-                                                            <th class="v-top">Pembulatan</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td rowspan="4">1</td>
-                                                            <td colspan="8" class="fw-bold">PT. TIRTA MAS JAYA</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01920/FAKTUR/2023</td>
-                                                            <td>03-11-2023</td>
-                                                            <td>Transaksi1</td>
-                                                            <td>MANDIRI</td>
-                                                            <td>08294284791</td>
-                                                            <td>00009992222</td>
-                                                            <td class="text-end">90.290</td>
-                                                            <td class="text-end">100.000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01920/FAKTUR/2023</td>
-                                                            <td>03-11-2023</td>
-                                                            <td>Transaksi1</td>
-                                                            <td>MANDIRI</td>
-                                                            <td>08294284791</td>
-                                                            <td>00009992222</td>
-                                                            <td class="text-end">90.290</td>
-                                                            <td class="text-end">100.000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6" class="fw-bold text-end">Sub Total</td>
-                                                            <td class="text-end">180.580</td>
-                                                            <td class="text-end">200.000</td>
-                                                        </tr>
-                                                        <!-- gap supplier -->
-                                                        <tr>
-                                                            <td rowspan="4">2</td>
-                                                            <td colspan="8" class="fw-bold">PT. EKA GUNA BANGSA</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01920/FAKTUR/2023</td>
-                                                            <td>03-11-2023</td>
-                                                            <td>Transaksi1</td>
-                                                            <td>MANDIRI</td>
-                                                            <td>08294284791</td>
-                                                            <td>00009992222</td>
-                                                            <td class="text-end">90.290</td>
-                                                            <td class="text-end">100.000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01920/FAKTUR/2023</td>
-                                                            <td>03-11-2023</td>
-                                                            <td>Transaksi1</td>
-                                                            <td>MANDIRI</td>
-                                                            <td>08294284791</td>
-                                                            <td>00009992222</td>
-                                                            <td class="text-end">90.290</td>
-                                                            <td class="text-end">100.000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6" class="fw-bold text-end">Sub Total</td>
-                                                            <td class="text-end">180.580</td>
-                                                            <td class="text-end">200.000</td>
-                                                        </tr>
-                                                        <!-- END GAP -->
-                                                        <tr>
-                                                            <td colspan="6"></td>
-                                                            <td class="fw-bold">Grand Total</td>
-                                                            <td class="text-end">-</td>
-                                                            <td class="text-end">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6"></td>
-                                                            <td class="fw-bold">Total BCA</td>
-                                                            <td class="text-end">-</td>
-                                                            <td class="text-end">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6"></td>
-                                                            <td class="fw-bold">Total MANDIRI</td>
-                                                            <td class="text-end">-</td>
-                                                            <td class="text-end">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6"></td>
-                                                            <td class="fw-bold">Total BPD</td>
-                                                            <td class="text-end">-</td>
-                                                            <td class="text-end">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6"></td>
-                                                            <td class="fw-bold">Total BRI</td>
-                                                            <td class="text-end">-</td>
-                                                            <td class="text-end">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6"></td>
-                                                            <td class="fw-bold">Total BNI</td>
-                                                            <td class="text-end">-</td>
-                                                            <td class="text-end">-</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6"></td>
-                                                            <td class="fw-bold">Total MayBank</td>
-                                                            <td class="text-end">-</td>
-                                                            <td class="text-end">-</td>
-                                                        </tr>
-                                                    </tbody>
+                                        <div class="main-content" style="padding: 4.5rem 7rem;">
+                                            <div class="header" style="text-align: center">
+                                                <img height="80px" src="{{asset('tadmin/assets/img/image2.png')}}" class="text-center" alt="Logo" class="header-logo">
+                                                <p style="margin: 0; font-weight: bold">PEMERINTAH DINAS KOTA BALIKPAPAN</p>
+                                                <p style="margin: 0; font-weight: bold">DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU</p>
+                                                <h3 style="margin-top: 0.5rem; margin-bottom:0; border-bottom: 3px solid black; display: inline-block">SERTIFIKAT</h3>
+                                                <p style="margin: 0; font-weight: bold">Nomor : 421.5/DPMPTSP</p>
+                                              </div>
+                                              <div class="content">
+                                                <table>
+                                                  <tr>
+                                                    <td width="40%">Diberikan kepada</td>
+                                                    <td width="5%">:</td>
+                                                    <td width="">Nama</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="40%">Nomor Induk Siswa</td>
+                                                    <td width="5%">:</td>
+                                                    <td width="">[Nomor]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="40%">Kelas</td>
+                                                    <td width="5%">:</td>
+                                                    <td width="">[Kelas]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="40%">Sekolah</td>
+                                                    <td width="5%">:</td>
+                                                    <td width="">SMK AL KHAIRIYAH BALIKPAPAN</td>
+                                                  </tr>
                                                 </table>
-                                            </div>
-                                            <div class="footer-details border-0 ttd-div mt-3 position-relative">
-                                                <div class="row justify-content-between align-items-start">
-                                                    <div class="col-12 mb-1">
-                                                        <p class="font-smaller0">Balikpapan,...............................</p>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <p class="font-smaller0">Membuat,</p>
-                                                        <figure class="mb-0 font-smaller0">
-                                                            <img src="stempel-planetit-hairian.png" width="90%"
-                                                                height="100px" class="ttd-img"/>
-                                                            <figcaption class="text-start">
-                                                                <!-- <p>(......................................)</p> -->
-                                                                <p>Finance Hutang</p>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <p class="font-smaller0">Memverifikasi,</p>
-                                                        <figure class="mb-0 font-smaller0">
-                                                            <img src="stempel-planetit-hairian.png" width="90%"
-                                                                height="100px" class="ttd-img"/>
-                                                            <figcaption>
-                                                                <!-- <p>(......................................)</p> -->
-                                                                <p>Auditor</p>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-4 text-center">
-                                                        <p class="font-smaller0">Menyetujui,</p>
-                                                        <figure class="mb-0 font-smaller0">
-                                                            <img src="stempel-planetit-hairian.png" width="90%"
-                                                                height="100px" class="ttd-img"/>
-                                                            <figcaption>
-                                                                <!-- <p>(......................................)</p> -->
-                                                                <p>Owner</p>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                <p style="font-weight: bold; line-height: 1.3; margin: 0.5rem 0!important;">Telah melaksanakan Praktek Kerja Lapangan pada Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Balikpapan terhitung mulai tanggal [tanggal] sampai dengan [tanggal] dengan hasil......</p>
+                                              </div>
+                                              <br>
+                                              <div class="footer" style="text-align: center">
+                                                <p>Balikpapan, Oktober 2023</p>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                {{-- <img src="" width="200px" height="120px" alt="" style="object-fit: contain"> --}}
+                                                <p>Kepala Dinas,</p>
+                                                <p class="footer-signature">HASBULLAH HELMI</p>
+                                              </div>
                                         </div>
                                     </td>
                                 </tr>

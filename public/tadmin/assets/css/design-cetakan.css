@@ -12,7 +12,15 @@ body {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
-/* 
+.layout-invoice-page *{
+	font-family: 'Times New Roman', Times, serif!important;
+	color : #000!important;
+}
+.layout-invoice-page{
+	transform: scale(0.7);
+	position: relative;
+	top: -7rem;
+}
 table.report-container {
 	page-break-after: always;
 }
@@ -23,9 +31,9 @@ thead.report-header {
 
 tfoot.report-footer {
 	display: table-footer-group;
-} */
+}
 
-/* tbody.report-content .table-details td {
+tbody.report-content .table-details td {
 	padding: 0.22rem !important;
 }
 
@@ -39,24 +47,27 @@ tfoot.report-footer {
 
 .row {
 	margin: 0;
-} */
+}
 
 .page {
-	width: 21cm;
-	padding: 0.35cm;
-	margin: 1cm auto;
+	/* width: 21cm; */
+	width: 29.7cm;
+	min-height: 21cm;
+	/* padding: 0.35cm; */
+	/* margin: 1cm auto; */
 	border: 1px #d3d3d3 solid;
 	border-radius: 5px;
 	background: white;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+	/* background: url('../img/image1.png');
+	background-size: 100% 100%; */
+	/* background-color: #fff; */
 }
-
 .subpage {
 	width: 100%;
-	padding: 0cm;
+	padding: 0cm!;
 	/* height: 256mm; */
 }
-
 .fit-mt {
 	margin: -0.36cm -0.36cm 0;
 }
@@ -99,6 +110,16 @@ tfoot.report-footer {
 	filter: brightness(0) invert(1);
 }
 
+.sertif-bg{
+	width: 97%!important;
+	height: 97%!important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto!important;
+}	
 /* #template2 .component1 {
 	position: absolute;
 	width: .75rem;
@@ -244,14 +265,39 @@ h1 {
 
 /* END FOOTER DETAILS */
 
-@page {
+/* @page {
 	size: A4;
-	/* size: 210mm 140mm; size trend*/
+	size: 210mm 140mm; size trend
 	margin: 150mm 0 !important;
+} */
+
+@page {
+  size: A4 landscape !important;
+  margin: 0!important;
+  padding: 0;
 }
-
 @media print {
-
+	.sertif-bg{
+		width: 101.8%!important;
+		height: 100%!important;
+		position: absolute!important;
+		top: -1.5rem;
+		left: -0.5rem;
+		margin: none!important;
+	}
+	.layout-invoice-page{
+		transform: scale(1);
+		position: relative;
+		top: 0;
+	}
+	aside,
+	nav {
+		display: none!important;
+	}
+	body .layout-invoice-page,
+	body .layout-invoice-page * {
+		visibility: visible;
+	}
 	#template5 .fit-mt{
 		margin: 0 -0.36cm!important;
 	}
@@ -264,7 +310,7 @@ h1 {
 		margin-top: -1rem;
 	}
 
-	/* table.report-container {
+	table.report-container {
 		page-break-after: always;
 	}
 
@@ -274,7 +320,7 @@ h1 {
 
 	tfoot.report-footer {
 		display: table-footer-group;
-	} */
+	}
 
 	.report-header-cell,
 	.report-footer-cell,
