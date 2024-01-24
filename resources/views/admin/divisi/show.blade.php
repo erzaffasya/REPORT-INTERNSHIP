@@ -377,6 +377,9 @@
                                                                                 data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                                                                 <i class="fas fa-book text-secondary"></i>
                                                                             </a>
+                                                                            <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id) }}">
+                                                                                <i class="fas fa-book text-secondary"></i>
+                                                                            </a>
 @endcan
                                                 </td>
                                             </tr>

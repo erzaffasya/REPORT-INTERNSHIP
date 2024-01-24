@@ -9,9 +9,16 @@ class NilaiUsersController extends Controller
 {
     public function index($id, $divisi)
     {
-        $nilai = NilaiUsers::where('user_id', $id)->where('divisi_id', $id)->first();
+        $nilai = NilaiUsers::where('user_id', $id)->where('divisi_id', $divisi)->first();
         return view('admin.anggota.penilaian', compact('nilai'));
     }
+
+    public function cetakNilai($id, $divisi)
+    {
+        $nilai = NilaiUsers::where('user_id', $id)->where('divisi_id', $divisi)->first();
+        return view('admin.anggota.cetaknilai', compact('nilai'));
+    }
+
     public function store(Request $request)
     {
         $nilai = NilaiUsers::find($request->id);

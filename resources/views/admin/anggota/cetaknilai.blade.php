@@ -22,29 +22,29 @@
                                                   <tr>
                                                     <td width="40%">Diberikan kepada</td>
                                                     <td width="5%">:</td>
-                                                    <td width="">Nama</td>
+                                                    <td width="">{{$nilai->user->name}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td width="40%">Nomor Induk Siswa</td>
                                                     <td width="5%">:</td>
-                                                    <td width="">[Nomor]</td>
+                                                    <td width="">{{$nilai->user->nim}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td width="40%">Kelas</td>
                                                     <td width="5%">:</td>
-                                                    <td width="">[Kelas]</td>
+                                                    <td width="">{{$nilai->user->kelas}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td width="40%">Sekolah</td>
                                                     <td width="5%">:</td>
-                                                    <td width="">SMK AL KHAIRIYAH BALIKPAPAN</td>
+                                                    <td width="">{{$nilai->user->sekolah}}</td>
                                                   </tr>
                                                 </table>
                                                 <p style="font-weight: bold; line-height: 1.3; margin: 0.5rem 0!important;">Telah melaksanakan Praktek Kerja Lapangan pada Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Balikpapan terhitung mulai tanggal [tanggal] sampai dengan [tanggal] dengan hasil......</p>
                                               </div>
                                               <br>
                                               <div class="footer" style="text-align: center">
-                                                <p>Balikpapan, Oktober 2023</p>
+                                                <p>Balikpapan, {{\Carbon\Carbon::now()->format('d M Y')}}</p>
                                                 <br>
                                                 <br>
                                                 <br>

@@ -126,6 +126,7 @@ Route::group(['middleware' => 'auth'], function () {
     // });
 
     Route::get('/penilaian/{id}/{divisi}', [NilaiUsersController::class, 'index'])->name('penilaian');
+    Route::get('/cetak-nilai/{id}/{divisi}', [NilaiUsersController::class, 'cetakNilai'])->name('cetak-nilai');
     Route::post('/penilaian', [NilaiUsersController::class, 'store'])->name('penilaian.store');
 
 
