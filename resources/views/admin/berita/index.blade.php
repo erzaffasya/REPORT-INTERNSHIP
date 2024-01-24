@@ -82,18 +82,18 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="storeUser">
+                        <form method="POST" action="{{route('berita.store', $divisi)}}">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">Judul</label>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control" name="judul">
+                                <input type="hidden" class="form-control" value="{{$divisi}}" name="divisi_id">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">Deskripsi</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" rows="5"></textarea>
                             </div>
-                          
                           
                             <div class="modal-footer">
                                 <button type="button" class="btn bg-gradient-secondary"
@@ -120,13 +120,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{url('updateUser', $i->id)}}" method="POST">
+                        <form action="{{route('berita.update', $i->id)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="id" value="{{$i->id}}">
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">Judul</label>
-                                <input type="text" class="form-control" name="name" value="{{$i->judul}}">
+                                <input type="text" class="form-control" name="judul" value="{{$i->judul}}">
                             </div>
 
                           

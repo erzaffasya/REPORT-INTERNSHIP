@@ -148,80 +148,29 @@
                                 </div>
                             </div>
                             <div class="">
-                                <a href="/berita-acara" class="btn bg-gradient-primary btn-sm mb-0">Selengkapnya</a>
+                                @can('admin')
+                                    <a href="{{ url("/berita-acara/$Divisi->id") }}"
+                                        class="btn bg-gradient-primary btn-sm mb-0">Tambah</a>
+                                @endcan
                             </div>
                         </div>
                     </div>
                     <div class="card-body p-3 pt-1">
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
-                            <div class="d-flex justify-center align-items-baseline">
-                                <span
-                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
-                                    class="bg-primary"></span>
-                                <div>
-                                    <p style="font-weight: 600;">Penggumpulan Progress Akhir Magang!</p>
-                                    <p style="font-weight: 300; font-size: 0.8rem;">10 Januari 2024</p>
+                        @foreach ($beritaAcara as $item)
+                            <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
+
+                                <div class="d-flex justify-center align-items-baseline">
+                                    <span
+                                        style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
+                                        class="bg-primary"></span>
+                                    <div>
+                                        <p style="font-weight: 600;">{{ $item->judul }}</p>
+                                        <p style="font-weight: 300; font-size: 0.8rem;">
+                                            {{ $item->created_at->format('d M Y') }}</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
-                                Lihat Detail
-                            </a>
-                        </div>
-
-
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
-                            <div class="d-flex justify-center align-items-baseline">
-                                <span
-                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
-                                    class="bg-primary"></span>
-                                <div>
-                                    <p style="font-weight: 600;">Jadwal Presentasi Akhir Magang!</p>
-                                    <p style="font-weight: 300; font-size: 0.8rem;">12 Januari 2024</p>
-                                </div>
-                            </div>
-
-                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
-                                Lihat Detail
-
-                            </a>
-                        </div>
-
-
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
-                            <div class="d-flex justify-center align-items-baseline">
-                                <span
-                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
-                                    class="bg-primary"></span>
-                                <div>
-                                    <p style="font-weight: 600;">Hasil Presentasi Akhir Magang!</p>
-                                    <p style="font-weight: 300; font-size: 0.8rem;">18 Januari 2024</p>
-                                </div>
-                            </div>
-
-                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
-                                Lihat Detail
-
-                            </a>
-                        </div>
-
-
-                        <div class="p-3" style="width: 100%; display: flex; justify-content: space-between;">
-                            <div class="d-flex justify-center align-items-baseline">
-                                <span
-                                    style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
-                                    class="bg-primary"></span>
-                                <div>
-                                    <p style="font-weight: 600;">Penggambilan Sertifikat Magang!</p>
-                                    <p style="font-weight: 300; font-size: 0.8rem;">20 Januari 2024</p>
-                                </div>
-                            </div>
-
-                            <a href="" style="font-size: 0.8rem; opacity: 0.9;">
-                                Lihat Detail
-
-                            </a>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>
@@ -326,11 +275,11 @@
                                 </div>
                                 @can('admin')
     <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                                                                            {{-- <div class="ms-auto my-auto">
+                                                                                                        {{-- <div class="ms-auto my-auto">
                                                                         <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
                                                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                                                     </div> --}}
-                                                                                        </div>
+                                                                                                    </div>
 @endcan
 
                             </div>
@@ -368,18 +317,20 @@
                                                     </a> --}}
                                                     @can('admin')
     <a href="{{ url('destroyAksesDivisi', $item->id) }}"
-                                                                                                                data-bs-toggle="tooltip"
-                                                                                                                data-bs-original-title="Delete product">
-                                                                                                                <i class="fas fa-trash text-secondary"></i>
-                                                                                                            </a>
-
-                                                                            <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}"
-                                                                                data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                                                                <i class="fas fa-book text-secondary"></i>
-                                                                            </a>
-                                                                            <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id) }}">
-                                                                                <i class="fas fa-book text-secondary"></i>
-                                                                            </a>
+                                                                                                                            data-bs-toggle="tooltip"
+                                                                                                                            data-bs-original-title="Delete product">
+                                                                                                                            <i class="fas fa-trash text-secondary"></i>
+                                                                                                                        </a>
+    @can('admin')
+        <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}"
+            data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+            <i class="fas fa-book text-secondary"></i>
+        </a>
+    @endcan
+                                                                                     
+                                                                                        <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id) }}">
+                                                                                            <i class="fas fa-book text-secondary"></i>
+                                                                                        </a>
 @endcan
                                                 </td>
                                             </tr>

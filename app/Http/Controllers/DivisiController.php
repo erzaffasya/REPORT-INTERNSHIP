@@ -7,6 +7,7 @@ use App\Models\Divisi;
 use App\Models\Laporan;
 use Carbon\Carbon;
 use App\Models\Akses_program;
+use App\Models\BeritaAcara;
 use App\Models\Talent;
 use Illuminate\Http\Request;
 
@@ -42,11 +43,12 @@ class DivisiController extends Controller
     public function show($program, $divisi)
     {
         $akses_program = Akses_program::where('program_id', 'id')->get();
-        $Akses_divisi = Akses_divisi::where('divisi_id', $divisi)->get();
+        $Akses_divisi = Akses_divisi::where('divisi_id', $divisi)->orderBy('created_at','desc')->limit(3);
+        $beritaAcara = BeritaAcara::where('divisi_id', $divisi)->get();
         $Divisi = Divisi::find($divisi);
         $Laporan = Laporan::where('divisi_id', $divisi)->get();
         $Laporanselect = Laporan::find($divisi);
-        return view('admin.divisi.show', compact('Divisi', 'Laporan', 'Akses_divisi', 'akses_program', 'Laporanselect'))
+        return view('admin.divisi.show', compact('Divisi', 'Laporan', 'beritaAcara', 'Akses_divisi', 'akses_program', 'Laporanselect'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

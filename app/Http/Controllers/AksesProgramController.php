@@ -21,8 +21,12 @@ class AksesProgramController extends Controller
 
     public function create($id)
     {
-        // $kategori = Kategori::all();
-        $user = User::doesnthave('akses_program')->get();
+        $user = User::whereNotIn('id', function ($query) use ($id) {
+            $query->select('user_id')
+                ->from('akses_program')
+                ->where('program_id', $id);
+        })->get();
+
         $program = Program::find($id);
         // dd($user);
         return view('admin.akses_program.tambah', compact('user', 'program'));
@@ -42,8 +46,8 @@ class AksesProgramController extends Controller
     public function tambahSemuaAksesProgram(Request $request)
     {
         $ids = $request->ids;
-        Akses_program::whereIn('id',explode(",",$ids))->delete();
-        return response()->json(['success'=>"data berhasil ditambahkan."]);
+        Akses_program::whereIn('id', explode(",", $ids))->delete();
+        return response()->json(['success' => "data berhasil ditambahkan."]);
     }
     public function show($id)
     {
@@ -57,7 +61,7 @@ class AksesProgramController extends Controller
     {
         $akses_program = Akses_program::find($id);
         // $kategori = Kategori::all();
-        return view('admin.akses_program.edit',compact('akses_program'));
+        return view('admin.akses_program.edit', compact('akses_program'));
     }
 
     public function update(Request $request, $id)
@@ -81,7 +85,7 @@ class AksesProgramController extends Controller
             $extension = $request->file('gambar1')->extension();
             $file_name = "akses_program_$date.$extension";
             $path = $request->file('gambar1')->storeAs('public/akses_program', $file_name);
-            
+
             $akses_program->gambar = $file_name;
         }
 
@@ -93,14 +97,14 @@ class AksesProgramController extends Controller
         $akses_program->save();
 
         return redirect()->route('akses_program.index')
-        ->with('edit', 'akses_program Berhasil Diedit');
+            ->with('edit', 'akses_program Berhasil Diedit');
     }
 
     public function delete($id)
     {
         Akses_program::where('id', $id)->delete();
         return redirect()->back()
-        ->with('success', 'Data berhasil dihapus');
+            ->with('success', 'Data berhasil dihapus');
     }
 
 
