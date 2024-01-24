@@ -9,17 +9,12 @@
                             alt=""
                             style="width: 100%; height: 125px; object-fit: cover; object-position: center;">
 
-                        <h6 class="mb-0 text-2xl my-3">{{ $Divisi->nama_divisi }}</h6>
+                        <h6 class="mb-0 text-2xl my-3"> <b>{{ $Divisi->nama_divisi }}</b></h6>
                     </div>
                     <div class="card-body p-3 pt-1">
-                        {{-- <h6>I need a Ruby developer for my new website.</h6> --}}
-                        <p class="text-sm">{{ $Divisi->detail }}</p>
                         @can('admin')
-                            <div class="d-flex bg-gray-100 border-radius-lg p-3">
-                                <h4 class="my-auto">
-                                    {{-- Hapus Divisi --}}
-                                </h4>
-                                {{-- <a href="javascript:;" class="btn btn-danger mb-0 ms-auto">Hapus</a> --}}
+                            <div class="d-flex text-sm bg-gray-100 border-radius-lg p-3">
+                                {{ $Divisi->detail }}
                             </div>
                         @endcan
                     </div>
@@ -139,12 +134,12 @@
                         <div class="" style="width: 100%; display: flex; justify-content: space-between">
                             <div class="d-flex">
                                 <div>
-                                    <img src="../../../tadmin/assets/img/small-logos/icon-bulb.svg"
+                                    <img src="{{asset('tadmin/assets/img/small-logos/icon-bulb.svg')}}"
                                         class="avatar avatar-sm me-2" alt="avatar image">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm">Berita</h6>
-                                    <p class="text-xs">Tim Web</p>
+                                    <p class="text-xs">Divisi {{ $Divisi->nama_divisi }}</p>
                                 </div>
                             </div>
                             <div class="">
@@ -275,11 +270,11 @@
                                 </div>
                                 @can('admin')
     <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                                                                                        {{-- <div class="ms-auto my-auto">
+                                                                                                                {{-- <div class="ms-auto my-auto">
                                                                         <a href="{{ url('tambahAksesDivisi', $Divisi->id) }}"
                                                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
                                                                     </div> --}}
-                                                                                                    </div>
+                                                                                                            </div>
 @endcan
 
                             </div>
@@ -317,20 +312,20 @@
                                                     </a> --}}
                                                     @can('admin')
     <a href="{{ url('destroyAksesDivisi', $item->id) }}"
-                                                                                                                            data-bs-toggle="tooltip"
-                                                                                                                            data-bs-original-title="Delete product">
-                                                                                                                            <i class="fas fa-trash text-secondary"></i>
-                                                                                                                        </a>
-    @can('admin')
+                                                                                                                                    data-bs-toggle="tooltip"
+                                                                                                                                    data-bs-original-title="Delete product">
+                                                                                                                                    <i class="fas fa-trash text-secondary"></i>
+                                                                                                                                </a>
+            @can('admin')
         <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}"
-            data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-            <i class="fas fa-book text-secondary"></i>
-        </a>
+                            data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                            <i class="fas fa-book text-secondary"></i>
+                        </a>
     @endcan
-                                                                                     
-                                                                                        <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id) }}">
-                                                                                            <i class="fas fa-book text-secondary"></i>
-                                                                                        </a>
+                                                                                             
+                                                                                                <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id) }}">
+                                                                                                    <i class="fas fa-book text-secondary"></i>
+                                                                                                </a>
 @endcan
                                                 </td>
                                             </tr>
