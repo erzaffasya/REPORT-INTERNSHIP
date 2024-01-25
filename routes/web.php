@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/laporan-manual', [ProgramController::class, 'laporanManual'])->name('laporanManual');
     Route::get('/', function () {
-        return view('admin.index');
+        return redirect()->route('dashboard');
     });
     Route::get('Divisi/{divisi}/Laporan', [LaporanController::class, 'index'])->name('indexLaporan');
     Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
