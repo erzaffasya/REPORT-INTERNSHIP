@@ -319,7 +319,7 @@
             @can('admin')
         <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}"
                             data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                            <i class="fas fa-book text-secondary"></i>
+                            <i class="fas fa-plus text-secondary"></i>
                         </a>
     @endcan
                                                                                              

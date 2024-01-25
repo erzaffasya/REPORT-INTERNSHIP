@@ -12,6 +12,7 @@ use App\Http\Controllers\TalentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DivAnggotaController;
 use App\Http\Controllers\BeritaAcaraController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NilaiUsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,15 +57,13 @@ Route::controller(AksesDivisiController::class)->group(function () {
     Route::get('destroyAksesDivisi/{id}', 'delete');
 });
 // Route::resource('aksesDivisi', AksesDivisiController::class);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('talent', TalentController::class);
     Route::get('/rekomendasi/{id}/program/{program}', [RecommendationController::class, 'recommend'])->name('rekomendasi-divisi');
 
@@ -126,7 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
     // });
 
     Route::get('/penilaian/{id}/{divisi}', [NilaiUsersController::class, 'index'])->name('penilaian');
-    Route::get('/cetak-nilai/{id}/{divisi}', [NilaiUsersController::class, 'cetakN  ilai'])->name('cetak-nilai');
+    Route::get('/cetak-nilai/{id}/{divisi}', [NilaiUsersController::class, 'cetakNilai'])->name('cetak-nilai');
     Route::post('/penilaian', [NilaiUsersController::class, 'store'])->name('penilaian.store');
 
 

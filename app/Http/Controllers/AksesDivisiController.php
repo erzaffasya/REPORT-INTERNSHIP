@@ -32,6 +32,8 @@ class AksesDivisiController extends Controller
             'user_id' => $request->user_id,
             'divisi_id' => $request->divisi_id
         ]);;
+
+        // dd($request->all());
         return redirect()->route('Program.show', Divisi::find($request->divisi_id)->program_id)
             ->with('success', 'Akses Divisi Berhasil Ditambahkan');
     }

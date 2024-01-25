@@ -43,8 +43,9 @@ class DivisiController extends Controller
     public function show($program, $divisi)
     {
         $akses_program = Akses_program::where('program_id', 'id')->get();
-        $Akses_divisi = Akses_divisi::where('divisi_id', $divisi)->orderBy('created_at','desc')->limit(3);
-        $beritaAcara = BeritaAcara::where('divisi_id', $divisi)->get();
+        $Akses_divisi = Akses_divisi::where('divisi_id', $divisi)->get();
+        // dd($Akses_divisi);
+        $beritaAcara = BeritaAcara::where('divisi_id', $divisi)->orderBy('created_at','desc')->limit(3)->get();
         $Divisi = Divisi::find($divisi);
         $Laporan = Laporan::where('divisi_id', $divisi)->get();
         $Laporanselect = Laporan::find($divisi);

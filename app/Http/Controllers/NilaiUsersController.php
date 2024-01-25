@@ -28,6 +28,7 @@ class NilaiUsersController extends Controller
             $judulField = "judul_$i";
             $nilaiField = "nilai_$i";
             $nilai->$judulField = $request->$judulField;
+            $nilai->$nilaiField = $request->$nilaiField;
             if ($request->$nilaiField !== null && $request->$nilaiField == 0) {
                 $nilai->$nilaiField = $request->$nilaiField;
                 $totalPenilaian += 1;
