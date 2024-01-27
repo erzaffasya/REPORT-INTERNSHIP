@@ -14,9 +14,10 @@ class Akses_program extends Model
         'program_id',
     ];
 
-    protected $casts = [ 
-        'user_id' => 'integer', 
-        'program_id' => 'integer',];
+    protected $casts = [
+        'user_id' => 'integer',
+        'program_id' => 'integer',
+    ];
 
     protected $primaryKey = 'id';
 
@@ -29,9 +30,15 @@ class Akses_program extends Model
     {
         return $this->belongsTo(Akses_divisi::class, 'user_id', 'user_id');
     }
-    
+
     public function program()
     {
         return $this->belongsTo(Program::class, 'program_id', 'id');
     }
+
+    public function isDivisi()
+    {
+        return Akses_divisi::where('user_id', $this->user_id)->exists();
+    }
+    
 }

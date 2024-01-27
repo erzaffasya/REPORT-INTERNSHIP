@@ -383,7 +383,7 @@
                                         <a href="{{ url('tambahAksesProgram', $Program->id) }}"
                                             class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Anggota</a>
 
-                                        
+
                                     </div>
                                 @endcan
                             </div>
@@ -397,7 +397,7 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Email</th>
-                                        {{-- <th>Status</th> --}}
+                                        <th>Divisi</th>
                                         @can('admin')
                                             <th>Action</th>
                                         @endcan
@@ -409,17 +409,23 @@
                                             <td class="text-sm">{{ $loop->iteration }}</td>
                                             <td class="text-sm">{{ $item->user->name }}</td>
                                             <td class="text-sm">{{ $item->user->email }}</td>
+                                            <td class="text-sm">{{ $item->akses_divisi->divisi->nama_divisi ?? null }}
+                                            </td>
                                             @can('admin')
                                                 <td class="text-sm">
-                                                    <a href="{{ url('destroyAksesProgram', $item->id) }}"
-                                                        data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                                        <i class="fas fa-trash text-secondary"></i>
-                                                    </a>
+                                                    @if (!$item->isDivisi())
+                                                        <a href="{{ url('destroyAksesProgram', $item->id) }}"
+                                                            data-bs-toggle="tooltip"
+                                                            data-bs-original-title="Delete product">
+                                                            <i class="fas fa-trash text-secondary"></i>
+                                                        </a>
 
-                                                    <a href="{{ url('rekomendasi/' . $item->user->id . '/program/' . $item->program_id) }}"
-                                                        data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                                        <i class="fas fa-edit text-secondary"></i>
-                                                    </a>
+                                                        <a href="{{ url('rekomendasi/' . $item->user->id . '/program/' . $item->program_id) }}"
+                                                            data-bs-toggle="tooltip"
+                                                            data-bs-original-title="Delete product">
+                                                            <i class="fas fa-edit text-secondary"></i>
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             @endcan
                                         </tr>
