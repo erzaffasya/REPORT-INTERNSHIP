@@ -158,11 +158,41 @@
                                     <span
                                         style="display: block; width: 10px; height: 10px; border-radius: 50%; margin-right: 10px;"
                                         class="bg-primary"></span>
-                                    <div>
+                                    <button type="button" style="border: none; background: none; display: flex; flex-direction: column;"  data-bs-toggle="modal" data-bs-target="#exampleModal{{ $item->id }}">
                                         <p style="font-weight: 600;">{{ $item->judul }}</p>
-                                        <p style="font-weight: 300; font-size: 0.8rem;">
-                                            {{ $item->created_at->format('d M Y') }}</p>
+                                        <p class=" text-sm text-gray-400" style="color: gray;"> {{ $item->created_at->format('d M Y') }}</p>
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Detail Berita Acara</h5>
+                                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <h3>{{ $item->judul }}</h3>
+                                           <p class="font-italic text-sm" style="color: purple;">
+                                           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 10V7C20 5.89543 19.1046 5 18 5H6C4.89543 5 4 5.89543 4 7V10M20 10V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V10M20 10H4M8 3V7M16 3V7" stroke="purple" stroke-width="2" stroke-linecap="round"></path> <rect x="6" y="12" width="3" height="3" rx="0.5" fill="purple"></rect> <rect x="10.5" y="12" width="3" height="3" rx="0.5" fill="purple"></rect> <rect x="15" y="12" width="3" height="3" rx="0.5" fill="purple"></rect> </g></svg>
+                                           {{ $item->created_at->format('d M Y') }}
+                                           </p>
+
+                                           <p class="my-3">
+                                             {{ $item->deskripsi }}
+                                           </p>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                        </div>
                                     </div>
+                                    </div>
+
+                                  
                                 </div>
                             </div>
                         @endforeach
