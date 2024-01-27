@@ -15,9 +15,9 @@
                                                 <p style="margin: 0; font-weight: bold">PEMERINTAH DINAS KOTA BALIKPAPAN</p>
                                                 <p style="margin: 0; font-weight: bold">DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU</p>
                                                 <h3 style="margin-top: 0.5rem; margin-bottom:0; border-bottom: 3px solid black; display: inline-block">SERTIFIKAT</h3>
-                                                <p style="margin: 0; font-weight: bold">Nomor : 421.5/DPMPTSP</p>
+                                                {{-- <p style="margin: 0; font-weight: bold">Nomor : 421.5/DPMPTSP</p> --}}
                                               </div>
-                                              <div class="content">
+                                              <div class="content mt-4">
                                                 <table>
                                                   <tr>
                                                     <td width="40%">Diberikan kepada</td>
@@ -40,11 +40,11 @@
                                                     <td width="">{{$nilai->user->sekolah}}</td>
                                                   </tr>
                                                 </table>
-                                                <p style="font-weight: bold; line-height: 1.3; margin: 0.5rem 0!important;">Telah melaksanakan Praktek Kerja Lapangan pada Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Balikpapan terhitung mulai tanggal [tanggal] sampai dengan [tanggal] dengan hasil......</p>
+                                                <p style="font-weight: bold; line-height: 1.3; margin: 0.5rem 0!important;">Telah melaksanakan Praktek Kerja Lapangan pada Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Balikpapan terhitung mulai tanggal {{\Carbon\Carbon::parse($nilai->divisi->program->periode_mulai)->format('d M Y')}} sampai dengan {{\Carbon\Carbon::parse($nilai->divisi->program->periode_berakhir)->format('d M Y')}} dengan nilai {{$nilai->rata_rata}}</p>
                                               </div>
                                               <br>
                                               <div class="footer" style="text-align: center">
-                                                <p>Balikpapan, {{\Carbon\Carbon::now()->format('d M Y')}}</p>
+                                                <p>Balikpapan, {{\Carbon\Carbon::parse($nilai->modified_at)->format('d M Y')}}</p>
                                                 <br>
                                                 <br>
                                                 <br>

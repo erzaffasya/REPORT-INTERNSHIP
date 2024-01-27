@@ -6,6 +6,7 @@ use App\Models\Akses_divisi;
 use App\Models\Akses_program;
 use App\Models\Divisi;
 use App\Models\Laporan;
+use App\Models\NilaiUsers;
 use App\Models\Program;
 use App\Models\User;
 use Carbon\Carbon;
@@ -60,8 +61,10 @@ class ProgramController extends Controller
         $Divisi = Divisi::where('program_id', $id)->get();
         $user = User::all();
         $Program = Program::where('id', $id)->first();
-        $periode = Carbon::parse($Program->periode_mulai)->diffInDays(Carbon::parse($Program->periode_berakhir)) + 1;
-        
+        $today = Carbon::now();
+        $end = Carbon::parse($Program->periode_berakhir);
+        $periode = $today->diffInDays($end, false);
+
         return view('admin.program.show', compact('Program', 'Akses_program', 'Divisi', 'periode', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -104,7 +107,7 @@ class ProgramController extends Controller
         $Divisi = Divisi::where('program_id', $Program->id)->get();
         // dd($Divisi, $Program);
         foreach ($Divisi as $item) {
-            $Nilai = NilaiUser::where('divsi_id', $item->id)->delete();
+            $Nilai = NilaiUsers::where('divsi_id', $item->id)->delete();
         }
         $Divisi = Divisi::where('program_id', $Program->id)->delete();
         $Program->delete();

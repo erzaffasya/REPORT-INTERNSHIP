@@ -99,17 +99,28 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mr-0">
-                        <a href="" class="btn bg-gradient-primary" style="display: flex; flex-direction: column; align-items: center;">
-                        <svg width="80px" height="80px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 17H17.01M17.4 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H6.6M12 15V4M12 15L9 12M12 15L15 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    <a href="" class="btn bg-gradient-primary"
+                        style="display: flex; flex-direction: column; align-items: center;">
+                        <svg width="80px" height="80px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M17 17H17.01M17.4 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H6.6M12 15V4M12 15L9 12M12 15L15 12"
+                                    stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </g>
+                        </svg>
                         <span>
                             Unduh Sertifikat
                         </span>
-                        </a>
+                    </a>
 
                 </div>
-               
+
 
                 {{-- <form method="post" action="{{ route('laporanManual') }}">
                     @csrf
@@ -172,16 +183,18 @@
                 <div class="card">
                     <div class="card-body p-3 position-relative">
                         <div class="row">
-                            <div class="col-7 text-start">
+                            <div class="col-12 text-start">
                                 <p class="text-sm mb-1 text-capitalize font-weight-bold">Periode Program</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    {{ $periode }} Hari lagi
+                                    @if ($periode < 0)
+                                        Program Telah Selesai
+                                    @else
+                                        {{ $periode }} Hari lagi
+                                    @endif
                                 </h5>
-                                {{-- <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+12%
-                                    <span class="font-weight-normal text-secondary">since last month</span></span> --}}
                             </div>
-                            <div class="col-5">
-                                <div class="dropdown text-end">
+                            <div class="col-12">
+                                <div class="dropdown text-start">
                                     <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <span
@@ -189,16 +202,6 @@
                                             -
                                             {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
                                     </a>
-                                    {{-- <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
-                                        aria-labelledby="dropdownUsers2">
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7
-                                                days</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last
-                                                week</a>
-                                        </li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30
-                                                days</a></li>
-                                    </ul> --}}
                                 </div>
                             </div>
                         </div>
