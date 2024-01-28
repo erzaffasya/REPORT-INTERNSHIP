@@ -133,8 +133,8 @@
                     <div class="">
                         <table class="report-container w-100" style="position: relative; padding:0;">
                             <tbody class="report-content" style="position: relative; padding:0;">
-                                <img class="sertif-bg" src="{{ asset('tadmin/assets/img/image1.png') }}"
-                                    alt="">
+                                {{-- <img class="sertif-bg" src="{{ asset('tadmin/assets/img/image1.png') }}"
+                                    alt=""> --}}
                                 <tr>
                                     <td class="report-content-cell">
                                         <div class="main-content" style="padding: 4.5rem 7rem;">
