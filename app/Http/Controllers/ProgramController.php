@@ -11,6 +11,7 @@ use App\Models\Program;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProgramController extends Controller
@@ -64,8 +65,9 @@ class ProgramController extends Controller
         $today = Carbon::now();
         $end = Carbon::parse($Program->periode_berakhir);
         $periode = $today->diffInDays($end, false);
-
-        return view('admin.program.show', compact('Program', 'Akses_program', 'Divisi', 'periode', 'user'))
+        $userDivision = Auth::user()->getDivisionForProgram($Program->id);
+        // dd($userDivision);
+        return view('admin.program.show', compact('Program', 'Akses_program', 'userDivision', 'Divisi', 'periode', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

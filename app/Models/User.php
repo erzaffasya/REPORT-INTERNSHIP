@@ -60,4 +60,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Talent::class)->withPivot('score');
     }
+
+    public function getDivisionForProgram($program)
+    {      
+        return Akses_divisi::where('akses_divisi.user_id', $this->id)
+            ->join('divisi','divisi.id','akses_divisi.divisi_id')
+            ->join('program','program.id','divisi.program_id')
+            ->where('program.id', $program)
+            ->first();
+    }
+    
+    
 }
