@@ -125,7 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
     // });
 
     Route::get('/penilaian/{id}/{divisi}', [NilaiUsersController::class, 'index'])->name('penilaian');
-    Route::get('/cetak-nilai/{id}/{divisi}', [NilaiUsersController::class, 'cetakNilai'])->name('cetak-nilai');
+    Route::get('/cetak-nilai/{id}/{divisi}/{program}', [NilaiUsersController::class, 'cetakNilai'])->name('cetak-nilai');
     Route::post('/penilaian', [NilaiUsersController::class, 'store'])->name('penilaian.store');
 
 
@@ -133,7 +133,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/berita-acara/{id}', [BeritaAcaraController::class, 'store'])->name('berita.store');
     Route::put('/berita-acara/{id}', [BeritaAcaraController::class, 'update'])->name('berita.update');
     Route::delete('/berita-acara/{id}', [BeritaAcaraController::class, 'destroy'])->name('berita.delete');
-
 });
 
 
