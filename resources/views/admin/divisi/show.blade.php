@@ -353,7 +353,7 @@
                         </a>
     @endcan
                                                                                              
-                                                                                                <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id) }}">
+                                                                                                <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id . '/' . $program) }}">
                                                                                                     <i class="fas fa-book text-secondary"></i>
                                                                                                 </a>
 @endcan

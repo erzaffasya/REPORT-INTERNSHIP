@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\NilaiUsers;
+use App\Models\Divisi;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class NilaiUsersController extends Controller
@@ -13,10 +15,12 @@ class NilaiUsersController extends Controller
         return view('admin.anggota.penilaian', compact('nilai'));
     }
 
-    public function cetakNilai($id, $divisi)
+    public function cetakNilai($id, $divisi, $program)
     {
         $nilai = NilaiUsers::where('user_id', $id)->where('divisi_id', $divisi)->first();
-        return view('admin.anggota.cetaknilai', compact('nilai'));
+        $divisiUser = Divisi::find($divisi);
+        $programUser = Program::find($program);
+        return view('admin.anggota.cetaknilai', compact('nilai', 'divisiUser', 'programUser'));
     }
 
     public function store(Request $request)

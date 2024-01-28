@@ -45,11 +45,11 @@ class DivisiController extends Controller
         $akses_program = Akses_program::where('program_id', 'id')->get();
         $Akses_divisi = Akses_divisi::where('divisi_id', $divisi)->get();
         // dd($Akses_divisi);
-        $beritaAcara = BeritaAcara::where('divisi_id', $divisi)->orderBy('created_at','desc')->limit(3)->get();
+        $beritaAcara = BeritaAcara::where('divisi_id', $divisi)->orderBy('created_at', 'desc')->limit(3)->get();
         $Divisi = Divisi::find($divisi);
         $Laporan = Laporan::where('divisi_id', $divisi)->get();
         $Laporanselect = Laporan::find($divisi);
-        return view('admin.divisi.show', compact('Divisi', 'Laporan', 'beritaAcara', 'Akses_divisi', 'akses_program', 'Laporanselect'))
+        return view('admin.divisi.show', compact('Divisi', 'Laporan', 'beritaAcara', 'Akses_divisi', 'akses_program', 'Laporanselect', 'program'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
