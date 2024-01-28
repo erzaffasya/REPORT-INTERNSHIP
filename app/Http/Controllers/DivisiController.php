@@ -8,6 +8,7 @@ use App\Models\Laporan;
 use Carbon\Carbon;
 use App\Models\Akses_program;
 use App\Models\BeritaAcara;
+use App\Models\NilaiUsers;
 use App\Models\Talent;
 use Illuminate\Http\Request;
 
@@ -80,9 +81,9 @@ class DivisiController extends Controller
 
     public function destroy($id)
     {
-        Divisi::where('id', $id)->delete();
-        // Storage::delete("public/Divisi/$Divisi->gambar");
-        // $Divisi->delete();
+        $divisi = Divisi::find($id);
+        NilaiUsers::where('user_id', $divisi->user_id)->where('divisi_id', $id)->delete();
+        $divisi->delete();
         return back()
             ->with('delete', 'Divisi Berhasil Dihapus');
     }
