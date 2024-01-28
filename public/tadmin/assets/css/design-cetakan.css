@@ -19,7 +19,7 @@ body {
 .layout-invoice-page{
 	transform: scale(0.7);
 	position: relative;
-	top: -7rem;
+	top: -18rem;
 }
 table.report-container {
 	page-break-after: always;
@@ -302,6 +302,7 @@ h1 {
 		top: 0;
 	}
 	aside,
+	.btn-cetaknilai,
 	nav {
 		display: none!important;
 	}

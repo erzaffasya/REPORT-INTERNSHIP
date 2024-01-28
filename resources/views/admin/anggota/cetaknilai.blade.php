@@ -1,4 +1,5 @@
 <x-app-layout>
+    <button class="btn btn-cetaknilai button button-blue button-primary" style="color:#fff!important; background:#4d0ecd!important;" onclick="window.print()">Cetak</button>
     <div class="layout-invoice-page">
         <div class="book">
             <div id="template4" class="pbf-laporanhutang page position-relative">
