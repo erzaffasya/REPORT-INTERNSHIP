@@ -12,4 +12,10 @@ class BeritaAcara extends Model
     protected $guarded = [];
 
     protected $primaryKey = 'id';
+
+
+    public function divisi()
+    {
+        return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
+    }
 }

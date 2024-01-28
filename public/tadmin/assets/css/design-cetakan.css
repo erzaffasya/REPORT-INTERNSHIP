@@ -19,7 +19,7 @@ body {
 .layout-invoice-page{
 	transform: scale(0.7);
 	position: relative;
-	top: -7rem;
+	top: -18rem;
 }
 table.report-container {
 	page-break-after: always;
@@ -119,6 +119,17 @@ tbody.report-content .table-details td {
 	right: 0;
 	bottom: 0;
 	margin: auto!important;
+}
+.table-nilaipraktek .table thead th{
+	padding: 0 0.5rem!important;
+}
+.table-nilaipraktek table{
+	border-collapse: collapse!important;
+}
+.table-nilaipraktek table tr,
+.table-nilaipraktek table th,
+.table-nilaipraktek table td{
+	border: 2px solid black!important;
 }	
 /* #template2 .component1 {
 	position: absolute;
@@ -291,6 +302,7 @@ h1 {
 		top: 0;
 	}
 	aside,
+	.btn-cetaknilai,
 	nav {
 		display: none!important;
 	}

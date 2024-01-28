@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="col-md-12 mb-lg-0 mb-4">
-    <a href="javascript:history.back();" style="margin-left: 1rem; color: gray;">
+    <a href="{{url('Program/'.$dataDivisi->program->id.'/Divisi/'.$divisi)}}" style="margin-left: 1rem; color: gray;">
           <svg fill="#808080" height="15px" width="15px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 476.213 476.213" xml:space="preserve">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
