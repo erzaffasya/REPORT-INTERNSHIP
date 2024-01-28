@@ -107,7 +107,7 @@ class ProgramController extends Controller
         $Divisi = Divisi::where('program_id', $Program->id)->get();
         // dd($Divisi, $Program);
         foreach ($Divisi as $item) {
-            $Nilai = NilaiUsers::where('divsi_id', $item->id)->delete();
+            $Nilai = NilaiUsers::where('divisi_id', $item->id)->delete();
         }
         $Divisi = Divisi::where('program_id', $Program->id)->delete();
         $Program->delete();

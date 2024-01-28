@@ -118,7 +118,6 @@
                             Unduh Sertifikat
                         </span>
                     </a>
-
                 </div>
 
 

@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BeritaAcara;
-
+use App\Models\Divisi;
 
 class BeritaAcaraController extends Controller
 {
     public function index($divisi)
     {
-
+        $dataDivisi = Divisi::find($divisi);
         $berita = BeritaAcara::where('divisi_id', $divisi)->get();
 
-        return view('admin.berita.index', compact('berita', 'divisi'));
+        return view('admin.berita.index', compact('berita', 'divisi','dataDivisi'));
     }
 
     public function store(Request $request)
