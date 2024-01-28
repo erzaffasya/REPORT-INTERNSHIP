@@ -101,7 +101,7 @@
                 </div>
                 @if ($userDivision  && $periode < 0) 
                     <div class="mr-0">
-                        <a href="{{ url('cetak-nilai/' . Auth::user()->id . '/' . $userDivision->divisi_id) }}"
+                        <a href="{{ url('cetak-nilai/' . Auth::user()->id . '/' . $userDivision->divisi_id . '/'. $Program->id) }}"
                             class="btn bg-gradient-primary"
                             style="display: flex; flex-direction: column; align-items: center;">
                             <svg width="80px" height="80px" viewBox="0 0 24 24" fill="none"
