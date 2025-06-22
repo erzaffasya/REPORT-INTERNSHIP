@@ -4,84 +4,59 @@
             <div class="card-header pb-0 p-3">
                 <div class="row">
                     <div class="col-6 d-flex align-items-center">
-                        <h6 class="mb-0">User</h6>
+                        <h6 class="mb-0">Pengguna</h6>
                     </div>
                     <div class="col-6 text-end">
                         <button type="button" class="btn btn-sm bg-gradient-primary mb-0" data-bs-toggle="modal"
-                            data-bs-target="#tambahUser"><i class="fas fa-plus"></i>&nbsp; User</button>
+                            data-bs-target="#tambahUser"><i class="fas fa-plus"></i>&nbsp; Tambah Pengguna</button>
                     </div>
                 </div>
             </div>
             <div class="card-body  px-0 pt-0 pb-2 table-responsive">
 
-                <table id="datatable-search" class="table align-items-center mb-0">
-
-                    <thead>
+                <table id="datatable-search" class="table table-hover table-borderless align-middle mb-0">
+                    <thead class="bg-light">
                         <tr>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                                width="100px">No.</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                E-mail</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                Nama</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                NIM</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                Sekolah</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                Kelas</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                Talent</th>
-                            <th
-                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"width="100px">
-                                Aksi</th>
+                            <th class="text-center text-secondary text-xs fw-bold" width="60">No.</th>
+                            <th class="text-center text-secondary text-xs fw-bold">E-mail</th>
+                            <th class="text-center text-secondary text-xs fw-bold">Nama</th>
+                            <th class="text-center text-secondary text-xs fw-bold">NIM</th>
+                            <th class="text-center text-secondary text-xs fw-bold">Instansi</th>
+                            <th class="text-center text-secondary text-xs fw-bold">Jurusan</th>
+                            <th class="text-center text-secondary text-xs fw-bold">Talent</th>
+                            <th class="text-center text-secondary text-xs fw-bold" width="130">Aksi</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         @foreach ($user as $i)
                             <tr>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                                <td class="text-center text-sm text-muted">{{ $loop->iteration }}</td>
+                                <td class="text-sm">{{ $i->email }}</td>
+                                <td class="text-center text-sm">{{ $i->name }}</td>
+                                <td class="text-sm">{{ $i->nim }}</td>
+                                <td class="text-sm">{{ $i->sekolah }}</td>
+                                <td class="text-sm">{{ $i->kelas }}</td>
+                                <td class="text-center">
+                                    @if ($i->talent_id)
+                                        <span class="badge bg-success text-white">Ada Talent</span>
+                                    @else
+                                        <span class="badge bg-danger text-white">Tidak Ada</span>
+                                    @endif
                                 </td>
-                                <td>
-                                    <p class="text-xs font-weight-bold mb-0">{{ $i->email }}</p>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <p class="text-xs font-weight-bold mb-0">{{ $i->name }}</p>
-                                </td>
-                                <td>
-                                    <p class="text-xs font-weight-bold mb-0">{{ $i->nim }}</p>
-                                </td>
-                                <td>
-                                    <p class="text-xs font-weight-bold mb-0">{{ $i->sekolah }}</p>
-                                </td>
-                                <td>
-                                    <p class="text-xs font-weight-bold mb-0">{{ $i->kelas }}</p>
-                                </td>
-
-                                <td style="">
-                                    <p class="text-xs font-weight-bold mb-0 mx-auto text-center">
-                                        @if ($i->talent_id)
-                                            <span class="badge badge-success">Terdapat Talent</span>
-                                        @else
-                                            <span class="badge badge-danger">Tidak Ada</span>
-                                        @endif
-                                    </p>
-                                </td>
-
-                                <td>
-                                    <div class="col-12 text-end">
-                                        <a type="button" class="btn btn-sm bg-gradient-warning mb-0"
-                                            href="{{ url('user', $i->id) }}"><i class="fas fa-user"></i>&nbsp; Edit</a>
-                                        <form id="form-delete" action="{{ url('deleteUser', $i->id) }}" method="POST"
-                                            style="display: inline">
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ url('user', $i->id) }}"
+                                            class="btn btn-outline-warning btn-sm d-flex align-items-center gap-1 px-3">
+                                            <i class="fas fa-edit fa-sm"></i> Ubah
+                                        </a>
+                                        <form action="{{ url('deleteUser', $i->id) }}" method="POST"
+                                            onsubmit="return confirm('Hapus pengguna ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
-                                                class="btn btn-sm bg-gradient-danger mb-0 show_confirm"
-                                                style="padding: 10px 24px"><i class="fas fa-trash"></i>&nbsp;
-                                                Hapus</button>
+                                                class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1 px-3">
+                                                <i class="fas fa-trash-alt fa-sm"></i> Hapus
+                                            </button>
                                         </form>
                                     </div>
                                 </td>
@@ -89,6 +64,7 @@
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
@@ -100,7 +76,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tambah User</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Pengguna</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -117,11 +93,11 @@
                                 <input type="text" class="form-control" name="nim">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlSelect1">Sekolah</label>
+                                <label for="exampleFormControlSelect1">Instansi</label>
                                 <input type="text" class="form-control" name="sekolah">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlSelect1">Kelas</label>
+                                <label for="exampleFormControlSelect1">Jurusan</label>
                                 <input type="text" class="form-control" name="kelas">
                             </div>
                             <div class="mb-3">
@@ -133,11 +109,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">E-Mail</label>
-                                <input type="email" class="form-control"  name="email" required>
+                                <input type="email" class="form-control" name="email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlSelect1">Password</label>
-                                <input type="password" class="form-control"  name="password" required>
+                                <input type="password" class="form-control" name="password" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn bg-gradient-secondary"
@@ -159,7 +135,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Ubah Pengguna</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>

@@ -30,8 +30,10 @@
             </li>
 
             @if (Auth::user()->role == 'admin')
+
+
                 <li class="nav-item mt-3">
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Program</h6>
                 </li>
 
                 <li class="nav-item">
@@ -39,8 +41,12 @@
                         <div class="me-2 d-flex justify-content-center align-items-center">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Program</span>
+                        <span class="nav-link-text ms-1">Program Magang</span>
                     </a>
+                </li>
+
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Master</h6>
                 </li>
 
                 <li class="nav-item">
@@ -48,7 +54,7 @@
                         <div class="me-2 d-flex justify-content-center align-items-center">
                             <i class="fas fa-users"></i>
                         </div>
-                        <span class="nav-link-text ms-1">User</span>
+                        <span class="nav-link-text ms-1">Pengguna</span>
                     </a>
                 </li>
 
@@ -57,7 +63,7 @@
                         <div class="me-2 d-flex justify-content-center align-items-center">
                             <i class="fas fa-star"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Talent</span>
+                        <span class="nav-link-text ms-1">Bakat</span>
                     </a>
                 </li>
             @endif

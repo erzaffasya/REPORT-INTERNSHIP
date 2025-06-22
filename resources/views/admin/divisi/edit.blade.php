@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-8 col-12 mx-auto">
                 <div class="card card-body mt-4">
-                    <h6 class="mb-0">Edit Divisi</h6>
+                    <h6 class="mb-0">Ubah Divisi</h6>
                     <hr class="horizontal dark my-3">
                     <div class="card-body">
                         <form role="form text-left" action="{{ route('Divisi.update', $Divisi->id) }}" method="POST"
@@ -25,7 +25,7 @@
                                 <a href="javascript:history.back()" class="btn bg-gradient-danger"><i
                                         class="ni ni-bold-left"></i>&nbsp;&nbsp;Batal</a>
                                 <button type="submit" class="btn bg-gradient-dark"><i
-                                        class="fas fa-plus"></i>&nbsp;&nbsp;Edit</button>
+                                        class="fas fa-plus"></i>&nbsp;&nbsp;Ubah</button>
                             </div>
                         </form>
                     </div>
@@ -33,20 +33,20 @@
             </div>
             <div class="col-lg-4 col-12 mx-auto">
                 <div class="card card-body mt-4">
-                    <h6 class="mb-0">Talent Divisi</h6>
+                    <h6 class="mb-0">Mapping Bakat</h6>
                     <hr class="horizontal dark my-3">
                     <div class="card-body">
                         <form role="form text-left" action="{{ route('Divisi.update', $Divisi->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            
+
                             @foreach ($Talent as $item)
                                 <div class="mb-3">
                                     <label for="exampleFormControlSelect1">{{ $item->name }}</label>
                                     <input type="number" class="form-control" name="criteria[{{ $item->name }}]"
                                     value="{{ json_decode($Divisi->criteria)->{$item->name}??0 }}" required>
-                                
+
                                 </div>
                             @endforeach
 

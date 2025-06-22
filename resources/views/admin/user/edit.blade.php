@@ -35,11 +35,11 @@
                                 <input type="text" class="form-control" name="nim" value="{{ $User->nim }}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlSelect1">Sekolah</label>
+                                <label for="exampleFormControlSelect1">Instansi</label>
                                 <input type="text" class="form-control" name="sekolah" value="{{ $User->sekolah }}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlSelect1">Kelas</label>
+                                <label for="exampleFormControlSelect1">Jurusan</label>
                                 <input type="text" class="form-control" name="kelas" value="{{ $User->kelas }}">
                             </div>
 
@@ -53,7 +53,7 @@
             </div>
             <div class="col-lg-4 col-12 mx-auto">
                 <div class="card card-body mt-4">
-                    <h6 class="mb-0">Talent User</h6>
+                    <h6 class="mb-0">Bakat Pengguna</h6>
                     <hr class="horizontal dark my-3">
                     <div class="card-body">
                         <form role="form text-left" action="{{ route('addTalentUser', $User->id) }}" method="POST"
