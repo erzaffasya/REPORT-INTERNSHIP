@@ -1,102 +1,101 @@
 <x-app-layout>
-  <main class="main-content max-height-vh-100 h-100">
-    <div class="container-fluid my-3 py-3">
-      <div class="row mb-5">
-        <div class="col-lg-3">
-          <div class="card position-sticky top-1">
-            <ul class="nav flex-column bg-white border-radius-lg p-3">
-              <li class="nav-item my-4 text-center">
-                <div class="card">
-                  <div class="card-header mx-4 p-3 text-center">
-                    <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
-                      <i class="fas fa-landmark opacity-10"></i>
+    <main class="main-content max-height-vh-100 h-100">
+        <div class="container-fluid my-3 py-3">
+            <div class="row mb-5">
+                <!-- Sidebar Program Info -->
+                <div class="col-lg-3">
+                    <div class=" position-sticky top-1">
+                        <ul class="nav flex-column bg-white border-radius-lg p-3 shadow-sm">
+                            <li class="nav-item my-4">
+                                <div class=" text-center px-3 pt-4 pb-3">
+                                    <!-- Icon Program -->
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <div class="bg-light shadow rounded-circle d-flex justify-content-center align-items-center"
+                                            style="width: 100px; height: 100px;">
+                                            <img src="{{ asset('tadmin/assets/img/program-divisi.png') }}"
+                                                alt="Divisi Icon" class="img-fluid" style="width: 60px; height: 60px;">
+                                        </div>
+                                    </div>
+
+                                    <!-- Info Divisi & User -->
+                                    <div class="mb-2">
+                                        <h6 class="text-uppercase text-muted mb-1" style="font-size: 0.75rem;">
+                                            {{ $divisi->nama_divisi }}
+                                        </h6>
+                                        <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                                    </div>
+
+                                    <!-- Info Program -->
+                                    <div class="mt-3">
+                                        <h6 class="text-uppercase text-muted mb-1" style="font-size: 0.75rem;">Nama
+                                            Program</h6>
+                                        <hr class="horizontal dark my-2" style="max-width: 80%; margin: 0 auto;">
+                                        <h5 class="mb-0">{{ $divisi->program->judul }}</h5>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
                     </div>
-                  </div>
-                  <div class="card-body pt-0 p-3 text-center">
-                    <h6 class="text-center mb-0">INTERN DPMPTSP</h6>
-                    <span class="text-xs">Nama Program</span>
-                    <hr class="horizontal dark my-2">
-                    <h5 class="mb-0">{{ $divisi->program->judul }}</h5>
-                  </div>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-9 mt-lg-0 mt-4">
-          <!-- Card Profile -->
-          <div class="card card-body" id="profile">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-sm-auto col-4">
-                <div class="avatar avatar-xl position-relative">
-                  <img src="{{asset('tadmin/assets/img/bruce-mars.jpg')}}" alt="bruce" class="w-100 border-radius-lg shadow-sm">
+
+                <!-- Content Section -->
+                <div class="col-lg-9">
+                    <div class="card p-3 h-100 border-0 shadow-sm bg-white">
+                        @foreach ($laporan as $item)
+                            @php
+                                $statusColor = match ($item->isVerif) {
+                                    1 => '#d1f7d1', // green
+                                    2 => '#fff3cd', // yellow
+                                    default => '#fde2e2', // red
+                                };
+                                $textColor = match ($item->isVerif) {
+                                    1 => 'text-success',
+                                    2 => 'text-warning',
+                                    default => 'text-danger',
+                                };
+                                $icon = match ($item->isVerif) {
+                                    1 => 'ni ni-like-2',
+                                    2 => 'ni ni-like-2',
+                                    default => 'ni ni-ruler-pencil',
+                                };
+                                $label = match ($item->isVerif) {
+                                    1 => 'Disetujui Mentor',
+                                    2 => 'Sedang Diverifikasi',
+                                    default => 'Belum Disubmit',
+                                };
+                            @endphp
+
+                            <div class="card mt-4 border-0 shadow-sm"
+                                style="background-color: {{ $statusColor }}; border-radius: 16px;">
+                                <div class="card-header d-flex justify-content-between align-items-center border-0"
+                                    style="background-color: transparent; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+                                    <div>
+                                        <h5 class="mb-0">{{ $item->created_at->isoFormat('D MMM') }} -
+                                            {{ $item->created_at->addDays(6)->isoFormat('D MMM Y') }}</h5>
+                                        <p class="text-sm mb-0 text-secondary">Lengkapi laporan harian untuk mengisi
+                                            laporan
+                                            mingguan</p>
+                                    </div>
+                                    <a href="{{ route('showLaporan', $item->id) }}"
+                                        class="btn bg-gradient-primary btn-sm">Lihat Laporan</a>
+                                </div>
+
+                                <div class="card-body d-flex align-items-center"
+                                    style="border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;">
+                                    <div class="d-flex align-items-center {{ $textColor }}">
+                                        <i class="{{ $icon }} fs-4 me-2"></i>
+                                        <div>
+                                            <span class="fw-bold d-block text-sm">{{ $label }}</span>
+                                            <small class="text-xs">Minggu ke-{{ $loop->iteration }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-              </div>
-              <div class="col-sm-auto col-8 my-auto">
-                <div class="h-100">
-                  <h5 class="mb-1 font-weight-bolder">
-                    {{Auth::user()->name}}
-                  </h5>
-                  <p class="mb-0 font-weight-bold text-sm">
-                    {{$divisi->nama_divisi}}
-                  </p>
-                </div>
-              </div>
-              <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
-                <div class="form-check form-switch ms-2">
-                  {{-- <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23" checked onchange="visible()"> --}}
-                </div>
-              </div>
             </div>
-          </div>
-          <!-- Card Laporan Harian -->
-          @foreach ($laporan as $item)
-            <div class="card mt-4" id="delete">
-              <div class="card-header">
-                <h5>{{$item->created_at->isoFormat('D MMM')}} - {{$item->created_at->addDays(6)->isoFormat('D MMM Y')}} </h5>
-                <p class="text-sm mb-0">Lengkapi laporan harian untuk mengisi laporan mingguan</p>
-              </div>
-              <div class="card-body d-sm-flex pt-0">
-                @if ($item->isVerif == 1)
-                  <div class="d-flex align-items-center mb-sm-0 mb-4">
-                    <div>
-                      <i class="ni ni-like-2 text-success"></i>
-                    </div>
-                    <div class="ms-2">
-                      <span class="text-dark font-weight-bold d-block text-sm">Disetujui Mentor</span>
-                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
-                    </div>
-                  </div>
-                @elseif($item->isVerif == 2)
-                  <div class="d-flex align-items-center mb-sm-0 mb-4">
-                    <div>
-                      <i class="ni ni-like-2 text-warning"></i>
-                    </div>
-                    <div class="ms-2">
-                      <span class="text-dark font-weight-bold d-block text-sm">Sedang dicek</span>
-                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
-                    </div>
-                  </div>
-                @else
-                  <div class="d-flex align-items-center mb-sm-0 mb-4">
-                    <div>
-                      <i class="ni ni-ruler-pencil text-danger"></i>
-                    </div>
-                    <div class="ms-2">
-                      <span class="text-dark font-weight-bold d-block text-sm">Belum dibuat</span>
-                      <span class="text-xs d-block">Minggu ke-{{$loop->iteration}}</span>
-                    </div>
-                  </div>
-                @endif
-                <div class="mb-0 ms-auto">
-                </div>
-                {{-- <button class="btn btn-outline-info mb-0 ms-auto" type="button" name="button">Laporan Mingguan</button> --}}
-                <a href="{{ route('showLaporan', $item->id) }}" class="btn bg-gradient-primary mb-0 ms-2">Lihat Laporan</a>
-              </div>
-            </div>
-          @endforeach
         </div>
-      </div>
-    </div>
-  </main>
+    </main>
 </x-app-layout>

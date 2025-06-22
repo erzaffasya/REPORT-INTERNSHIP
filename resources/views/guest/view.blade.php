@@ -17,7 +17,7 @@
                 <h5>{{$laporan->created_at->isoFormat('D MMM')}} - {{$laporan->created_at->addDays(6)->isoFormat('D MMM Y')}}</h5>
                 <span class="text-dark font-weight-bold d-block text-sm">Minggu ke-1</span>
               </li>
-              @if ($laporan->isVerif == 0 || $laporan->isVerif == 2)
+              @if (($laporan->isVerif == 0 || $laporan->isVerif == 2) and $laporan->komentar != null)
                 <li class="nav-item mx-3 mt-3 text-start">
                   <span class="text-dark font-weight-bold d-block text-sm">Revisi</span>
                   <p align = "justify">

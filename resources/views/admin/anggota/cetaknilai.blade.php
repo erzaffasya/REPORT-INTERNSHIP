@@ -62,16 +62,13 @@
                                     <td class="report-content-cell">
                                         <div class="main-content" style="padding: 4.5rem 7rem;">
                                             <div class="header" style="text-align: center">
-                                                <img height="80px" src="{{ asset('tadmin/assets/img/image2.png') }}"
+                                                <img height="80px" src="{{ asset('tadmin/assets/img/pt-ajk.png') }}"
                                                     class="text-center" alt="Logo" class="header-logo">
-                                                <p style="margin: 0; font-weight: bold">PEMERINTAH DINAS KOTA BALIKPAPAN
+                                                <p style="margin: 0; font-size: 32px; font-weight: bold">PT ATHAR JAYA KONSTRUKSI
                                                 </p>
-                                                <p style="margin: 0; font-weight: bold">DINAS PENANAMAN MODAL DAN
-                                                    PELAYANAN TERPADU SATU PINTU</p>
                                                 <h3
                                                     style="margin-top: 0.5rem; margin-bottom:0; border-bottom: 3px solid black; display: inline-block">
                                                     SERTIFIKAT</h3>
-                                                {{-- <p style="margin: 0; font-weight: bold">Nomor : 421.5/DPMPTSP</p> --}}
                                             </div>
                                             <div class="content mt-4">
                                                 <table>
@@ -98,8 +95,7 @@
                                                 </table>
                                                 <p
                                                     style="font-weight: bold; line-height: 1.3; margin: 0.5rem 0!important;">
-                                                    Telah melaksanakan Praktek Kerja Lapangan pada Dinas Penanaman Modal
-                                                    dan Pelayanan Terpadu Satu Pintu Kota Balikpapan terhitung mulai
+                                                    Telah melaksanakan Praktek Kerja Lapangan pada PT Athar Jaya Konstruksi terhitung mulai
                                                     tanggal
                                                     {{ \Carbon\Carbon::createFromFormat('Y-m-d', $programUser->periode_mulai)->translatedFormat('d F Y') }}
                                                     sampai dengan
@@ -114,8 +110,8 @@
                                                 <br>
                                                 <br>
                                                 {{-- <img src="" width="200px" height="120px" alt="" style="object-fit: contain"> --}}
-                                                <p>Kepala Dinas,</p>
-                                                <p class="footer-signature">HASBULLAH HELMI</p>
+                                                <p>Direktur,</p>
+                                                <p class="footer-signature">Savitri</p>
                                             </div>
                                         </div>
                                     </td>
@@ -141,7 +137,7 @@
 
 
                                             <div class="header" style="text-align: center; margin-top: 25px;">
-                                                <h3>Daftar Nilai</h3>
+                                                <h3>DAFTAR NILAI</h3>
                                             </div>
 
                                             <div class="content">
@@ -318,8 +314,8 @@
                                                     <br>
                                                     <br>
                                                     {{-- <img src="" width="200px" height="120px" alt="" style="object-fit: contain"> --}}
-                                                    <p>Kepala Dinas,</p>
-                                                    <p class="footer-signature">HASBULLAH HELMI</p>
+                                                    <p>Direktur,</p>
+                                                    <p class="footer-signature">Savitri</p>
                                                 </div>
 
                                             </div>

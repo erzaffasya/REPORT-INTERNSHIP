@@ -76,16 +76,15 @@
 
     <div class="container-fluid">
         <div class="page-header min-height-300 border-radius-xl mt-4"
-            style="background-image: url('../tadmin/assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
-            <span class="mask bg-gradient-primary opacity-6"></span>
+            style="background-image: url('../tadmin/assets/img/sampul-program.png'); background-position-y: 50%;">
+            <span class="mask opacity-6"></span>
         </div>
         <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
             <div class="" style="display: flex; justify-content: space-between; align-items: center;">
                 <div class="row gx-4">
                     <div class="col-auto">
                         <div class="avatar avatar-xl position-relative">
-                            <img src="../tadmin/assets/img/bruce-mars.jpg" alt="profile_image"
-                                class="w-100 border-radius-lg shadow-sm">
+                            <img src="../tadmin/assets/img/program-profile.png" alt="profile_image" class="w-100 ">
                         </div>
                     </div>
                     <div class="col-auto my-auto">
@@ -99,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 @if ($userDivision && $periode < 0)
                     <div class="mr-0">
                         <a href="{{ url('cetak-nilai/' . Auth::user()->id . '/' . $userDivision->divisi_id . '/' . $Program->id) }}"
@@ -135,189 +134,105 @@
         </div>
     </div>
     <div class="container-fluid py-4">
-        <div class="row mt-3">
-            <div class="col-12 col-md-6 col-xl-8 mt-md-0 mt-4">
-                <div class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                        <div class="row">
-                            <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">Informasi Program</h6>
-                            </div>
-                            <div class="col-md-4 text-end">
-                                {{-- <a class="btn " data-bs-toggle="modal" data-bs-target="#tambahdivisi">
-                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Profile"></i>
-                                </a> --}}
-                            </div>
+        <div class="modal fade" id="tambahdivisi" tabindex="-1" aria-labelledby="tambahdivisiLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content shadow border-0">
+                    <form method="POST" action="{{ route('Divisi.store') }}">
+                        @csrf
+                        <div class="modal-header bg-gradient-primary text-white">
+                            <h5 class="modal-title mb-0">Tambah Divisi</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
-                    </div>
-                    <div class="card-body p-3">
-                        <p class="text-sm">
-                            {{ $Program->detail }}
-                        </p>
-                        <hr class="horizontal gray-light my-4">
-                        {{-- <ul class="list-group">
-                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full
-                                    Name:</strong> &nbsp; Alec M. Thompson</li>
-                            <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                    class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
-                            <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                    class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
-                            <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                    class="text-dark">Location:</strong> &nbsp; USA</li>
-                            <li class="list-group-item border-0 ps-0 pb-0">
-                                <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                                <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-facebook fa-lg"></i>
-                                </a>
-                                <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-twitter fa-lg"></i>
-                                </a>
-                                <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-instagram fa-lg"></i>
-                                </a>
-                            </li>
-                        </ul> --}}
-                    </div>
+                        <div class="modal-body">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="nama_divisi" id="nama_divisi_input"
+                                    placeholder="Nama Divisi">
+                                <label for="nama_divisi_input">Nama Divisi</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="detail" id="detail_input" placeholder="Detail" style="height: 100px"></textarea>
+                                <label for="detail_input">Detail</label>
+                            </div>
+                            <input type="hidden" name="status" value="1">
+                            <input type="hidden" name="program_id" value="{{ $Program->id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-sm-4 mt-sm-0 mt-4">
-                <div class="card">
-                    <div class="card-body p-3 position-relative">
-                        <div class="row">
-                            <div class="col-12 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Periode Program</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    @if ($periode < 0)
-                                        Program Telah Selesai
-                                    @else
-                                        {{ $periode }} Hari lagi
-                                    @endif
-                                </h5>
-                            </div>
-                            <div class="col-12">
-                                <div class="dropdown text-start">
-                                    <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span
-                                            class="text-xs text-secondary">{{ \Carbon\Carbon::parse($Program->periode_mulai)->format('d M Y') }}
-                                            -
-                                            {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mt-4 ">
-                    <div class="card-body p-3 position-relative">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Jumlah Anggota</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $Akses_program->count() }}
-                                </h5>
-                                {{-- <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+12% <span
-                                        class="font-weight-normal text-secondary">since last month</span></span> --}}
-                            </div>
-                            {{-- <div class="col-5">
-                                <div class="dropdown text-end">
-                                    <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="text-xs text-secondary">6 May - 7 May</span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
-                                        aria-labelledby="dropdownUsers2">
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7
-                                                days</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a>
-                                        </li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30
-                                                days</a></li>
-                                    </ul>
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="card mt-4 ">
-                    <div class="card-body p-3 position-relative">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Jumlah Divisi</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $Divisi->count() }}
-                                </h5>
-                                {{-- <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+12% <span
-                                        class="font-weight-normal text-secondary">since last month</span></span> --}}
-                            </div>
-                            {{-- <div class="col-5">
-                                <div class="dropdown text-end">
-                                    <a href="javascript:;" class="cursor-pointer text-secondary" id="dropdownUsers2"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="text-xs text-secondary">6 May - 7 May</span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3"
-                                        aria-labelledby="dropdownUsers2">
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 7
-                                                days</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last week</a>
-                                        </li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Last 30
-                                                days</a></li>
-                                    </ul>
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- <div class="col-lg-4 col-sm-6">
-                <div class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="mb-0">Channels</h6>
-                            <button type="button"
-                                class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center"
-                                data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
-                                data-bs-original-title="See traffic channels">
-                                <i class="fas fa-info" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-md-0 mt-4">
-                        <div class="row">
-                            <div class="col-7 text-start">
-                                <div class="chart">
-                                    <canvas id="pie-chart" class="chart-canvas" height="300"></canvas>
-                                </div>
-                            </div>
-                            <div class="col-5 my-auto">
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-info"></i>
-                                    <span class="text-dark text-xs">Facebook</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-primary"></i>
-                                    <span class="text-dark text-xs">Direct</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-dark"></i>
-                                    <span class="text-dark text-xs">Organic</span>
-                                </span>
-                                <span class="badge badge-md badge-dot me-4 d-block text-start">
-                                    <i class="bg-secondary"></i>
-                                    <span class="text-dark text-xs">Referral</span>
-                                </span>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div> --}}
         </div>
+
+        <div class="container-fluid py-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-2">Informasi Program</h5>
+                            <p class="text-sm mb-2">{{ $Program->detail }}</p>
+                            <span
+                                class="badge bg-gradient-secondary text-white">{{ \Carbon\Carbon::parse($Program->periode_mulai)->format('d M Y') }}
+                                - {{ \Carbon\Carbon::parse($Program->periode_berakhir)->format('d M Y') }}</span>
+                        </div>
+                        <div class="col-md-4 text-md-end text-start mt-3 mt-md-0">
+                            <p class="mb-1 fw-bold text-sm">
+                                @if ($periode < 0)
+                                    Program Telah Selesai
+                                @else
+                                    {{ $periode }} Hari lagi
+                                @endif
+                            </p>
+                            <p class="mb-1 text-sm">👥 <strong>{{ $Akses_program->count() }}</strong> Anggota</p>
+                            <p class="mb-0 text-sm">🏢 <strong>{{ $Divisi->count() }}</strong> Divisi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Edit Divisi -->
+        <div class="modal fade" id="editdivisi" tabindex="-1" aria-labelledby="editdivisiLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content shadow border-0">
+                    <form id="divisiUpdate" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-header bg-gradient-info text-white">
+                            <h5 class="modal-title mb-0">Edit Divisi</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="nama_divisi" id="nama_divisi"
+                                    placeholder="Nama Divisi">
+                                <label for="nama_divisi">Nama Divisi</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="detail" id="detail" placeholder="Detail" style="height: 100px"></textarea>
+                                <label for="detail">Detail</label>
+                            </div>
+                            <input type="hidden" name="status" id="status" value="1">
+                            <input type="hidden" name="program_id" id="program_id" value="{{ $Program->id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-info text-white">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konten utama -->
+
         <div class="row mt-4">
             <div class="col-12">
                 <div class="card mb-4">
@@ -328,38 +243,38 @@
                     <div class="card-body p-3">
                         <div class="row">
                             @foreach ($Divisi as $item)
-                                <div class="col-xl-4 col-md-6 mb-xl-0 mb-4 mt-4">
-                                    <div class="card card-blog card-plain">
-                                        <div class="position-relative">
-                                            <a class="d-block shadow-xl border-radius-xl">
-                                                <img src="../tadmin/assets/img/home-decor-1.jpg" alt="img-blur-shadow"
-                                                    class="img-fluid shadow border-radius-xl">
-                                            </a>
-                                        </div>
-                                        <div class="card-body px-1 pb-0">
-                                            <p class="text-gradient text-dark mb-2 text-sm">Divisi</p>
-                                            <a href="javascript:;">
-                                                <h5>
-                                                    {{ $item->nama_divisi }}
-                                                </h5>
-                                            </a>
-                                            <p class="mb-4 text-sm">
-                                                {{ $item->detail }}
-                                            </p>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <a type="button"
-                                                    href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
-                                                    class="btn btn-outline-primary btn-sm mb-0">View</a>
-                                                @can('admin')
-                                                    <a type="button" href="{{ url('destroyDivisi', $item->id) }}"
-                                                        class="btn btn-outline-primary btn-sm mb-0">Hapus</a>
-                                                    <a type="button" href="{{ route('Divisi.edit', $item->id) }}"
-                                                        class="btn btn-outline-primary btn-sm mb-0">Edit</a>
-                                                @endcan
-
-                                                {{-- <button type="button"
-                                                class="btn btn-outline-primary btn-sm mb-0 btn-update" data-bs-toggle="modal" data-bs-target="#editdivisi" data-link="{{ route('Divisi.update', $item->id) }}" data-nama_divisi="{{ $item->nama_divisi }}" data-program_id="{{$item->program_id}}" data-status="{{$item->status}}" data-detail="{{ $item->detail }}">Edit</button> --}}
+                                <div class="col-xl-4 col-md-6 mb-4 mt-4">
+                                    <div class="card shadow-sm border-0 text-center py-4 px-3"
+                                        style="border-radius: 20px;">
+                                        <!-- Icon Container -->
+                                        <div class="d-flex justify-content-center align-items-center mb-3"
+                                            style="height: 120px;">
+                                            <div class="bg-light shadow rounded-circle d-flex justify-content-center align-items-center"
+                                                style="width: 100px; height: 100px;">
+                                                <img src="../tadmin/assets/img/program-divisi.png" alt="Divisi Icon"
+                                                    class="img-fluid" style="width: 60px; height: 60px;">
                                             </div>
+                                        </div>
+
+                                        <!-- Divisi Info -->
+                                        <p class="text-muted mb-1 text-uppercase" style="letter-spacing: 1px;">
+                                        </p>
+                                        <h5 class="text-primary fw-bold mb-2">{{ $item->nama_divisi }}</h5>
+                                        <p class="text-sm mb-3" style="color: #6c757d;">
+                                            {{ $item->detail ?? 'Divisi ini bertanggung jawab atas koordinasi pelaksanaan program secara profesional dan kolaboratif.' }}
+                                        </p>
+
+                                        <!-- Action Buttons -->
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a href="{{ url('Program/' . $Program->id . '/Divisi/' . $item->id) }}"
+                                                class="btn btn-outline-primary btn-sm px-3">View</a>
+
+                                            @can('admin')
+                                                <a href="{{ url('destroyDivisi', $item->id) }}"
+                                                    class="btn btn-outline-danger btn-sm px-3">Hapus</a>
+                                                <a href="{{ route('Divisi.edit', $item->id) }}"
+                                                    class="btn btn-outline-secondary btn-sm px-3">Edit</a>
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>
