@@ -111,7 +111,7 @@
                                                 <br>
                                                 {{-- <img src="" width="200px" height="120px" alt="" style="object-fit: contain"> --}}
                                                 <p>Direktur,</p>
-                                                <p class="footer-signature">Savitri</p>
+                                                <p class="footer-signature">Lisa Wati</p>
                                             </div>
                                         </div>
                                     </td>
