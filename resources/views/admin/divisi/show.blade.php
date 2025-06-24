@@ -5,8 +5,8 @@
             <div class="col-lg-4 col-12 mb-4">
                 <div class="card shadow-sm">
                     <div class="card-header p-0">
-                        <img src="{{asset('tadmin/assets/img/intership.png')}}"
-                            class="w-100 rounded-top" style="height: 140px; object-fit: cover;" alt="Cover">
+                        <img src="{{ asset('tadmin/assets/img/intership.png') }}" class="w-100 rounded-top"
+                            style="height: 140px; object-fit: cover;" alt="Cover">
                     </div>
                     <div class="card-body">
                         <h5 class="fw-bold text-xl mb-2">{{ $Divisi->nama_divisi }}</h5>
@@ -123,24 +123,57 @@
                             <ul class="list-group">
                                 @forelse ($Laporan->where('isVerif', '!=', 1) as $item)
 <li class="list-group-item d-flex flex-column">
-                                    <div class="d-flex justify-content-between">
-                                        <strong>{{ $item->user->name }} - {{ $item->divisi->nama_divisi }}</strong>
-                                        <span class="badge bg-warning text-dark">Menunggu Verifikasi</span>
+                                <div class="d-flex justify-content-between">
+                                    <strong>{{ $item->user->name }} - {{ $item->divisi->nama_divisi }}</strong>
+                                    <span class="badge bg-warning text-dark">Menunggu Verifikasi</span>
+                                </div>
+                                <small class="text-muted">
+                                    Tanggal: {{ $item->created_at->isoFormat('D') }}-{{ $item->created_at->addDays(6)->isoFormat('D MMM Y') }}
+                                </small>
+                                <div class="mt-2">
+                                    <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#laporanModal-{{ $item->id }}">
+                                        Lihat Detail
+                                    </a>
+                                </div>
+                            </li>
+
+                            <!-- Modal untuk setiap laporan -->
+                            <div class="modal fade" id="laporanModal-{{ $item->id }}" tabindex="-1" aria-labelledby="label-{{ $item->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary text-white">
+                                            <h5 class="modal-title" id="label-{{ $item->id }}">Detail Laporan - {{ $item->user->name }}</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Tanggal:</strong> {{ $item->created_at->isoFormat('dddd, D MMMM Y') }}</p>
+                                            <p><strong>Deskripsi:</strong></p>
+                                            <div class="border rounded p-2 text-dark">
+                                                {!! nl2br(e($item->isi ?? '-')) !!}
+                                            </div>
+                                            @if ($item->gambar)
+<div class="mt-3">
+                                                    <p><strong>Foto Kegiatan:</strong></p>
+                                                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="Lampiran Gambar" class="img-fluid rounded">
+                                                </div>
+@endif
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">Tanggal: {{ $item->created_at->isoFormat('D') }}-{{ $item->created_at->addDays(6)->isoFormat('D MMM Y') }}</small>
-                                    <div class="mt-2">
-                                        <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#laporanModal-{{ $item->id }}">Lihat Detail</a>
-                                    </div>
-                                </li>
-                            @empty
-                                <li class="list-group-item">Tidak ada laporan yang menunggu verifikasi.</li>
+                                </div>
+                            </div>
+                        @empty
+                            <li class="list-group-item">Tidak ada laporan yang menunggu verifikasi.</li>
 @endforelse
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
 @endcan
+
 
         <!-- Daftar Anggota -->
         <div class="row">
@@ -176,13 +209,13 @@
                                             <td>{{ $item->user->email }}</td>
                                             @can('admin')
     <td>
-                                                            <a href="{{ url('destroyAksesDivisi', $item->id) }}" class="btn btn-sm btn-danger">Hapus</a>
-                                                            <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}" class="btn btn-sm btn-secondary">Nilai</a>
-                                                            <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id . '/' . $program) }}" class="btn btn-sm btn-info">Cetak</a>
-                                                        </td>
+                                                                <a href="{{ url('destroyAksesDivisi', $item->id) }}" class="btn btn-sm btn-danger">Hapus</a>
+                                                                <a href="{{ url('penilaian/' . $item->user->id . '/' . $item->divisi->id) }}" class="btn btn-sm btn-secondary">Nilai</a>
+                                                                <a href="{{ url('cetak-nilai/' . $item->user->id . '/' . $item->divisi->id . '/' . $program) }}" class="btn btn-sm btn-info">Cetak</a>
+                                                            </td>
 @endcan
                                         </tr>
-                            @empty
+                        @empty
                                         <tr><td colspan="4" class="text-center">Belum ada anggota terdaftar.</td></tr>
  @endforelse
                                 </tbody>
