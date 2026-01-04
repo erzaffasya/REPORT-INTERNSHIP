@@ -4,47 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Divisi;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\SAWService;
 
 class RecommendationController extends Controller
 {
-    public function recommend($id, $program)
+    protected $sawService;
+
+    public function __construct(SAWService $sawService)
     {
-        $student = User::where('id',$id)->with('talents')->first();
-        $dataDivisi = Divisi::where('program_id', $program)->get();
-        $recommendedDepartments = collect();
-        // dd($student->talents);
-        foreach ($dataDivisi as $divisi) {
-            $criteria = json_decode($divisi->criteria, true);
-            if (!isset($criteria['threshold'])) {
-                // Handle error atau berikan default value
-                $criteria['threshold'] = 7; // Misalnya, default threshold
-            }
-
-            // Hitung skor kesesuaian berdasarkan kriteria
-            $matchScore = $this->calculateMatchScore($student->talents, $criteria);
-            if ($matchScore >= $criteria['threshold']) {
-                $recommendedDepartments->push([
-                    'divisi' => $divisi,
-                    'score' => $matchScore
-                ]);
-                
-            }
-        }
-        // dd($student);
-
-        return view('admin.program.recommendation', compact('student', 'recommendedDepartments'));
+        $this->sawService = $sawService;
     }
 
-    private function calculateMatchScore($talents, $criteria)
+    /**
+     * Menampilkan rekomendasi divisi untuk user menggunakan metode SAW
+     */
+    public function recommend($id, $program)
     {
-        $score = 0;
-        foreach ($talents as $talent) {
-            if (array_key_exists($talent->name, $criteria)) {
-                $score += $talent->pivot->score * $criteria[$talent->name];
-            }
-        }
-        return $score;
+        $student = User::where('id', $id)->with('talents')->first();
+        $dataDivisi = Divisi::where('program_id', $program)->get();
+        
+        // Hitung rekomendasi menggunakan SAW
+        $recommendedDepartments = $this->sawService->recommend($student, $dataDivisi);
+
+        return view('admin.program.recommendation', compact('student', 'recommendedDepartments'));
     }
 }
