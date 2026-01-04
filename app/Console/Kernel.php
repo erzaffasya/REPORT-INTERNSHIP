@@ -2,14 +2,8 @@
 
 namespace App\Console;
 
-use App\Models\Divisi;
-use App\Models\Laporan;
-use App\Models\Program;
-use App\Http\Controllers\ProgramController as tambahjadwal;
-use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -21,7 +15,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('laporan_harian')->weeklyOn(1, '8:00');
+        // Jalankan setiap Senin jam 00:01
+        // Membuat laporan mingguan untuk semua peserta magang
+        $schedule->command('laporan:create-weekly')
+            ->weeklyOn(1, '00:01')
+            ->withoutOverlapping()
+            ->onOneServer();
     }
 
     /**

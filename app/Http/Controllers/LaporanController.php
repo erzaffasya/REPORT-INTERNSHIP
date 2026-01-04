@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Divisi;
 use App\Models\Laporan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,76 +12,115 @@ class LaporanController extends Controller
 {
     public function index($divisi)
     {
-        $laporan = Laporan::where('user_id', Auth::user()->id)->where('divisi_id', $divisi)->orderBy('id', 'DESC')->get();
+        $laporan = Laporan::where('user_id', Auth::user()->id)
+            ->where('divisi_id', $divisi)
+            ->orderBy('week_start_date', 'DESC')
+            ->orderBy('id', 'DESC')
+            ->get();
         $divisi = Divisi::find($divisi);
-        // dd($divisi);
-        return view('magang.laporan.index', compact('laporan', 'divisi'));
+
+        // Cek apakah sudah ada laporan untuk minggu ini
+        $weekStart = Laporan::getMondayOfWeek();
+        $hasCurrentWeekReport = Laporan::existsForWeek(Auth::id(), $divisi->id, $weekStart);
+
+        return view('magang.laporan.index', compact('laporan', 'divisi', 'hasCurrentWeekReport', 'weekStart'));
     }
 
-    public function create()
+    /**
+     * Buat laporan mingguan secara manual
+     */
+    public function createManual($divisi)
     {
-        // $kategori = Kategori::all();
-        return view('admin.produk.tambah');
+        $divisiModel = Divisi::findOrFail($divisi);
+        $weekStart = Laporan::getMondayOfWeek();
+
+        // Cek apakah user terdaftar di divisi ini
+        $isRegistered = $divisiModel->akses_divisi()
+            ->wherePivot('user_id', Auth::id())
+            ->exists();
+
+        if (!$isRegistered) {
+            return redirect()->back()
+                ->with('error', 'Anda tidak terdaftar di divisi ini.');
+        }
+
+        // Cek apakah program masih aktif
+        $program = $divisiModel->program;
+        $today = Carbon::now();
+
+        if ($today < Carbon::parse($program->periode_mulai) || $today > Carbon::parse($program->periode_berakhir)) {
+            return redirect()->back()
+                ->with('error', 'Program magang tidak aktif.');
+        }
+
+        // Buat laporan jika belum ada
+        $laporan = Laporan::createIfNotExists(Auth::id(), $divisi, $weekStart);
+
+        if ($laporan) {
+            return redirect()->back()
+                ->with('success', 'Laporan minggu ini berhasil dibuat!');
+        } else {
+            return redirect()->back()
+                ->with('info', 'Laporan untuk minggu ini sudah ada.');
+        }
     }
 
     public function show($id)
     {
-        // $minggu = Laporan::findorFail($minggu);
-        $laporan = Laporan::find($id);
+        $laporan = Laporan::findOrFail($id);
+
+        // Pastikan user hanya bisa lihat laporan sendiri (kecuali admin)
+        if ($laporan->user_id !== Auth::id() && !Auth::user()->isAdmin()) {
+            abort(403);
+        }
+
         return view('magang.laporan.view', compact('laporan'));
-    }
-
-
-    public function edit($id)
-    {
-        $laporan = Laporan::find($id);
-        // $kategori = Kategori::all();
-        return view('admin.produk.edit', compact('laporan'));
     }
 
     public function update(Request $request, $id)
     {
-        
         $Laporan = Laporan::findOrFail($id);
-        if ($request->senin != NULL) {
-            $Laporan->senin = $request->senin;
+
+        // Update laporan harian
+        $days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
+        foreach ($days as $day) {
+            if ($request->has($day) && $request->$day != NULL) {
+                $Laporan->$day = $request->$day;
+            }
         }
-        if ($request->selasa != NULL) {
-            $Laporan->selasa = $request->selasa;
-        }
-        if ($request->rabu != NULL) {
-            $Laporan->rabu = $request->rabu;
-        }
-        if ($request->kamis != NULL) {
-            $Laporan->kamis = $request->kamis;
-        }
-        if ($request->jumat != NULL) {
-            $Laporan->jumat = $request->jumat;
-        }
-        if ($request->mingguan != NULL) {
+
+        // Update laporan mingguan dan ubah status ke submitted
+        if ($request->has('mingguan') && $request->mingguan != NULL) {
             $Laporan->mingguan = $request->mingguan;
-            $Laporan->isVerif = 2;
-        }      
+            $Laporan->isVerif = Laporan::STATUS_SUBMITTED;
+        }
+
+        // Jika status masih NEW dan ada isian, ubah ke NEW (tetap 4)
+        // Status akan berubah ke SUBMITTED hanya saat submit mingguan
+
         $Laporan->save();
-        // dd($id, $request, $Laporan);
+
         return redirect()->back()
-            ->with('edit', 'Laporan Berhasil Dibuat');
+            ->with('success', 'Laporan berhasil disimpan!');
     }
 
-
-    public function veriflaporan(Request $request, $id){
+    public function veriflaporan(Request $request, $id)
+    {
         $Laporan = Laporan::findOrFail($id);
-         if ($request->isVerif == 'on') {
-            $Laporan->isVerif = 1;
+
+        if ($request->isVerif == 'on') {
+            // Approve
+            $Laporan->isVerif = Laporan::STATUS_APPROVED;
             $Laporan->komentar = NULL;
-        }
-        //Revisi
-        if ($request->komentar != NULL) {
-            $Laporan->isVerif = 0;
+        } elseif ($request->komentar != NULL) {
+            // Revisi
+            $Laporan->isVerif = Laporan::STATUS_REVISION;
             $Laporan->komentar = $request->komentar;
         }
+
         $Laporan->save();
+
         return redirect()->back()
-        ->with('success', 'Berhasil Terkirim');
+            ->with('success', 'Verifikasi berhasil dikirim!');
     }
 }

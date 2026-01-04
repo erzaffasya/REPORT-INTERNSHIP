@@ -62,13 +62,27 @@ class User extends Authenticatable
     }
 
     public function getDivisionForProgram($program)
-    {      
+    {
         return Akses_divisi::where('akses_divisi.user_id', $this->id)
             ->join('divisi','divisi.id','akses_divisi.divisi_id')
             ->join('program','program.id','divisi.program_id')
             ->where('program.id', $program)
             ->first();
     }
-    
-    
+
+    /**
+     * Cek apakah user adalah admin
+     */
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Cek apakah user adalah mentor
+     */
+    public function isMentor()
+    {
+        return $this->role === 'mentor';
+    }
 }

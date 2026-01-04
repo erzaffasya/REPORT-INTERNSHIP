@@ -18,349 +18,459 @@
                 return 'Nilai tidak valid';
             }
         }
-
     @endphp
 
+    <style>
+        .header-card {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    <div class="card"
-        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 2rem; margin-bottom: 5rem;">
+        .header-card h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .header-card p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .download-btn {
+            background: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            color: #2d3748;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            background: #edf2f7;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .layout-invoice-page {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .book {
+            background: #fff;
+        }
+
+        .pbf-laporanhutang.page {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            width: 297mm;
+            min-height: 210mm;
+        }
+
+        .sertif-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Tabel Nilai Styles */
+        .nilai-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            font-size: 11px;
+        }
+
+        .nilai-table th {
+            background: #4a5568;
+            color: #fff;
+            padding: 10px 8px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid #4a5568;
+        }
+
+        .nilai-table th:first-child {
+            text-align: left;
+        }
+
+        .nilai-table td {
+            padding: 8px;
+            border: 1px solid #e2e8f0;
+            color: #2d3748;
+        }
+
+        .nilai-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .nilai-table .total-row {
+            background: #edf2f7 !important;
+            font-weight: 600;
+        }
+
+        .nilai-table .rata-row {
+            background: #2d3748 !important;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .nilai-table .rata-row td {
+            border-color: #2d3748;
+            color: #fff;
+        }
+
+        .info-label {
+            color: #718096;
+            font-size: 11px;
+        }
+
+        .info-value {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .penilaian-box {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 10px;
+        }
+
+        .penilaian-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 11px;
+            color: #2d3748;
+            font-weight: 700;
+        }
+
+        .penilaian-box p {
+            margin: 4px 0;
+            color: #4a5568;
+        }
+
+        .signature-box {
+            text-align: center;
+            font-size: 11px;
+            color: #2d3748;
+        }
+
+        .signature-box p {
+            margin: 2px 0;
+        }
+
+        .signature-name {
+            font-weight: 700;
+            margin-top: 60px !important;
+            border-top: 1px solid #2d3748;
+            display: inline-block;
+            padding-top: 4px;
+        }
+
+        @media print {
+            .header-card {
+                display: none !important;
+            }
+            .pbf-laporanhutang.page {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .layout-invoice-page {
+                padding: 0;
+            }
+        }
+    </style>
+
+    <div class="header-card">
         <div>
             <h3>Sertifikat Magang</h3>
             <p>{{ ucwords($nilai->user->name) }}</p>
         </div>
-        <div class="mr-0">
-            <a onclick="exportToPDF()" class="btn bg-gradient-primary"
-                style="display: flex; flex-direction: column; align-items: center;">
-                <svg width="80px" height="80px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path
-                            d="M17 17H17.01M17.4 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H6.6M12 15V4M12 15L9 12M12 15L15 12"
-                            stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </g>
+        <div>
+            <a onclick="exportToPDF()" class="download-btn">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 16L12 8M12 16L9 13M12 16L15 13M3 15V16C3 18.2091 4.79086 20 7 20H17C19.2091 20 21 18.2091 21 16V15" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span>
-                    Unduh Sertifikat
-                </span>
+                Unduh PDF
             </a>
-
         </div>
     </div>
 
-
-
-    <div class="layout-invoice-page" style="width: 100%; display: flex; justify-content: center; ">
+    <div class="layout-invoice-page">
         <div class="book" id="content">
+            <!-- Halaman 1: Sertifikat -->
             <div class="pbf-laporanhutang page position-relative">
                 <div class="subpage">
-                    <div class="">
-                        <table class="report-container w-100" style="position: relative; padding:0;">
-                            <tbody class="report-content" style="position: relative; padding:0;">
-                                <img class="sertif-bg" src="{{ asset('tadmin/assets/img/image1.png') }}" alt="">
-                                <tr>
-                                    <td class="report-content-cell">
-                                        <div class="main-content" style="padding: 4.5rem 7rem;">
-                                            <div class="header" style="text-align: center">
-                                                <img height="80px" src="{{ asset('tadmin/assets/img/pt-ajk.png') }}"
-                                                    class="text-center" alt="Logo" class="header-logo">
-                                                <p style="margin: 0; font-size: 32px; font-weight: bold">PT ATHAR JAYA KONSTRUKSI
-                                                </p>
-                                                <h3
-                                                    style="margin-top: 0.5rem; margin-bottom:0; border-bottom: 3px solid black; display: inline-block">
-                                                    SERTIFIKAT</h3>
-                                            </div>
-                                            <div class="content mt-4">
-                                                <table>
-                                                    <tr>
-                                                        <td width="40%">Diberikan kepada</td>
-                                                        <td width="5%">:</td>
-                                                        <td width="">{{ ucwords($nilai->user->name) }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td width="40%">Nomor Induk Siswa</td>
-                                                        <td width="5%">:</td>
-                                                        <td width="">{{ $nilai->user->nim }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td width="40%">Kelas</td>
-                                                        <td width="5%">:</td>
-                                                        <td width="">{{ strtoupper($nilai->user->kelas) }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td width="40%">Sekolah</td>
-                                                        <td width="5%">:</td>
-                                                        <td width="">{{ $nilai->user->sekolah }}</td>
-                                                    </tr>
-                                                </table>
-                                                <p
-                                                    style="font-weight: bold; line-height: 1.3; margin: 0.5rem 0!important;">
-                                                    Telah melaksanakan Praktek Kerja Lapangan pada PT Athar Jaya Konstruksi terhitung mulai
-                                                    tanggal
-                                                    {{ \Carbon\Carbon::createFromFormat('Y-m-d', $programUser->periode_mulai)->translatedFormat('d F Y') }}
-                                                    sampai dengan
-                                                    {{ \Carbon\Carbon::createFromFormat('Y-m-d', $programUser->periode_berakhir)->translatedFormat('d F Y') }}
-                                                    dengan hasil {{ getPredikat($nilai->rata_rata) }}</p>
-                                            </div>
-                                            <br>
-                                            <div class="footer" style="text-align: center">
-                                                <p>Balikpapan, {{ \Carbon\Carbon::now()->format('d M Y') }}</p>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                {{-- <img src="" width="200px" height="120px" alt="" style="object-fit: contain"> --}}
-                                                <p>Direktur,</p>
-                                                <p class="footer-signature">Lisa Wati</p>
-                                            </div>
+                    <table class="report-container w-100" style="position: relative; padding:0;">
+                        <tbody class="report-content" style="position: relative; padding:0;">
+                            <img class="sertif-bg" src="{{ asset('tadmin/assets/img/image1.png') }}" alt="">
+                            <tr>
+                                <td class="report-content-cell">
+                                    <div class="main-content" style="padding: 4rem 6rem;">
+                                        <div class="header" style="text-align: center">
+                                            <img height="70px" src="{{ asset('tadmin/assets/img/pt-ajk.png') }}" alt="Logo">
+                                            <p style="margin: 0.5rem 0 0 0; font-size: 28px; font-weight: bold; color: #1a202c;">PT ATHAR JAYA KONSTRUKSI</p>
+                                            <h3 style="margin-top: 0.75rem; margin-bottom: 0; border-bottom: 3px solid #1a202c; display: inline-block; font-size: 20px; padding-bottom: 4px;">
+                                                SERTIFIKAT
+                                            </h3>
                                         </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                        <div class="content" style="margin-top: 2rem;">
+                                            <table style="font-size: 14px; color: #2d3748;">
+                                                <tr>
+                                                    <td width="35%">Diberikan kepada</td>
+                                                    <td width="3%">:</td>
+                                                    <td style="font-weight: 600;">{{ ucwords($nilai->user->name) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nomor Induk Siswa</td>
+                                                    <td>:</td>
+                                                    <td>{{ $nilai->user->nim }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kelas</td>
+                                                    <td>:</td>
+                                                    <td>{{ strtoupper($nilai->user->kelas) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sekolah</td>
+                                                    <td>:</td>
+                                                    <td>{{ $nilai->user->sekolah }}</td>
+                                                </tr>
+                                            </table>
+                                            <p style="font-size: 14px; line-height: 1.7; margin: 1.5rem 0; color: #2d3748; text-align: justify;">
+                                                Telah melaksanakan <strong>Praktek Kerja Lapangan</strong> pada PT Athar Jaya Konstruksi
+                                                terhitung mulai tanggal
+                                                <strong>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $programUser->periode_mulai)->translatedFormat('d F Y') }}</strong>
+                                                sampai dengan
+                                                <strong>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $programUser->periode_berakhir)->translatedFormat('d F Y') }}</strong>
+                                                dengan hasil <strong>{{ getPredikat($nilai->rata_rata) }}</strong>.
+                                            </p>
+                                        </div>
+                                        <div style="text-align: center; margin-top: 2rem;">
+                                            <p style="margin: 0; font-size: 13px; color: #2d3748;">Balikpapan, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
+                                            <p style="margin: 0.5rem 0 0 0; font-size: 13px; color: #2d3748;">Direktur,</p>
+                                            <p style="margin: 70px 0 0 0; font-weight: 700; font-size: 14px; border-top: 1px solid #1a202c; display: inline-block; padding-top: 4px;">Lisa Wati</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <br>
 
-
+            <!-- Halaman 2: Daftar Nilai -->
             <div id="template5" class="pbf-laporanhutang page position-relative">
                 <div class="subpage">
-                    <div class="">
-                        <table class="report-container w-100" style="position: relative; padding:0;">
-                            <tbody class="report-content" style="position: relative; padding:0;">
-                                {{-- <img class="sertif-bg" src="{{ asset('tadmin/assets/img/image1.png') }}"
-                                    alt=""> --}}
-                                <tr>
-                                    <td class="report-content-cell">
-                                        <div class="main-content" style="padding: 4.5rem 7rem;">
+                    <table class="report-container w-100" style="position: relative; padding:0;">
+                        <tbody class="report-content" style="position: relative; padding:0;">
+                            <tr>
+                                <td class="report-content-cell">
+                                    <div class="main-content" style="padding: 3rem 5rem;">
+                                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                                            <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #1a202c; letter-spacing: 1px;">DAFTAR NILAI</h3>
+                                            <div style="width: 60px; height: 3px; background: #2d3748; margin: 8px auto 0;"></div>
+                                        </div>
 
+                                        <table style="margin-bottom: 1.5rem; font-size: 12px;">
+                                            <tr>
+                                                <td class="info-label" width="80">Nama</td>
+                                                <td width="15">:</td>
+                                                <td class="info-value">{{ ucwords($nilai->user->name) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="info-label">Divisi</td>
+                                                <td>:</td>
+                                                <td class="info-value">{{ $divisiUser->nama_divisi }}</td>
+                                            </tr>
+                                        </table>
 
-                                            <div class="header" style="text-align: center; margin-top: 25px;">
-                                                <h3>DAFTAR NILAI</h3>
-                                            </div>
-
-                                            <div class="content">
-                                                <table>
-                                                    <tr>
-                                                        <td width="40%">Nama</td>
-                                                        <td width="5%">:</td>
-                                                        <td width="">{{ ucwords($nilai->user->name) }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td width="40%">Divisi</td>
-                                                        <td width="5%">:</td>
-                                                        <td width="">{{ $divisiUser->nama_divisi }}</td>
-                                                    </tr>
-
+                                        <div style="display: flex; gap: 2rem;">
+                                            <div style="flex: 1;">
+                                                <!-- Tabel Aspek Teknis -->
+                                                <table class="nilai-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 60%; text-align: left;">Aspek Penilaian Teknis</th>
+                                                            <th style="width: 20%;">Nilai</th>
+                                                            <th style="width: 20%;">Predikat</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if ($nilai->nilai_1 != null)
+                                                        <tr>
+                                                            <td>{{ $nilai->judul_1 }}</td>
+                                                            <td style="text-align: center;">{{ $nilai->nilai_1 }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_1) }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if ($nilai->nilai_2 != null)
+                                                        <tr>
+                                                            <td>{{ $nilai->judul_2 }}</td>
+                                                            <td style="text-align: center;">{{ $nilai->nilai_2 }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_2) }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if ($nilai->nilai_3 != null)
+                                                        <tr>
+                                                            <td>{{ $nilai->judul_3 }}</td>
+                                                            <td style="text-align: center;">{{ $nilai->nilai_3 }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_3) }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if ($nilai->nilai_4 != null)
+                                                        <tr>
+                                                            <td>{{ $nilai->judul_4 }}</td>
+                                                            <td style="text-align: center;">{{ $nilai->nilai_4 }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_4) }}</td>
+                                                        </tr>
+                                                        @endif
+                                                        @if ($nilai->nilai_5 != null)
+                                                        <tr>
+                                                            <td>{{ $nilai->judul_5 }}</td>
+                                                            <td style="text-align: center;">{{ $nilai->nilai_5 }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_5) }}</td>
+                                                        </tr>
+                                                        @endif
+                                                    </tbody>
                                                 </table>
 
-
-                                                <div
-                                                    style="margin-top: 1rem; display: flex; justify-content: space-between; flex-direction: column;">
-                                                    <table style="width: 70%; border: 1px solid gray;">
-                                                        <tr
-                                                            style="border: 1px solid #dddddd; background-color: #9eacdb;">
-                                                            <th style="width: 70%;">Aspek Penilaian Teknis</th>
-                                                            <th style=" text-align: center;">Nilai <br> Kuantitatif</th>
-                                                            <th style=" text-align: center;">Predikat</th>
+                                                <!-- Tabel Aspek Non Teknis -->
+                                                <table class="nilai-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 60%; text-align: left;">Aspek Penilaian Non Teknis</th>
+                                                            <th style="width: 20%;">Nilai</th>
+                                                            <th style="width: 20%;">Predikat</th>
                                                         </tr>
-
-                                                        @if ($nilai->nilai_1 != null)
-                                                            <tr style="border: 1px solid #dddddd;">
-                                                                <td>{{ $nilai->judul_1 }}</td>
-                                                                <td style="text-align: center;">{{ $nilai->nilai_1 }}
-                                                                </td>
-                                                                <td style="text-align: center;">
-                                                                    {{ getPredikat($nilai->nilai_1) }}</td>
-                                                            </tr>
-                                                        @endif
-
-                                                        @if ($nilai->nilai_2 != null)
-                                                            <tr style="border: 1px solid #dddddd;">
-                                                                <td>{{ $nilai->judul_2 }}</td>
-                                                                <td style="text-align: center;">{{ $nilai->nilai_2 }}
-                                                                </td>
-                                                                <td style="text-align: center;">
-                                                                    {{ getPredikat($nilai->nilai_2) }}</td>
-                                                            </tr>
-                                                        @endif
-
-
-                                                        @if ($nilai->nilai_3 != null)
-                                                            <tr style="border: 1px solid #dddddd;">
-                                                                <td>{{ $nilai->judul_3 }}</td>
-                                                                <td style="text-align: center;">{{ $nilai->nilai_3 }}
-                                                                </td>
-                                                                <td style="text-align: center;">
-                                                                    {{ getPredikat($nilai->nilai_3) }}</td>
-                                                            </tr>
-                                                        @endif
-
-
-                                                        @if ($nilai->nilai_4 != null)
-                                                            <tr style="border: 1px solid #dddddd;">
-                                                                <td>{{ $nilai->judul_4 }}</td>
-                                                                <td style="text-align: center;">{{ $nilai->nilai_4 }}
-                                                                </td>
-                                                                <td style="text-align: center;">
-                                                                    {{ getPredikat($nilai->nilai_4) }}</td>
-                                                            </tr>
-                                                        @endif
-
-
-                                                        @if ($nilai->nilai_5 != null)
-                                                            <tr style="border: 1px solid #dddddd;">
-                                                                <td>{{ $nilai->judul_5 }}</td>
-                                                                <td style="text-align: center;">{{ $nilai->nilai_5 }}
-                                                                </td>
-                                                                <td style="text-align: center;">
-                                                                    {{ getPredikat($nilai->nilai_5) }}</td>
-                                                            </tr>
-                                                        @endif
-
-
-                                                    </table>
-
-                                                    <table style="width: 70%; border: 1px solid gray;">
-                                                        <tr
-                                                            style="border: 1px solid #dddddd; background-color: #9eacdb;">
-                                                            <th style="width: 70%;">Aspek Penilaian Non Teknis</th>
-                                                            <th style=" text-align: center;">Nilai <br> Kuantitatif
-                                                            </th>
-                                                            <th style=" text-align: center;">Predikat</th>
-                                                        </tr>
-
-                                                        <tr style="border: 1px solid #dddddd;">
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
                                                             <td>Disiplin</td>
                                                             <td style="text-align: center;">{{ $nilai->nilai_6 }}</td>
-                                                            <td style="text-align: center;">
-                                                                {{ getPredikat($nilai->nilai_6) }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_6) }}</td>
                                                         </tr>
-
-                                                        <tr style="border: 1px solid #dddddd;">
+                                                        <tr>
                                                             <td>Tanggung Jawab</td>
                                                             <td style="text-align: center;">{{ $nilai->nilai_7 }}</td>
-                                                            <td style="text-align: center;">
-                                                                {{ getPredikat($nilai->nilai_7) }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_7) }}</td>
                                                         </tr>
-
-                                                        <tr style="border: 1px solid #dddddd;">
+                                                        <tr>
                                                             <td>Inisiatif</td>
                                                             <td style="text-align: center;">{{ $nilai->nilai_8 }}</td>
-                                                            <td style="text-align: center;">
-                                                                {{ getPredikat($nilai->nilai_8) }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_8) }}</td>
                                                         </tr>
-                                                        <tr style="border: 1px solid #dddddd;">
+                                                        <tr>
                                                             <td>Kebersihan dan Kerapihan</td>
                                                             <td style="text-align: center;">{{ $nilai->nilai_9 }}</td>
-                                                            <td style="text-align: center;">
-                                                                {{ getPredikat($nilai->nilai_9) }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_9) }}</td>
                                                         </tr>
-
-                                                        <tr style="border: 1px solid #dddddd;">
-                                                            <td>Keselamatan dan kesehatan kerja (K3)</td>
-                                                            <td style="text-align: center;">{{ $nilai->nilai_10 }}
-                                                            </td>
-                                                            <td style="text-align: center;">
-                                                                {{ getPredikat($nilai->nilai_10) }}</td>
+                                                        <tr>
+                                                            <td>Keselamatan dan Kesehatan Kerja (K3)</td>
+                                                            <td style="text-align: center;">{{ $nilai->nilai_10 }}</td>
+                                                            <td style="text-align: center;">{{ getPredikat($nilai->nilai_10) }}</td>
                                                         </tr>
-
-                                                        <tr
-                                                            style="border: 1px solid #dddddd; background-color: #9eacdb;">
-                                                            <th style="">Total Nilai</th>
-                                                            <th style=" text-align: center;">{{ $nilai->total }}</th>
-                                                            <th style=" text-align: center;"></th>
+                                                        <tr class="total-row">
+                                                            <td><strong>Total Nilai</strong></td>
+                                                            <td style="text-align: center;"><strong>{{ $nilai->total }}</strong></td>
+                                                            <td></td>
                                                         </tr>
-
-                                                        <tr
-                                                            style="border: 1px solid #dddddd; background-color: #9eacdb;">
-                                                            <th style="">Rata-rata</th>
-                                                            <th style=" text-align: center;">{{ $nilai->rata_rata }}
-                                                            </th>
-                                                            <th style="text-align: center;">
-                                                                {{ getPredikat($nilai->rata_rata) }}</th>
+                                                        <tr class="rata-row">
+                                                            <td><strong>Rata-rata</strong></td>
+                                                            <td style="text-align: center;"><strong>{{ $nilai->rata_rata }}</strong></td>
+                                                            <td style="text-align: center;"><strong>{{ getPredikat($nilai->rata_rata) }}</strong></td>
                                                         </tr>
-
-
-
-
-                                                    </table>
-
-                                                </div>
-
-
-
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <br>
 
-
-
-                                            <div class="footer" style="position: absolute; top: 30%; right: 12%;">
-                                                <div>
-                                                    <h4>Penilaian</h4>
-                                                    <p>85 - 100 (Sangat Baik)</p>
-                                                    <p>70 - 84 (Baik)</p>
-                                                    <p>55 - 69 (Cukup)</p>
-                                                    <p>40 - 54 (Kurang)</p>
-                                                    <p>0 - 39 (Sangat Kurang)</p>
+                                            <div style="width: 180px;">
+                                                <div class="penilaian-box">
+                                                    <h4>Keterangan Penilaian</h4>
+                                                    <p>85 - 100 : Sangat Baik</p>
+                                                    <p>70 - 84 : Baik</p>
+                                                    <p>55 - 69 : Cukup</p>
+                                                    <p>40 - 54 : Kurang</p>
+                                                    <p>0 - 39 : Sangat Kurang</p>
                                                 </div>
 
-                                                <div style="text-align: center; margin-top: 5rem;">
-                                                    <p>Balikpapan, {{ \Carbon\Carbon::now()->format('d M Y') }}</p>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    {{-- <img src="" width="200px" height="120px" alt="" style="object-fit: contain"> --}}
+                                                <div class="signature-box" style="margin-top: 1.5rem;">
+                                                    <p>Balikpapan, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
                                                     <p>Direktur,</p>
-                                                    <p class="footer-signature">Savitri</p>
+                                                    <p class="signature-name">Lisa Wati</p>
                                                 </div>
-
                                             </div>
-
                                         </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-
         </div>
     </div>
-
-
 
     <script>
         function exportToPDF() {
             var element = document.getElementById('content');
-            element.style.width = '1125px';
-            element.style.height = '1700px';
             var opt = {
-
+                margin: 0,
+                filename: 'sertifikat-{{ str_replace(" ", "-", strtolower($nilai->user->name)) }}.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
-                    scale: 3
-                },
-                filename: 'sertifikat.pdf',
-                image: {
-                    type: 'jpeg',
-                    quality: 2
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true
                 },
                 jsPDF: {
+                    unit: 'mm',
                     format: 'a4',
                     orientation: 'landscape'
-                }
-
+                },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
             };
-
-
-            html2pdf(element, opt);
-
-
+            html2pdf().set(opt).from(element).save();
         }
     </script>
 </x-app-layout>

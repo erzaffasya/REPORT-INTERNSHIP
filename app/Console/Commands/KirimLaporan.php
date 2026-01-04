@@ -15,24 +15,14 @@ class KirimLaporan extends Command
      *
      * @var string
      */
-    protected $signature = 'laporan_harian';
+    protected $signature = 'laporan:create-weekly';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Backup database daily';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $description = 'Membuat laporan mingguan untuk semua peserta magang di program aktif';
 
     /**
      * Execute the console command.
@@ -41,21 +31,53 @@ class KirimLaporan extends Command
      */
     public function handle()
     {
-        $program = Program::all();
-        $data = NULL;
-        foreach ($program as $item) {
-            $date_diff = Carbon::parse($item->periode_mulai)->diffInDays(Carbon::parse($item->periode_berakhir),false) + 1;
-            if ($date_diff >= "0") {
-                $divisi = Divisi::select('akses_divisi.user_id','akses_divisi.divisi_id','divisi.program_id')->join('akses_divisi','akses_divisi.divisi_id','divisi.id')->where('divisi.program_id',$item->id)->get();
-                foreach($divisi as $divisis){
-                    Laporan::create([
-                        'isVerif' => 4,
-                        'user_id' => $divisis->user_id,
-                        'divisi_id' => $divisis->divisi_id,
-                    ]);
+        $this->info('Memulai pembuatan laporan mingguan...');
+
+        $weekStart = Laporan::getMondayOfWeek();
+        $today = Carbon::now();
+        $created = 0;
+        $skipped = 0;
+
+        // Ambil semua program yang masih aktif
+        $programs = Program::where('periode_mulai', '<=', $today)
+            ->where('periode_berakhir', '>=', $today)
+            ->get();
+
+        if ($programs->isEmpty()) {
+            $this->warn('Tidak ada program aktif saat ini.');
+            return 0;
+        }
+
+        foreach ($programs as $program) {
+            $this->info("Processing Program: {$program->judul}");
+
+            // Ambil semua user di divisi program ini
+            $members = Divisi::select('akses_divisi.user_id', 'akses_divisi.divisi_id', 'divisi.program_id')
+                ->join('akses_divisi', 'akses_divisi.divisi_id', 'divisi.id')
+                ->where('divisi.program_id', $program->id)
+                ->get();
+
+            foreach ($members as $member) {
+                // Gunakan helper method dari model untuk cek dan create
+                $laporan = Laporan::createIfNotExists(
+                    $member->user_id,
+                    $member->divisi_id,
+                    $weekStart
+                );
+
+                if ($laporan) {
+                    $created++;
+                    $this->line("  ✓ Created: User {$member->user_id}, Divisi {$member->divisi_id}");
+                } else {
+                    $skipped++;
+                    $this->line("  - Skipped: User {$member->user_id}, Divisi {$member->divisi_id} (sudah ada)");
                 }
             }
         }
-    
+
+        $this->newLine();
+        $this->info("Selesai! Created: {$created}, Skipped: {$skipped}");
+
+        return 0;
     }
 }

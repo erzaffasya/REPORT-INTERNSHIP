@@ -74,6 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
         return redirect()->route('dashboard');
     });
     Route::get('Divisi/{divisi}/Laporan', [LaporanController::class, 'index'])->name('indexLaporan');
+    Route::post('Divisi/{divisi}/Laporan/create', [LaporanController::class, 'createManual'])->name('createLaporanManual');
     Route::get('view-laporan/{id}', [LaporanController::class, 'show'])->name('showLaporan');
     Route::put('/updateLaporan/{id}', [LaporanController::class, 'update'])->name('updateLaporan');
 
@@ -87,6 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('destroyProgram/{id}', [ProgramController::class, 'destroy']);
     Route::resource('Divisi', DivisiController::class)->except('destroy');
     Route::get('destroyDivisi/{id}', [DivisiController::class, 'destroy']);
+    Route::get('/Program/{program}/Divisi/{id}/riwayat-laporan', [DivisiController::class, 'riwayatLaporan'])->name('riwayatLaporan');
     Route::controller(AksesProgramController::class)->group(function () {
         Route::get('aksesProgram', 'index');
         Route::get('tambahAksesProgram/{id}', 'create');

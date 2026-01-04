@@ -87,4 +87,13 @@ class DivisiController extends Controller
         return back()
             ->with('delete', 'Divisi Berhasil Dihapus');
     }
+
+    public function riwayatLaporan($program, $divisi)
+    {
+        $Divisi = Divisi::find($divisi);
+        $Akses_divisi = Akses_divisi::where('divisi_id', $divisi)->get();
+        $Laporan = Laporan::where('divisi_id', $divisi)->orderBy('created_at', 'desc')->get();
+
+        return view('admin.divisi.riwayat-laporan', compact('Divisi', 'Laporan', 'Akses_divisi', 'program'));
+    }
 }
