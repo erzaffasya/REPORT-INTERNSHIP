@@ -44,11 +44,8 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <label class="mt-4">Description</label>
-                                                <p class="form-text text-muted text-xs ms-1 d-inline">
-                                                    (optional)
-                                                </p>
-                                                <textarea class="multisteps-form__input form-control" name="detail" type="text">
-                                                </textarea>
+                                                <textarea class="multisteps-form__input form-control" name="detail"
+                                                    type="text" placeholder="Masukkan deskripsi program"></textarea>
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
@@ -67,14 +64,12 @@
                                                 <div class="col-6">
                                                     <label class="form-label">Periode Mulai</label>
                                                     <input class="form-control datetimepicker" name="periode_mulai"
-                                                        type="date" placeholder="Please select start date"
-                                                        data-input>
+                                                        type="date" placeholder="Please select start date" data-input>
                                                 </div>
                                                 <div class="col-6">
                                                     <label class="form-label">Periode Berakhir</label>
                                                     <input class="form-control datetimepicker" name="periode_berakhir"
-                                                        type="date" placeholder="Please select start date"
-                                                        data-input>
+                                                        type="date" placeholder="Please select start date" data-input>
                                                 </div>
                                             </div>
 
@@ -138,15 +133,15 @@
 
                 examples.setChoices(
                     [{
-                            value: 'One',
-                            label: 'Expired',
-                            disabled: true
-                        },
-                        {
-                            value: 'Two',
-                            label: 'Out of Stock',
-                            selected: true
-                        }
+                        value: 'One',
+                        label: 'Expired',
+                        disabled: true
+                    },
+                    {
+                        value: 'Two',
+                        label: 'Out of Stock',
+                        selected: true
+                    }
                     ],
                     'value',
                     'label',
