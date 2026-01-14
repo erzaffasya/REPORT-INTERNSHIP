@@ -65,7 +65,7 @@ class SAWService
 
         foreach ($weights as $criteriaName => $weight) {
             $talent = $talents->firstWhere('name', $criteriaName);
-            $rawValue = $talent ? (int) $talent->pivot->score : 0;
+            $rawValue = $talent ? (float) $talent->pivot->score : 0;
             
             // Normalisasi: nilai/max * bobot/total_bobot
             $normalizedValue = $rawValue / self::MAX_SCORE;
