@@ -2,7 +2,16 @@
     id="navbarBlur" data-scroll="true">
     <div class="container-fluid py-2 px-0 d-flex justify-content-between align-items-center">
 
-        <!-- Sidebar toggle button -->
+        <!-- Sidebar toggle button for mobile -->
+        <a href="javascript:;" class="nav-link text-body p-0 d-xl-none" id="iconNavbarSidenav">
+            <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line bg-dark"></i>
+                <i class="sidenav-toggler-line bg-dark"></i>
+                <i class="sidenav-toggler-line bg-dark"></i>
+            </div>
+        </a>
+
+        <!-- Sidebar toggle button for desktop -->
         <div class="sidenav-toggler d-none d-xl-block">
             <a href="javascript:;" class="nav-link text-body p-0">
                 <div class="sidenav-toggler-inner">

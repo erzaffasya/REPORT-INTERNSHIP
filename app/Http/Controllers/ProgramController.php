@@ -34,7 +34,7 @@ class ProgramController extends Controller
         // dd($request);
         $request->validate([
             'judul' => 'required',
-            'detail' => 'required',
+            'detail' => 'nullable',
             'periode_mulai' => 'required',
             'periode_berakhir' => 'required',
         ]);
