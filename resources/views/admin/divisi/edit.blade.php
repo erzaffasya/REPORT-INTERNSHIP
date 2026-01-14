@@ -193,7 +193,7 @@
                     <div class="card-body">
                         <p class="info-text mb-3">
                             <i class="fas fa-info-circle me-1"></i>
-                            Tentukan bobot kriteria bakat untuk rekomendasi divisi (0-100)
+                            Tentukan bobot kriteria bakat untuk rekomendasi divisi (0-1)
                         </p>
 
                         <form action="{{ route('Divisi.update', $Divisi->id) }}" method="POST">
@@ -218,7 +218,7 @@
                                         <input type="number" class="talent-score-input"
                                             name="criteria[{{ $item->name }}]"
                                             value="{{ json_decode($Divisi->criteria)->{$item->name} ?? 0 }}"
-                                            min="0" max="100" required>
+                                            min="0" max="1" step="0.01" required>
                                     </div>
                                 @endforeach
                             </div>

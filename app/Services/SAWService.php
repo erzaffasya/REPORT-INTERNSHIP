@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
  */
 class SAWService
 {
-    private const MAX_SCORE = 10; // Nilai maksimal talent
+    private const MAX_SCORE = 1; // Nilai maksimal talent (input: 0-1)
 
     /**
      * Hitung rekomendasi divisi untuk user menggunakan metode SAW
@@ -40,8 +40,8 @@ class SAWService
             if ($score >= $threshold) {
                 $recommendations->push([
                     'divisi' => $divisi,
-                    'score' => $score,
-                    'score_percentage' => round($score * 100, 2),
+                    'score' => $score, // Format 0-1
+                    'score_percentage' => min(round($score * 100, 2), 100), // Max 100%
                 ]);
             }
         }

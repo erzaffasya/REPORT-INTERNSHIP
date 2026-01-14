@@ -371,7 +371,7 @@
                                 </div>
                                 <div>
                                     <label class="form-label">Score</label>
-                                    <input type="number" class="form-control" name="score" placeholder="0-100" min="0" max="100" required>
+                                    <input type="number" class="form-control" name="score" placeholder="0-1" min="0" max="1" step="0.01" required>
                                 </div>
                                 <div>
                                     <button type="submit" class="btn btn-add">
@@ -407,7 +407,7 @@
                                                 <input type="number" class="talent-score-input"
                                                     name="talent[{{ $item->talent_id }}]"
                                                     value="{{ $item->score }}"
-                                                    min="0" max="100" required>
+                                                    min="0" max="1" step="0.01" required>
                                             </div>
                                         @endif
                                     @endforeach
