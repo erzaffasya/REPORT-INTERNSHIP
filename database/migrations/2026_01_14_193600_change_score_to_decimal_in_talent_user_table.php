@@ -10,6 +10,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Reset semua score ke 0 dulu
+        DB::statement('UPDATE talent_user SET score = 0');
+        
         // Ubah score dari integer ke decimal untuk mendukung format 0-1
         DB::statement('ALTER TABLE talent_user MODIFY score DECIMAL(3,2)');
     }
